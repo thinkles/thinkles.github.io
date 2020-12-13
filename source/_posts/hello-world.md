@@ -44,4 +44,4 @@ More info: [Deployment](https://hexo.io/docs/one-command-deployment.html)
 #### Github action 
 - 加上 github action 就完成了自动打包 部署  不再使用hexo generate deploy, 直接提交代码就可以了
 
-#### 改变模板留下链接进行直接编辑 文章内容
+#### 改变模板留下链接进行直接编辑 文章内容, 只能在 hexo serve 时看到编辑键
