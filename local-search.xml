@@ -4,19 +4,6 @@
   
   
   <entry>
-    <title>test -se</title>
-    <link href="/2020/12/14/test-se/"/>
-    <url>/2020/12/14/test-se/</url>
-    
-    <content type="html"><![CDATA[<h4 id="测试纯hexo-下的情况"><a href="#测试纯hexo-下的情况" class="headerlink" title="测试纯hexo 下的情况"></a>测试纯hexo 下的情况</h4>]]></content>
-    
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>Hello World lalla</title>
     <link href="/2020/12/13/hello-world/"/>
     <url>/2020/12/13/hello-world/</url>
@@ -26,7 +13,7 @@
     
     <categories>
       
-      <category>前端</category>
+      <category>Test</category>
       
     </categories>
     
@@ -108,32 +95,7 @@
     
     <tags>
       
-      <tag>Css 基础</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>发帖人</title>
-    <link href="/2020/12/13/%E5%89%8D%E7%AB%AF/"/>
-    <url>/2020/12/13/%E5%89%8D%E7%AB%AF/</url>
-    
-    <content type="html"><![CDATA[<h4 id="测试-第一次"><a href="#测试-第一次" class="headerlink" title="测试 第一次"></a>测试 第一次</h4><ul><li>样 二分法法分f</li><li>分法方法二分法</li></ul>]]></content>
-    
-    
-    <categories>
-      
-      <category>前端Css</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>Css 布局</tag>
+      <tag>Css基础</tag>
       
     </tags>
     
