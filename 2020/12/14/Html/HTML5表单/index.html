@@ -1,0 +1,652 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Yangsir">
+  <meta name="keywords" content="">
+  <title>html表单 - Yangsir&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.6","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Yangsir-Zone</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/images/bag.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="html表单">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-12-14 14:16" pubdate>
+        2020年12月14日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.4k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      37
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">html表单</h1>
+            
+            <div class="markdown-body">
+              <h3 id="html5-表单"><a href="#html5-表单" class="headerlink" title="html5  表单"></a>html5  表单</h3><h5 id="原生表单部件"><a href="#原生表单部件" class="headerlink" title="原生表单部件"></a>原生表单部件</h5><ul>
+<li><p>表单标签 </p>
+<p>  &lt; form name method action &gt;<br>  &lt; input type =”” 多个type&gt;<br>  &lt; label&gt;<br>  &lt; select：选择列表&gt;<br>  &lt; input type=”image”：创建图形按钮 &gt;<br>  &lt; button type  &gt;<br>  &lt; textarea&gt; </p>
+</li>
+<li><p>表单组件通用属性：<br>  name        元素的名称;这是跟表单数据一起提交的。<br>  value        元素的初始值。<br>  autofocus    (false)    这个布尔属性允许您指定当页面加载时元素应该自动具有输入焦点,文档中只有一个与表单相关的元素可以指定这个属性。<br>  disabled    这个布尔属性表示用户不能与元素交互</p>
+</li>
+<li><p>所有输入用的文本框都有一些通用规范:<br>  readonly:用户不能修改输入值<br>  disabled：输入值永远不会与表单数据的其余部分一起发送<br>  placeholder:提供输入提示信息<br>  formaction:制定后台处理软件<br>  autofocus ：自动获得焦点<br>  pattern：验证输入元素，验证输入格式。。<br>  requid:非空检测    multiple属性添加到&lt; select&gt;元素，可以允许选择几个值<br>  它们可以被限制在size (框的物理尺寸) 和 长度 (可以输入的最大字符数)。</p>
+</li>
+</ul>
+<h5 id="各个表单部件之间注意点"><a href="#各个表单部件之间注意点" class="headerlink" title="各个表单部件之间注意点"></a>各个表单部件之间注意点</h5><h6 id="input-button-textarea-注意点"><a href="#input-button-textarea-注意点" class="headerlink" title="input  button textarea 注意点"></a>input  button textarea 注意点</h6><ul>
+<li>要定义&lt; input&gt;的默认值，你必须使用value 属性,如果您想定义&lt; textarea&gt;的默认值，您只需在&lt; textarea&gt;元素的开始和结束标记之间放置默认值</li>
+<li>注意，&lt; textarea&gt;元素与&lt; input&gt;元素的编写略有不同。&lt; input&gt;元素是一个空元素，这意味着它不能包含任何子元素。&lt; textarea&gt;元素可以包含文本内容的子元素。&lt; textarea&gt;元素只接受文本内容；这意味着将任何HTML内容放入&lt; textarea&gt;中都呈现为纯文本内容。</li>
+</ul>
+<ul>
+<li>&lt; button&gt;元素也接受一个 type属性，它接受submit, reset或者 button 三个值中的任一个</li>
+<li>使用&lt; button&gt;元素或&lt; input&gt;元素定义的按钮几乎没有区别。唯一值得注意的区别是按钮本身的标签。在&lt; input&gt;元素中，标签只能是字符数据，而在&lt; button&gt;元素中，标签可以是HTML(br strong)，因此可以相应地进行样式化。</li>
+</ul>
+<p>-对于checkbox  通过name属性识别此复选框,value属性是被后台获取的值,不指定value结果为默认”on” ,复选框单选框都需要拥有value属性</p>
+<blockquote>
+<p>HTML表单文本字段是简单的纯文本输入控件(input)。 这意味着您不能使用它们执行富文本编辑(粗体、斜体等)。你遇到的所有富文本编辑器（rich text editors）都是使用HTML、CSS和JavaScript所创建的自定义小部件<br>我们还需要为我们的数据提供一个名称, 要将数据命名为表单，您需要在每个表单小部件上使用 name 属性来收集特定的数据块。<br>严格禁止在一个表单内嵌套另一个表单 </p>
+</blockquote>
+<ul>
+<li><p>表单结构的常用做法</p>
+</li>
+<li><blockquote>
+<p>用&lt; div&gt;元素包装标签和它的小部件是很常见的做法。&lt; p&gt;元素也经常被使用，HTML列表 ul也是如此（后者在构造多个复选框或单选按钮时最为常见） 除了&lt; fieldset&gt;元素之外，使用HTML标题（例如，&lt; h1&gt;、 &lt; h2&gt;）和分段（如&lt; section&gt;）来构造一个复杂的表单也是一种常见的做法。</p>
+</blockquote>
+</li>
+<li><p>通过包括multiple属性，它还可以让用户将多个电子邮件地址输入相同的输入(以逗号分隔)。</p>
+</li>
+<li><blockquote>
+<p>&lt; input type=”email” id=”email” name=”email” multiple&gt;</p>
+</blockquote>
+</li>
+</ul>
+<h6 id="选择表单-注意点"><a href="#选择表单-注意点" class="headerlink" title="选择表单 注意点"></a>选择表单 注意点</h6><ul>
+<li>如果一个&lt; option&gt;元素设置了value属性，那么当提交表单时该属性的值就会被发送。如果忽略了value属性，则使用&lt; option&gt;元素的内容作为选择框的值。</li>
+<li>select框中 在&lt; optgroup &gt;元素中，label属性(和label元素不是一个)显示在值之前，但即使它看起来有点像一个选项，它也不是可选的。<br>作系统提供的默认机制来选择几个值。 (如， 同时按下 Cmd/Ctrl 并点击多个值).</li>
+</ul>
+<ul>
+<li>您可以使用&lt; datalist&gt;元素来为表单小部件提供建议的、自动完成的值(自动补全框)，并使用一些&lt; option&gt;子元素来指定要显示的值。 然后使用list属性将数据列表绑定到一个文本框(通常是一个 &lt; input&gt; 元素)。 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs routeros">&lt;input <span class="hljs-attribute">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attribute">name</span>=<span class="hljs-string">&quot;myFruit&quot;</span> <span class="hljs-attribute">id</span>=<span class="hljs-string">&quot;myFruit&quot;</span> <span class="hljs-attribute">list</span>=<span class="hljs-string">&quot;mySuggestion&quot;</span>&gt;<br>&lt;datalist <span class="hljs-attribute">id</span>=<span class="hljs-string">&quot;mySuggestion&quot;</span>&gt;<br></code></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<ul>
+<li>几个单选按钮可以连接在一起。如果它们的name属性共享相同的值，那么它们将被认为属于同一组的按钮。同一组中只有一个按钮可以同时被选；这意味着当其中一个被选中时，所有其他的都将自动未选中。如果没有选中任何一个，那么整个单选按钮池就被认为处于未知状态，并且没有以表单的形式发送任何值。<blockquote>
+<p>单选项  复选项 复选框和单选按钮。两者都使用checked属性，以指示该部件的默认状态: “选中”或”未选中”。,值得注意的是，这些小部件与其他表单小部件不一样。对于大多数表单部件，一旦表单提交，所有具有name属性的小部件都会被发送，即使没有任何值被填。对于可选中项，只有在勾选时才发送它们的值。如果他们没有被勾选，就不会发送任何东西，甚至连他们的名字也没有。</p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>默认情况下，选择框只允许用户选择一个值。通过将multiple属性添加到&lt; select&gt;元素，您可以允许用户通过操</p>
+</blockquote>
+<h5 id="高级表单部件"><a href="#高级表单部件" class="headerlink" title="高级表单部件"></a>高级表单部件</h5><ol>
+<li><p>数字 type=number</p>
+<blockquote>
+<p>通过设置min和max属性来约束该值。<br>通过设置step属性来指定增加和减少按钮更改小部件的步进值大小。</p>
+</blockquote>
+</li>
+<li><p>滑块 type=range 正确配置滑块是很重要的；为了达到这个目的，我们强烈建议您设置min、max和step属性。</p>
+</li>
+<li><p>拾色器  &lt; input type=”color” name=”color” id=”color”&gt;</p>
+</li>
+<li><p>文件选择器小部件，您可以使用&lt; input&gt;元素，将它的type属性设置为file。被接受的文件类型可以使用accept属性来约束。此外，如果您想让用户选择多个文件，那么可以通过添加multiple属性来实现。</p>
+</li>
+</ol>
+<blockquote>
+<p>有时候，由于为了方便技术原因，有些数据是用表单发送的，但不显示给用户。要做到这一点，您可以在表单中添加一个不可见的元素。要做到这一点，需要使用&lt; input&gt;将它的type属性设置为hidden值。如果您创建了这样一个元素，就需要设置它的name和value属性：</p>
+</blockquote>
+<ul>
+<li>&lt; input type=”file” id=”input”&gt; 上传组件, 你不能使用 input.value 来获取该文件路径,由于浏览器安全问题,路径会被修改, 使用window.URL.createObjectURL() 来获取路径, 如果是使用文件,通过files属性返回选择的一个/多个文件, 返回值是包含file对象的类数组.</li>
+</ul>
+<ol>
+<li>图像按钮是使用type属性值设置为image&lt; input&gt;的元素创建的。这个元素支持与&lt; img&gt;元素相同的属性，和其他表单按钮支持的所有属性。如果使用图像按钮来提交表单，这个小部件不会提交它的值；相反，提交的是在图像上单击处的X和Y坐标(坐标是相对于图像的，这意味着图像的左上角表示坐标0，0)，坐标被发送为两个键/值对：</li>
+</ol>
+<p>6.进度条 使用&lt; progress&gt;元素创建的。</p>
+<ul>
+<li><blockquote>
+<p> &lt; progress max=”100” value=”75”&gt;75/100&lt;/ progress&gt;</p>
+</blockquote>
+</li>
+</ul>
+<p>7.仪表</p>
+<ul>
+<li><blockquote>
+<p>&lt; meter min=”0” max=”100” value=”75” low=”33” high=”66” optimum=”50”&gt;75&lt;/ meter&gt;</p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>警告——日期和时间窗口小部件仍然很不受支持。目前，Chrome、Edge和Opera都支持它们，但IE浏览器没有支持，Firefox和Safari对这些都没有太大的支持。</p>
+</blockquote>
+<h4 id="表单数据效验"><a href="#表单数据效验" class="headerlink" title="表单数据效验"></a>表单数据效验</h4><ul>
+<li>分为客户端效验 服务器效验两种<h5 id="效验方式"><a href="#效验方式" class="headerlink" title="效验方式"></a>效验方式</h5></li>
+</ul>
+<ol>
+<li><p>html5内置的效验属性</p>
+<ol>
+<li>required </li>
+<li>pattern 属性 (属性内书写正则表达式)</li>
+<li>所有文本框 (&lt; input&gt; 或 &lt; textarea&gt;) 都可以使用minlength 和 maxlength 属性来限制长度 在数字条目中 (&lt; input type=”number”&gt;), 该 min 和 max 属性同样提供校验约束</li>
+</ol>
+</li>
+</ol>
+<ul>
+<li><blockquote>
+<p>该元素将可以通过 CSS 伪类 :valid 进行特殊的样式化；如果一个元素未校验通过：该元素将可以通过 CSS 伪类 :invalid 进行特殊的样式化；</p>
+</blockquote>
+</li>
+</ul>
+<ol start="2">
+<li>使用Js 效验表单</li>
+</ol>
+<ul>
+<li>越来越多的浏览器支持限制校验API，并且这逐渐变得可靠。这些 API 由成组的方法和属性构成，可在特定的表单元素接口上调用：</li>
+<li><blockquote>
+<p>HTMLButtonElement  HTMLFieldSetElement  HTMLInputElement…</p>
+</blockquote>
+</li>
+<li>约束校验的 API 及属性  validity</li>
+</ul>
+<blockquote>
+<p>也可以不使用js的API 属性,通过原生js实现建立自己的校验系统并不难。 困难的部分是使其足够通用，以跨平台和任何形式使用它可以创建。 有许多库可用于执行表单校验; 你应该毫不犹豫地使用它们。 这里有一些例子：独立的库（原生 Javascript 实现）：Validate.js    jQuery 插件:Validation  Valid8</p>
+</blockquote>
+<h5 id="自定义错误信息-远程效验"><a href="#自定义错误信息-远程效验" class="headerlink" title="自定义错误信息  远程效验"></a>自定义错误信息  远程效验</h5><ul>
+<li>每次我们提交无效的表单数据时, 浏览器总会显示错误信息. 但是显示的信息取决于你所使用的浏览器.</li>
+<li>HTML5 提供 constraint validation API (指的就是js 调用的验证API 属性 方法)来检测和自定义表单元素的状态. 除此之外,他可以改变错误信息的文本.<blockquote>
+<p>关于自定义问题观看 表单数据效验–MDN</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li>远程校验 : 一个应用实例就是注册表单，在这里你需要一个用户名。 为了避免重复，执行一个 AJAX 请求来检查用户名的可用性，要比让先用户发送数据，然后因为表单重复了返回错误信息要好得多。<blockquote>
+<p>两个条件:需要确保它不是敏感数据。网络滞后需要执行异步校验。确保如校验没有适当的执行，用户还能继续操作</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="Css样式化表单"><a href="#Css样式化表单" class="headerlink" title="Css样式化表单"></a>Css样式化表单</h4><ul>
+<li><p>有些元素根本不能用应用CSS样式。 这些包括：所有高级用户界面小部件，如范围，颜色或日期控件; 和所有下拉小部件，包括&lt; select&gt;, &lt; option&gt;, &lt; optgroup&gt;和&lt; datalist&gt; 元素。 文件选择器小部件也被称为不可样式化。 新的&lt; progress&gt;和&lt; meter&gt; 元素也属于这个类别</p>
+</li>
+<li><p>搜索框是唯一一种应用CSS样式有点棘手的文本字段。 在基于WebKit的浏览器（Chrome，Safari等）上，您必须使用-webkit-appearance专有属性来调整它</p>
+</li>
+<li><p>如果你想保持组件的原生观感，又想给它们一致的大小，你会面临一些困难)。这是因为每个小部件都有自己的边框，填充和边距的规则。 所以如果你想给几个不同的小部件相同的大小，你必须使用box-sizing 属性：</p>
+</li>
+<li><p>默认情况下，所有浏览器都认为&lt; textarea&gt; 元素是inline block，与文本底线对齐, 这很少是我们真正想看到的。 要将内联(inline-block)块更改为块(block)，使用display属性非常简单。 但是如果你想以inline方式使用它，通常改变垂直对齐方式：vertical-top</p>
+</li>
+<li><p>&lt; textarea&gt; 元素默认地被渲染成一个块级元素。这里有重要地两点是 resize 和 overflow 属性(css属性而不是html属性)。因为我们的设计是一个固定大小的设计，所以我们会使用 resize 属性来防止用户调整我们的多行文本域的大小。overflow 属性是用来让域在不同的浏览器上渲染得更一致。一些浏览器默认值为 auto，而一些将默认值设为 scroll。在我们得例子中，最好确定每个浏览器都使用 auto： </p>
+</li>
+<li><p>&lt; button&gt; 元素上使用 CSS 非常方便；你可以做你任何想做得事情，甚至包括使用 伪元素：</p>
+</li>
+<li><p>注意添加outline 属性非常重要，这样可以移除由某些浏览器添加的默认高亮效果：</p>
+</li>
+</ul>
+<p>CSS Basic UI Level 3 也增加了几个伪类用于描述小部件的状态：</p>
+<pre><code>  :default
+  :valid
+  :invalid      
+  :in-range      
+  :out-of-range     
+  :required      
+  :optional      
+  :read-only      
+  :read-write</code></pre>
+<blockquote>
+<p>要实现对表单小部件的完全控制，你别无选择，只能选择依靠JavaScript。使用JS库</p>
+</blockquote>
+<hr>
+<h5 id="表单-样式各个浏览器的兼容问题"><a href="#表单-样式各个浏览器的兼容问题" class="headerlink" title="表单 样式各个浏览器的兼容问题"></a>表单 样式各个浏览器的兼容问题</h5><h5 id="自定义表单部件-通过js发送表单数据-而不是采用默认"><a href="#自定义表单部件-通过js发送表单数据-而不是采用默认" class="headerlink" title="自定义表单部件 通过js发送表单数据,而不是采用默认"></a>自定义表单部件 通过js发送表单数据,而不是采用默认</h5><h5 id="表单提交时安全问题-格式问题"><a href="#表单提交时安全问题-格式问题" class="headerlink" title="表单提交时安全问题  格式问题"></a>表单提交时安全问题  格式问题</h5><ul>
+<li>跨站脚本(XSS)和跨站点请求伪造(CSRF)是常见的攻击类型</li>
+</ul>
+
+            </div>
+            <div><a href="https://github.com/thinkles/thinkles.github.io/blob/myblog/source/_posts/Html/HTML5表单.md" target="_blank">编辑</a></div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/HTML/">HTML</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/html%E8%A1%A8%E5%8D%95/">html表单</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/12/14/Html/html5%E6%96%B0%E7%89%B9%E6%80%A7/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">html5基础</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/12/14/Html/Html%20%E5%85%A5%E9%97%A8/">
+                        <span class="hidden-mobile">html基础</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.waitElementVisible('comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'thinkles/Utterances-comment-blog');
+      s.setAttribute('issue-term', 'title');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.start()
+    document.addEventListener('DOMContentLoaded', function() {
+      window.NProgress && window.NProgress.inc();
+    })
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>

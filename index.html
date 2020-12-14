@@ -181,21 +181,22 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/12/14/jquery%20%E6%8B%BE%E5%BF%86/">JqueryApi 进阶</a>
+        <a href="/2020/12/14/Js-dom/webpack/"></a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/12/14/jquery%20%E6%8B%BE%E5%BF%86/">
+        <a href="/2020/12/14/Js-dom/webpack/">
           
           
             
           
-          Ajax (等待)  高级ajax操作  高级DOM操作(对服务器传来的数排序)
-理解扩展事件 : 相当于给jquery新建事件,封装起来复用延迟对象(不理解)
- promise  都用于ajax 这中耗时操作中, 延迟对象一般不需要手动建立,一般建立好的知道使用方法即可
- 回调对象
+          webpack
+为什么使用webpack?
 
-$.Callbacks()模块开发目的是：给内部$.ajax()和$.Deferred()模块提供统一的基本功能
+
+前端模块要在客户端中执行，所以他们需要增量加载到浏览器中。
+分块传输，按需进行懒加载，在实际用到某些模块的时候再增量更新，才是较为合理的模块加载方案,要实现模块的按需加载，就需要一个对整个代码库中的模块进行静态分析、编译打包的过程。
+在前端开发过程中还涉及到样式、图片、字体、HTML 模板等等众多的资源,如果他们都可以视作模块，并且都可以通过requ
         </a>
       </p>
 
@@ -203,7 +204,7 @@ $.Callbacks()模块开发目的是：给内部$.ajax()和$.Deferred()模块提�
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-12-14 14:09" pubdate>
+            <time datetime="2020-12-14 14:16" pubdate>
               2020-12-14
             </time>
           </div>
@@ -212,7 +213,7 @@ $.Callbacks()模块开发目的是：给内部$.ajax()和$.Deferred()模块提�
           <div class="post-meta mr-3">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/Jquery/">Jquery</a>
+              <a href="/categories/webpack/">webpack</a>
             
           </div>
         
@@ -220,7 +221,7 @@ $.Callbacks()模块开发目的是：给内部$.ajax()和$.Deferred()模块提�
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/Jquery/">Jquery</a>
+              <a href="/tags/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/">构建工具</a>
             
           </div>
         
@@ -234,23 +235,23 @@ $.Callbacks()模块开发目的是：给内部$.ajax()和$.Deferred()模块提�
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/12/14/JQuery%20%20%E6%8C%87%E5%AF%BC/">Jquery指导</a>
+        <a href="/2020/12/14/Js-dom/vue/"></a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/12/14/JQuery%20%20%E6%8C%87%E5%AF%BC/">
+        <a href="/2020/12/14/Js-dom/vue/">
           
           
             
           
-          Jquery 实践
-抽象jquery 功能:  改变文档内容样式  动态效果 更好的数据交互操作 ajax 
+          VUE一遍vue的核心思想是什么
+构建用户界面的渐进式框架  设计为可以自底向上逐层应用(—-串联线)  只关注视图层 提供MVVM数据双向绑定的库 其核心思想包括数据驱动，组件化思想
 
- jquery 总是面向对象,对节点集合可能会进行隐式迭代操作
+渐进式  :  vue每个功能是独立的,你可以只用其中一种  
 
-编写程序时要尊重渐进增强,和平稳退化
-选择器
-jQuery完全继承了css选择器风格,下面的选择器用法也是css选择器的用法使用jquery选择器就算获取不到元素也不会报错,传统dom在获取之前要加上if判断是否存在,需要
+
+
+Vue的体系从内到外依次是声明式渲染(Declarative Rendering)、组件系统(Component System)、客户端路由(
         </a>
       </p>
 
@@ -258,7 +259,7 @@ jQuery完全继承了css选择器风格,下面的选择器用法也是css选择�
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-12-14 14:09" pubdate>
+            <time datetime="2020-12-14 14:16" pubdate>
               2020-12-14
             </time>
           </div>
@@ -267,7 +268,7 @@ jQuery完全继承了css选择器风格,下面的选择器用法也是css选择�
           <div class="post-meta mr-3">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/Jquery/">Jquery</a>
+              <a href="/categories/Vue/">Vue</a>
             
           </div>
         
@@ -275,7 +276,7 @@ jQuery完全继承了css选择器风格,下面的选择器用法也是css选择�
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/Jquery/">Jquery</a>
+              <a href="/tags/Vue/">Vue</a>
             
           </div>
         
@@ -289,19 +290,40 @@ jQuery完全继承了css选择器风格,下面的选择器用法也是css选择�
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/12/14/Jq%20%E5%AE%9E%E8%B7%B5%E9%97%AE%E9%A2%98/"></a>
+        <a href="/2020/12/14/Js-dom/vue%20router/"></a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/12/14/Jq%20%E5%AE%9E%E8%B7%B5%E9%97%AE%E9%A2%98/">
+        <a href="/2020/12/14/Js-dom/vue%20router/">
           
           
             
           
-          
-在使用css函数和transition 进行样式设置时, 如果利用if语句判断当前css函数改变的值,可能会判断不正确,在css还没执行完,if语句已经进行判断(也可能不是if语句,其他语句也会在这期间执行),导致结果和预期不同,  可以使用settimeout()使css执行完之后在进行判断,效果和在动画方法的回调函数中一样
+          Vue Router动态路由匹配
+通过不同参数匹配到的所有路由，全都映射到同个组件
 
-jQuery(window).height()代表了当前可见区域的
+
+例如 :  将/user/foo 和 /user/bar 映射到相同的路由。
+
+
+
+
+通过动态路径参数实现这个效果:
+
+
+
+
+
+$route.params
+
+
+
+/user/:username
+{ username: ‘evan’ }
+
+
+/user/:username/post/:post_id
+{ user
         </a>
       </p>
 
@@ -309,51 +331,16 @@ jQuery(window).height()代表了当前可见区域的
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-12-14 14:09" pubdate>
+            <time datetime="2020-12-14 14:16" pubdate>
               2020-12-14
             </time>
           </div>
         
         
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/12/13/hello-world/">Hello World lalla</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/12/13/hello-world/">
-          
-          
-            
-          
-          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-12-13 21:34" pubdate>
-              2020-12-13
-            </time>
-          </div>
-        
-        
           <div class="post-meta mr-3">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/Test/">Test</a>
+              <a href="/categories/Vue/">Vue</a>
             
           </div>
         
@@ -361,7 +348,7 @@ Quick
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E6%B5%8B%E8%AF%95/">测试</a>
+              <a href="/tags/Vue/">Vue</a>
             
           </div>
         
@@ -375,34 +362,30 @@ Quick
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/12/13/CSS3/">CSS3</a>
+        <a href="/2020/12/14/Js-dom/js%20%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82/"></a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/12/13/CSS3/">
+        <a href="/2020/12/14/Js-dom/js%20%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82/">
           
           
             
           
-          CSS3
-边框
+          网络请求
+传统网页的网络请求:
 
-border-radius    圆角
-
-默认一个值应用在四个方向,如果想单独设置,可以各四个值分别代表 从左上顺时针到左下的角
+最初加载页面很简单 – 你为网站发送一个请求到服务器， 只要没有出错你将会获取资源并显示网页到你的电脑上。
 
 
-box-shadow   边框阴影 
-
-四个值分别   x偏移量 | y偏移量 | 阴影模糊半径 | 阴影颜色 
-
+这种方法导致不管 用户是否需要全部数据,都会重新加载整个页面
+例如 : 
+填写表单时错误,跳转网页后重定向回注册表单,但是信息消失
+只需要加载部分内容,(例如:导航栏侧边栏一样不在加载),但仍然会加载整个页面,导致资源浪费
 
 
 
-border-image    用图片创建边框
 
-
-三个值 /* border-image: image-source ima
+这时出现了AJAX技术
         </a>
       </p>
 
@@ -410,8 +393,8 @@ border-image    用图片创建边框
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-12-13 20:03" pubdate>
-              2020-12-13
+            <time datetime="2020-12-14 14:16" pubdate>
+              2020-12-14
             </time>
           </div>
         
@@ -419,7 +402,7 @@ border-image    用图片创建边框
           <div class="post-meta mr-3">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E5%89%8D%E7%AB%AFCss/">前端Css</a>
+              <a href="/categories/Javascript/">Javascript</a>
             
           </div>
         
@@ -427,7 +410,7 @@ border-image    用图片创建边框
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/Css3/">Css3</a>
+              <a href="/tags/js%E7%BD%91%E7%BB%9C/">js网络</a>
             
           </div>
         
@@ -441,30 +424,26 @@ border-image    用图片创建边框
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/12/13/CSS3-%E5%B8%83%E5%B1%80%E6%80%BB%E8%A7%88/">CSS3 布局总览</a>
+        <a href="/2020/12/14/Js-dom/js%20%E5%86%8D%E5%87%BA%E5%8F%91%E4%B8%8B/"></a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/12/13/CSS3-%E5%B8%83%E5%B1%80%E6%80%BB%E8%A7%88/">
+        <a href="/2020/12/14/Js-dom/js%20%E5%86%8D%E5%87%BA%E5%8F%91%E4%B8%8B/">
           
           
             
           
-          布局拾忆
-正常布局流,以下行为覆盖默认的布局流
-display 标准的有block inline , 其他的布局形式: 
-css Grid 
-Flexbox(弹性盒子)
-position
-多列布局
-表格布局
-float
+          函数进阶Rest参数  Spread语法
+在 JavaScript 中，很多内建函数都支持传入任意数量的参数
 
 
-响应式布局
+如何实现 : 使用Rest 参数 ...
+Rest 参数... : 在 JavaScript 中，无论函数是如何定义的，你都可以使用任意数量的参数调用函数。不会因为传入“过多”的参数而报错,只会取得前几个参数匹配             
 
-Flexbox(弹性盒子) : 专门设计出来用于创建横向或是纵向的一维页面布局
-flex 优势(出现的原因):使多列等高(不管内容)  所有子项有相同的宽/高度(
+
+Rest 参数语法:
+
+function 
         </a>
       </p>
 
@@ -472,8 +451,8 @@ flex 优势(出现的原因):使多列等高(不管内容)  所有子项有相�
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-12-13 20:01" pubdate>
-              2020-12-13
+            <time datetime="2020-12-14 14:16" pubdate>
+              2020-12-14
             </time>
           </div>
         
@@ -481,7 +460,7 @@ flex 优势(出现的原因):使多列等高(不管内容)  所有子项有相�
           <div class="post-meta mr-3">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E5%89%8D%E7%AB%AFCss/">前端Css</a>
+              <a href="/categories/Javascript/">Javascript</a>
             
           </div>
         
@@ -489,7 +468,7 @@ flex 优势(出现的原因):使多列等高(不管内容)  所有子项有相�
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/Css%E5%B8%83%E5%B1%80/">Css布局</a>
+              <a href="/tags/js%E5%9F%BA%E7%A1%80/">js基础</a>
             
           </div>
         
@@ -503,25 +482,22 @@ flex 优势(出现的原因):使多列等高(不管内容)  所有子项有相�
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/12/13/CSS%E6%8C%87%E5%AF%BC/">CSS指导</a>
+        <a href="/2020/12/14/Js-dom/js%20%E5%86%8D%E5%87%BA%E5%8F%91%E4%B8%8A/"></a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/12/13/CSS%E6%8C%87%E5%AF%BC/">
+        <a href="/2020/12/14/Js-dom/js%20%E5%86%8D%E5%87%BA%E5%8F%91%E4%B8%8A/">
           
           
             
           
-          CSS 指南
-这个声明的目的是防止浏览器在渲染文档时，切换到我们称为“**怪异模式(兼容模式)**”的渲染模式。““ 确保浏览器按照最佳的相关规范进行渲染，而不是使用一个不符合规范的渲染模式。
-
-兼容模式下 会出现很多问题, 比如 css应用问题, 加上标签和不加标签可能会出现差异,不如各个浏览器排版会出现问题
-css引用方法
+          JS 入门精通JS简介
+JS在任意搭载了 JavaScript 引擎 的设备中都可以执行
+V8 —— Chrome 和 Opera 中的 JavaScript 引擎。SpiderMonkey —— Firefox 中的 JavaScript 引擎。
 
 
-行内式 
-内嵌式  在head标签中书写《style》
-链接式  
+现代的 JavaScript 是一种“安全”语言。它不提供对内存或 CPU 的底层访问，因为它最初是为浏览器创建的，不需要这些功能
+“use st
         </a>
       </p>
 
@@ -529,8 +505,8 @@ css引用方法
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-12-13 19:59" pubdate>
-              2020-12-13
+            <time datetime="2020-12-14 14:16" pubdate>
+              2020-12-14
             </time>
           </div>
         
@@ -538,7 +514,7 @@ css引用方法
           <div class="post-meta mr-3">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E5%89%8D%E7%AB%AFCss/">前端Css</a>
+              <a href="/categories/Javascript/">Javascript</a>
             
           </div>
         
@@ -546,7 +522,232 @@ css引用方法
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/Css%E5%9F%BA%E7%A1%80/">Css基础</a>
+              <a href="/tags/js%E5%9F%BA%E7%A1%80/">js基础</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/12/14/Js-dom/DOM%20%E5%86%8D%E5%BC%80/"></a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/12/14/Js-dom/DOM%20%E5%86%8D%E5%BC%80/">
+          
+          
+            
+          
+          Document浏览器环境
+JavaScript 语言已经发展成为一种具有多种用途和平台的语言。平台可以是一个浏览器，一个 Web 服务器，或其他主机（host）, 如果它能运行 JavaScript 的话。它们每个都提供了特定于平台的功能。JavaScript 规范将其称为 主机环境。
+
+
+主机环境提供了自己的对象和语言核心以外的函数。Web 浏览器提供了一种控制网页的方法。Node.JS 提供
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-12-14 14:16" pubdate>
+              2020-12-14
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/Javascript/">Javascript</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/DOM/">DOM</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/12/14/Js-dom/BOM%20Cookie%20%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AD%98%E5%82%A8/"></a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/12/14/Js-dom/BOM%20Cookie%20%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AD%98%E5%82%A8/">
+          
+          
+            
+          
+          BOM —window对象
+一个浏览器窗口就是一个window对象
+
+window对象有多个子对象
+
+
+
+document 操作页面元素
+location 地址对象,
+navigator 用于获取浏览器版本信息 
+history 历史对象操作浏览记录
+screen 操作屏幕宽度高度  
+
+
+
+
+​    以上都是window 的属性, 返回一个对象 , 可以不用window前缀
+
+
+由于windw
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-12-14 14:16" pubdate>
+              2020-12-14
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/Javascript/">Javascript</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/BOM/">BOM</a>
+            
+              <a href="/tags/Cookie/">Cookie</a>
+            
+              <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AD%98%E5%82%A8/">浏览器存储</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/12/14/Html/html5%E6%96%B0%E7%89%B9%E6%80%A7/">html5基础</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/12/14/Html/html5%E6%96%B0%E7%89%B9%E6%80%A7/">
+          
+          
+            
+          
+          多媒体
+video audio属性
+  controls : 为网页中的音频显示标准的HTML5控制器。  autoplay : 使音频自动播放。  loop : 使音频自动重复播放。  muted  这个属性会导致媒体播放时，默认关闭声音。  poster:这个属性指向了一个图像的URL，这个图像会在视频播放前显示。通常用于粗略的预览或者广告。  preload 这个属性被用来缓冲较大的文件
+
+
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-12-14 14:16" pubdate>
+              2020-12-14
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/HTML/">HTML</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/html5/">html5</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/12/14/Html/HTML5%E8%A1%A8%E5%8D%95/">html表单</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/12/14/Html/HTML5%E8%A1%A8%E5%8D%95/">
+          
+          
+            
+          
+          html5  表单原生表单部件
+表单标签 
+  &lt; form name method action &gt;  &lt; input type =”” 多个type&gt;  &lt; label&gt;  &lt; select：选择列表&gt;  &lt; input type=”image”：创建图形按钮 &gt;  &lt; button type  &gt;  &lt; texta
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-12-14 14:16" pubdate>
+              2020-12-14
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/HTML/">HTML</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/html%E8%A1%A8%E5%8D%95/">html表单</a>
             
           </div>
         
@@ -555,6 +756,18 @@ css引用方法
   </div>
 
 
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+  
+  <script>
+    for (ele of document.getElementById("pagination").getElementsByTagName("a")) {
+      ele.href += '#board';
+    }
+  </script>
 
 
 
