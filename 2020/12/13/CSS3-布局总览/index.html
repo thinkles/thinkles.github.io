@@ -1,0 +1,651 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Yangsir">
+  <meta name="keywords" content="">
+  <title>CSS3 布局总览 - Yangsir&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.6","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Yangsir-Zone</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/images/bag.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="CSS3 布局总览">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-12-13 20:01" pubdate>
+        2020年12月13日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.7k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      29
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">CSS3 布局总览</h1>
+            
+            <div class="markdown-body">
+              <h2 id="布局拾忆"><a href="#布局拾忆" class="headerlink" title="布局拾忆"></a>布局拾忆</h2><ul>
+<li>正常布局流,以下行为覆盖默认的布局流<ul>
+<li>display 标准的有block inline , 其他的布局形式: </li>
+<li>css Grid </li>
+<li>Flexbox(弹性盒子)</li>
+<li>position</li>
+<li>多列布局</li>
+<li>表格布局</li>
+<li>float</li>
+</ul>
+</li>
+<li>响应式布局</li>
+</ul>
+<h3 id="Flexbox-弹性盒子-专门设计出来用于创建横向或是纵向的一维页面布局"><a href="#Flexbox-弹性盒子-专门设计出来用于创建横向或是纵向的一维页面布局" class="headerlink" title="Flexbox(弹性盒子) : 专门设计出来用于创建横向或是纵向的一维页面布局"></a>Flexbox(弹性盒子) : 专门设计出来用于创建横向或是纵向的一维页面布局</h3><ul>
+<li><p>flex 优势(出现的原因):使多列等高(不管内容)  所有子项有相同的宽/高度(不论还有多少宽高)  父元素中垂直居中块内容</p>
+</li>
+<li><p>flex布局 占用的空间是在设置 padding 和 margin 之后剩余的空间 即尺寸都是内容尺寸 弹性盒子的真正价值可以体现在它的灵活性/响应性 ,flex布局是弹性的 根据排列方式 对你的width进行增加 删除(所以设置的width不一定就按照这个)</p>
+</li>
+<li><p>flex-direction:column  指定主轴方向,默认row排成一排</p>
+</li>
+<li><p>flex-grow : 它指定了flex容器中剩余空间的多少应该分配给项目。剩余的空间是flex容器的大小减去所有flex项的大小加起来的大小</p>
+</li>
+<li><p>flex-basis: 元素的最低的一个值,根据元素的多少会变大(不会变小因为是先减去这个初始大小进行计算的宽/高度)</p>
+</li>
+<li><p>flex-wrap : nowrap  控制flex items换行,这里换行不是在指标签中的内容,而是容器中每个flex元素,每个flex元素看做一个整体控制进行换行否</p>
+</li>
+<li><p>flex (缩写):  flex-grow flex-shrink flex-basis      </p>
+<blockquote>
+<p>行内元素为弹性盒子,可以设置为inline-flex<br>flex-flow(缩写) : flex-direction flex-wrap<br>flex-basis: auto,auto将使用宽度 width作为flex-basis值。</p>
+</blockquote>
+</li>
+<li><p>align-items 控制 flex 项在交叉轴上的位置,默认的值是 stretch，其会使所有 flex 项沿着交叉轴的方向拉伸以填充父容器, 如果父元素没有固定高度,那就和最长的那一列高度相等</p>
+</li>
+<li><blockquote>
+<p>center 值会使这些项保持其原有的高度，但是会在交叉轴居中</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>align-self  可以覆盖align-items 一般用来设置某个特定的元素使用</p>
+</blockquote>
+</li>
+<li><p>justify-content 控制 flex 项在主轴上的位置。默认值是 flex-start，这会使所有 flex 项都位于主轴的开始处。 </p>
+</li>
+<li><blockquote>
+<p>space-around ——它会使所有 flex 项沿着主轴均匀地分布，在任意一端都会留有一点空间。 space-between 则不会再两端留有空间</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li>利用order 进行flex 项排序 ,默认值为0 order小的显示顺序在前 可以为负值</li>
+</ul>
+<h3 id="Grid布局-在两个维度把元素按行和列-排列整齐"><a href="#Grid布局-在两个维度把元素按行和列-排列整齐" class="headerlink" title="Grid布局 在两个维度把元素按行和列 排列整齐"></a>Grid布局 在两个维度把元素按行和列 排列整齐</h3><ul>
+<li><p>通过display:gird转到grid布局,分别使用grid-template-rows/columns 两个属性定义一些行/列的大小</p>
+<ul>
+<li>grid-template-rows :规定每一行的高度,有几行写几个值,如果元素内容超过此高度,就会溢出</li>
+<li>grid-template-columns :规定每一列的宽度,宽度内不会溢出内容</li>
+<li><blockquote>
+<p>默认你会看到列的高度调整为与最高的容器一样高<br>grid-template-columns: repeat(12, 1fr);创建12列等宽<br>fr 单位——这个为网格布局定义的单位,如果所有列都是1fr，它们将占用相等的空间量。这消除了计算百分比以创建灵活网格的需要。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>利用 grid-column 和 grid-row 两个属性来指定元素跨越的列数/行数.</p>
+</li>
+<li><blockquote>
+<p>grid-column: auto / span 6; 跨6列</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>grid-column:span 2/3 -&gt; 从第三基线向前扩展两行</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>grid-template-areas设置区域 ,用 grid-area  是设置行和列的grid-column/row的简写</p>
+</blockquote>
+</li>
+<li><p>grid-gap 属性用来设置网格行与列之间的间隙</p>
+</li>
+</ul>
+<blockquote>
+<p>使用grip-row/column 时有时候会导致子项之间位置变化,这时候同时设置grip-row grip-column 两项保证位置不变的情况进行扩展</p>
+</blockquote>
+<ul>
+<li>在不使用gird的情况下怎么创建网格布局: 可以利用div块 子元素的浮动属性,构建一个网格系统布局,但是这是固定的宽度,创建流体网格可以使用百分比设置宽度   flex也可以用来创建网格系统,但是flex仍然是一维设计的,用来处理网格还是需要计算width</li>
+<li>第三方网格系统 :  Bootstrap 提供了独立的网格系统</li>
+</ul>
+<h3 id="position定位"><a href="#position定位" class="headerlink" title="position定位"></a>position定位</h3><p>-绝对定位元素（absolutely positioned element）是计算后位置属性为 absolute 或 fixed 的元素</p>
+<ul>
+<li><p>absolute 定位 :元素会被移出正常文档流，并不为元素预留空间，通过指定元素相对于最近的非 static 定位祖先元素的偏移，来确定元素位置。 没有非static祖先元素定位,则针对可视窗口定位(类似fixed)</p>
+</li>
+<li><blockquote>
+<p>绝对定位的元素可以设置外边距（margins），且不会与其他边距合并。</p>
+</blockquote>
+</li>
+<li><p>绝对定位元素填充可用空间 :</p>
+</li>
+<li><blockquote>
+<p>大多数情况下，height和width 被设定为auto的绝对定位元素，按其内容大小调整尺寸, 被绝对定位的元素可以通过指定top和bottom ，保留height未指定（即auto），来填充可用的垂直空间。它们同样可以通过指定left 和 right并将width 指定为auto来填充可用的水平空间。     当大小不足以满足上下 左右的px值时,top left优先级大于 rigtht bottom</p>
+</blockquote>
+</li>
+<li><p>固定定位应用于视口(viewport)边框。利用这一特性，我们可以轻松搞出一个固定位置的菜单，而不受底下的页面滚动的影响。</p>
+</li>
+<li><p>相对定位(relative positioning)让你能够把一个正常布局流(normal flow)中的元素从它的默认位置按坐标进行相对移动。</p>
+</li>
+<li><p>固定定位fixed：对于浏览器可视窗口进行定位</p>
+</li>
+<li><p>粘性定位(sticky position)  元素根据正常文档流进行定位，然后相对它的最近滚动祖先,无法做到能够随意在页面像absolute那样定位, 正常文档流,简单理解粘性定位,是针对外围的父元素(作为容器)进行定位</p>
+</li>
+</ul>
+<blockquote>
+<p>left rigth 的值如果是百分比,则是非static定位的祖先元素的宽度   top bottom则是高度的百分比<br>z-index属性。 “z-index”是对z轴的参考 ,当元素开始重叠，什么决定哪些元素出现在其他元素的顶部</p>
+</blockquote>
+<ul>
+<li>定位层级z-index：在重叠时决定谁在上面<br>对于<strong>定位元素</strong>来说通过定义层级来决定谁的层级高<br>默认后者高于前者 <strong>同级的元素才有可比性</strong>,父子元素之间的z-index是失效的(除非子元素设置负值父元素设置auto)</li>
+<li>对于同级元素说,z-index根据数值大小进行排列</li>
+<li>z-index 也支持过渡效果,它没有在每一步改变它的值(没有渐变效果)，所以你认为它没有过渡效果，但实际上是有的<blockquote>
+<p>对于float元素 z-index还有更复杂的状况.详细查询资料</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="多列布局-通常也简写为-multicol"><a href="#多列布局-通常也简写为-multicol" class="headerlink" title="多列布局 通常也简写为 multicol"></a>多列布局 通常也简写为 multicol</h3><ul>
+<li>column-count    column-width 属性把块变为多列容器<blockquote>
+<p>column-width  浏览器将按照你指定的宽度尽可能多的创建列；任何剩余的空间之后会被现有的列平分。 这意味着你可能无法期望得到你指定宽度，除非容器的宽度刚好可以被你指定的宽度除尽。</p>
+</blockquote>
+</li>
+<li>Multicol 创建的列无法单独的设定样式。 不存在让单独某一列比其他列更大的方法，同样无法为某一特定的列设置独特的背景色、文本颜色。<ul>
+<li> column-gap 改变列间间隙。</li>
+<li> column-rule 在列间加入一条分割线。</li>
+</ul>
+</li>
+<li>多列布局的内容因为空间问题(分配内容是按一列一列的填充)被拆成多个内容(称为内容折断)  通过属性break-inside: avoid 在内容(子元素)中添加防止</li>
+</ul>
+<h5 id="float-浮动"><a href="#float-浮动" class="headerlink" title="float 浮动"></a>float 浮动</h5><ul>
+<li><p>浮动后,文本和内联元素环绕它,如果文本或者内联元素包裹在div中,那么仍然会环绕它,(块级元素不会换行,除非div块中还有块级元素,块级元素后还有内容),</p>
+</li>
+<li><p>行级元素可以设置宽高有了块级元素的特征 ，不设置时有内容撑开元素<br>浮动元素向指定方向移动，直到遇见边框。<br>浮动元素浮动时子元素撑开父元素 (创建bfc时才行)</p>
+</li>
+<li><p>浮动元素会提升层级压住标准元素</p>
+</li>
+<li><p>clear 属性适用于浮动和非浮动元素。 clear方法可以让浮动元素撑开父容器</p>
+</li>
+</ul>
+<h3 id="正常文档流"><a href="#正常文档流" class="headerlink" title="正常文档流"></a>正常文档流</h3><ul>
+<li>取得元素的内容来放在一个独立的元素盒子中，然后在其周边加上内边距、边框和外边距 — 就是我们之前看到的盒子模型。</li>
+<li>默认的，一个块级元素的内容宽度是其父元素的100%，其高度与其内容高度一致。行内元素的height width与内容一致,你无法设置行内元素的height width</li>
+</ul>
+<h3 id="表格布局-通常用于老的不支持-弹性盒子的浏览器"><a href="#表格布局-通常用于老的不支持-弹性盒子的浏览器" class="headerlink" title="表格布局(通常用于老的不支持 弹性盒子的浏览器)"></a>表格布局(通常用于老的不支持 弹性盒子的浏览器)</h3><ul>
+<li>display: table  display: table-row ..</li>
+</ul>
+<hr>
+<p>(待实践…)</p>
+<h3 id="传统的布局方法"><a href="#传统的布局方法" class="headerlink" title="传统的布局方法"></a>传统的布局方法</h3><ul>
+<li>我们在宽度的表示上都用的是百分比,这创建了一个流动布局（liquid layout），能够适应不同的屏幕大小，这是响应式网页非常有价值的一个工具。</li>
+<li>固定宽度网格,通过浮动和div块固定的width创建一个网格</li>
+<li>创建液态网格(弹性（流体）的网格),把固定宽度转为伸缩的基于百分比宽度的算式在下面：</li>
+<li><blockquote>
+<p>target (目标列长度)/ context (上下文)= result  你可以用 calc() 函数来在CSS里面做数学方面的计算</p>
+</blockquote>
+</li>
+<li>我们挪动小数点两位，得到百分数,在css中我们使用百分比代替固定数值</li>
+<li><blockquote>
+<p>这个系统的最大限制是，它本质上是一维的。我们在处理列、让元素跨越列，但是处理不了行。如果不设置一个确定的高度，用老方法很难控制元素高。这个方法很不灵活 —它只有在你确定你的内容有个明确的高的情况下有用。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="旧浏览器支持"><a href="#旧浏览器支持" class="headerlink" title="旧浏览器支持"></a>旧浏览器支持</h3><ul>
+<li>在CSS中构建回滚 CSS规范包含了在一个物件上同时应用两种布局的时候，解释浏览器反应的信息</li>
+<li>特性查询  允许测试一个浏览器是否支持特定的一个css特性</li>
+<li>测试旧浏览器</li>
+</ul>
+
+            </div>
+            <div><a href="https://github.com/thinkles/thinkles.github.io/blob/myblog/source/_posts/CSS3-布局总览.md" target="_blank">编辑</a></div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AFCss/">前端Css</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Css%E5%B8%83%E5%B1%80/">Css布局</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/12/13/CSS3/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">CSS3</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/12/13/CSS%E6%8C%87%E5%AF%BC/">
+                        <span class="hidden-mobile">CSS指导</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.waitElementVisible('comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'thinkles/Utterances-comment-blog');
+      s.setAttribute('issue-term', 'title');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.start()
+    document.addEventListener('DOMContentLoaded', function() {
+      window.NProgress && window.NProgress.inc();
+    })
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>
