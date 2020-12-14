@@ -3,6 +3,8 @@ title: CSS3 布局总览
 date: 2020-12-13 20:01:13
 tags: Css布局
 categories: 前端Css
+index_img: /images/user.jpg
+banner_img: /images/user.jpg
 ---
 
 ## 布局拾忆
