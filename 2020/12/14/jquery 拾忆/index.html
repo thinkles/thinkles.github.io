@@ -1,0 +1,707 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Yangsir">
+  <meta name="keywords" content="">
+  <title>JqueryApi 进阶 - Yangsir&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.6","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Yangsir-Zone</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/images/bag.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="JqueryApi 进阶">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-12-14 14:09" pubdate>
+        2020年12月14日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.4k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      37
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">JqueryApi 进阶</h1>
+            
+            <div class="markdown-body">
+              <h4 id="Ajax-等待-高级ajax操作-高级DOM操作-对服务器传来的数排序"><a href="#Ajax-等待-高级ajax操作-高级DOM操作-对服务器传来的数排序" class="headerlink" title="Ajax (等待)  高级ajax操作  高级DOM操作(对服务器传来的数排序)"></a>Ajax (等待)  高级ajax操作  高级DOM操作(对服务器传来的数排序)</h4><ul>
+<li>理解扩展事件 : 相当于给jquery新建事件,封装起来复用<h4 id="延迟对象-不理解"><a href="#延迟对象-不理解" class="headerlink" title="延迟对象(不理解)"></a>延迟对象(不理解)</h4><ul>
+<li> promise  都用于ajax 这中耗时操作中, 延迟对象一般不需要手动建立,一般建立好的知道使用方法即可</li>
+<li> 回调对象</li>
+<li><blockquote>
+<p>$.Callbacks()模块开发目的是：给内部$.ajax()和$.Deferred()模块提供统一的基本功能组件。它可以用来作为类似基础定义的新组件的功能</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>涉及到jquery的原理层面<h5 id="自定义遍历符-开发插件的一部分-参考高级遍历"><a href="#自定义遍历符-开发插件的一部分-参考高级遍历" class="headerlink" title="自定义遍历符(开发插件的一部分) 参考高级遍历"></a>自定义遍历符(开发插件的一部分) 参考高级遍历</h5></li>
+<li>选择符选择优化问题(原理)</li>
+<li> 利用 $.expr[‘:’]  开发自定义选择器<h4 id="工具类"><a href="#工具类" class="headerlink" title="工具类"></a>工具类</h4></li>
+</ul>
+<hr>
+<h3 id="根据API进行分类"><a href="#根据API进行分类" class="headerlink" title="根据API进行分类"></a>根据API进行分类</h3><h4 id="选择器过滤"><a href="#选择器过滤" class="headerlink" title="选择器过滤"></a>选择器过滤</h4><ul>
+<li><p>.last()  获取匹配元素集合中最后一个元素 和:last 相同。  :last-child  判断匹配到的元素是否是其父元素的最后一个子元素  </p>
+</li>
+<li><p>:selected 选取select 中被选取的元素</p>
+</li>
+<li><p>:even 从0开始算</p>
+<h4 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h4></li>
+<li><p>add() 添加元素到匹配的元素集合。  addback([ selector]) 添加<strong>当前堆栈中</strong>元素<strong>集合</strong>到当前集合 ,(选择器可以筛选出之前堆栈内容 之后添加到当前集合)</p>
+</li>
+<li><blockquote>
+<p>在end addback中的堆栈操作解释 : 每次遍历方法都会找到新的元素,这些新的元素构成一个jq对象压入堆栈</p>
+</blockquote>
+</li>
+<li><p>end() addback()都是通过堆栈来实现的,end终止在当前链的过滤操作,返回匹配的元素的以前状态,本质使用了出栈操作,返回原来的一个状态</p>
+</li>
+<li><p>closest() 从元素本身开始，逐级向上找到符合条件的第一个元素，该元素可能是当前元素自身，也可能是最靠近当前元素的一个祖先元素。</p>
+</li>
+</ul>
+<ul>
+<li><p>.children()  获得元素的子元素(可以进行选择筛选)   .contents()获得元素的子元素包括文字注释节点</p>
+</li>
+<li><p>nextAll() prevAll() 返回的结果都不包括自身</p>
+</li>
+<li><p>next([selector ] )   返回元素紧邻的后面的同辈元素,如果提供一个选择器，那么只有紧跟着的兄弟元素满足选择器时，才会返回此元素。</p>
+</li>
+<li><p>has() 筛选相匹配的元素,如果符合条件就留下来,最后返回一个集合    not() 通过条件筛选,符合条件的去除 和has 相反</p>
+</li>
+<li><p> is()判断当前元素,返回布尔值</p>
+</li>
+<li><p>map(callback)  用于处理当前jQuery对象匹配的所有元素，并将处理结果封装为新的jq数组 </p>
+</li>
+<li><blockquote>
+<p>特别适用于获取或设置元素集合中的值</p>
+</blockquote>
+</li>
+<li><p>.slice(start [, end )  根据指定的下标范围，过滤匹配的元素集合 (从零开始计数,所以范围是到end-1) </p>
+</li>
+</ul>
+<p>-find() 是往匹配元素的后代元素里寻找符合条件的</p>
+<h4 id="偏移-尺寸"><a href="#偏移-尺寸" class="headerlink" title="偏移 尺寸"></a>偏移 尺寸</h4><ul>
+<li><p>offsetparent() 获得被定位后的祖先元素的top left值,没有就返回undefined</p>
+</li>
+<li><p>position()  获得当前元素针对被定位祖先元素的偏移量 没有就返回针对document的偏移量</p>
+</li>
+<li><blockquote>
+<p>被定位 指的是 position不为static的元素</p>
+</blockquote>
+</li>
+<li><p>指的注意的是 偏移的top left值的计算是不包括margin值,到maigrin的边界的值才是偏移量</p>
+</li>
+<li><p>height() 获取高度值(只包括内容)  innerheight() 获取高度值(包含padding不包含border) outerheight(包括 padding border 参数为true 则包含margin)</p>
+</li>
+</ul>
+<h4 id="DOM操作-css属性-html属性-DOM增删改查"><a href="#DOM操作-css属性-html属性-DOM增删改查" class="headerlink" title="DOM操作 (css属性 html属性 DOM增删改查)"></a>DOM操作 (css属性 html属性 DOM增删改查)</h4><ul>
+<li><p>删除操作</p>
+</li>
+<li><p>empty() 这个方法不仅移除子元素（和其他后代元素),同样移除元素里的文本</p>
+</li>
+<li><p>remove() 和.empty()相似 , 当我们想将元素自身移除时我们用 .remove()</p>
+</li>
+<li><p>detach() 要删除的元素不删除数据和事件的情况下，使用.detach()来代替。 当需要移走一个元素，不久又将该元素插入DOM时，这种方法很有用。</p>
+</li>
+<li><p>prop()  val() 对表单进行操作 </p>
+</li>
+<li><p>val() 主要用于获取表单元素的值, val()获得value属性内容,对于多选下拉列表则返回一个数组包含每个选择项     通过.val([ “表单value值”])可以设置被选中的状态 (对于select 没有value值的直接写选项中的值也可以被选中)</p>
+</li>
+<li><p>.prop( propertyName, value ) 获取/设置元素的property值(一般我们用在表单属性上,具体参考API)</p>
+</li>
+</ul>
+<ul>
+<li> html() 获取设置匹配元素内部的html内容(设置时会把之前的内容替换掉) </li>
+<li> text() 得到匹配元素集合中每个元素的文本内容结合，包括他们的后代.     可以用来给指定元素设置文本内容(文本内容会替换指定元素里的所有内容)</li>
+</ul>
+<ul>
+<li><p>DOM 操作分为几类 : 内部/外部添加到前面/后面   调用顺序不同</p>
+<h4 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h4></li>
+<li><p>.triggerHandler()   .triggerHandler() 方法的行为与 .trigger() 相似,不会触发默认行为 事件冒泡, 只会对匹配到的第一个元素生效   trigger()与之相反</p>
+</li>
+<li><p>trigger() 除了一次模拟事件还可以给事件提供额外参数: .trigger( eventType [,extraParameters ])  额外参数是数组类型</p>
+</li>
+<li><blockquote>
+<p>$(“p”).click( function (event, a, b) {}).triggr(“click”, [“foo”, “bar”]);</p>
+</blockquote>
+</li>
+<li><p>.one() 要绑定一个事件，并且只运行一次，然后删除自己</p>
+</li>
+<li><p>on()函数  .on( events [, selector ] [, data ], handler(eventObject) ) </p>
+</li>
+<li><blockquote>
+<p>.on( events [, selector ] [, data ] ) 这里的events是一个对象键值是事件名 值是处理函数,可以利用此一次处理多个事件</p>
+</blockquote>
+</li>
+<li><p>keydown  keypress 事件区别 : keypress表示被输入哪个字符(字符代码) ,若想捕获敲击了哪个特殊键的话，例如，方向键(keycode)，  使用 .keydown()或.keyup() 更好。想要得到输入的文本内容只能是keyup,其他的只能获取输入前的文本</p>
+</li>
+</ul>
+<ul>
+<li>change 事件被&lt; input&gt;, &lt; select&gt;, 和&lt; textarea&gt; 触发,对元素值<strong>更改后</strong>触</li>
+</ul>
+<h4 id="特效"><a href="#特效" class="headerlink" title="特效"></a>特效</h4><ul>
+<li><p>.animate() 所有用于动画的属性(设置变化的键值对)必须是数字的，除非另有说明,不要使用css简写属性<br>除了定义数值，每个属性能使用’show’, ‘hide’, 和 ‘toggle’。这些快捷方式允许定制隐藏和显示动画用来控制元素的显示或隐藏。动画属性可以使用 +=</p>
+</li>
+<li><p>精细控制动画  animate 函数 step progress函数使用  : step函数被每个动画元素的每个动画属性调用 ,它接受两个参数（now 和 fx） this是当前正在执行动画的DOM元素集合</p>
+</li>
+<li><blockquote>
+<p>now: 每一步动画属性的数字值 fx: jQuery.fx 原型对象的一个引用 </p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>比如elem 表示前正在执行动画的元素，start和end分别为动画属性的第一个和最后一个的值，prop为进行中的动画属性。</p>
+</blockquote>
+</li>
+<li><p>queue 属性,决定要不要进队列中一个动画接下一个,flase 则是会和下一个动画方法同时发生(前提 : 这些都是连缀书写动画方法)</p>
+</li>
+<li><p>progress函数 每一步动画(step大约13毫秒调用一次,progress相似的方式)完成后调用的一个函数，无论动画属性有多少，每个动画元素都执行单独的函数</p>
+</li>
+</ul>
+<ul>
+<li><p>.delay()  设置一个延时来推迟执行队列中后续的项  它无法取消延时,不是JavaScript的原生 setTimeout函数的替代品</p>
+</li>
+<li><p>.queue( [queueName ] 默认为fx),显示在匹配元素上已经执行的函数队列 (这里的执行不一定是已经完成了,有时动画可能在队列中排队,完成函数调用就算是执行) ,</p>
+</li>
+<li><p>.queue( [queueName ], newQueue ) newQueue是array类型代表函数数组,用来替换当前队列中的内容,newQueue可以是空的数组 [],可以用来取消队列中不想进行的函数操作  类似 clearQueue()操作</p>
+</li>
+<li><p>.queue( [queueName ], callback( next ) ) 它让我们把新函数置入到队列的末端。为jQuery集合中的每个元素执行一次回调函数。类似在动画方法提供回调函数</p>
+<blockquote>
+<p>当使用.queue()添加一个函数的时候，我们应该保证在函数最后调用了 jQuery.dequeue()，这样就能让队列中的其它函数按顺序执行。 从jQuery 1.4开始，向队列中追加函数时，可以向该函数中传入另一个函数next()</p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>队列允许一个元素来异步的访问一连串的动作，而不终止程序执行,在执行上一个同时还能继续下个操作,队列存储信息  :$(‘#foo’).slideUp().fadeIn(); ,这个元素开始立即做滑动动画，但渐入动画放置在 fx列队,  所以jq可以执行完slideup还能继续执行渐变, </p>
+</blockquote>
+<ul>
+<li><p>.dequeue()  移除队列中的首个函数, 然后执行这个函数, 这个执行的函数中也应当直接或间接的包含.dequeue()语句，这样才能继续执行队列中的其它函数</p>
+</li>
+<li><p>.clearQueue( [queueName ] )方法被访问的时候，所有在这个列队中未执行的函数将被移除 。当不使用参数的时候，.clearQueue()会从标准的动画队列fx中移除剩下的函数</p>
+</li>
+<li><blockquote>
+<p>这个方法类似.stop(true)。然而.stop()方法只适用在动画中。.clearQueue()还可以用来移除用.queue()方法添加到普通jQuery列表的任何函数。 </p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p>stop()  , 只会停止当前动画,对于队列中的其他动画可以选择停止,stop停止的动画函数,无法执行动画里的回调函数</p>
+</li>
+<li><p>.stop( [clearQueue ] [, jumpToEnd ] ) 默认都为false</p>
+</li>
+<li><p>.stop( [queue ] [, clearQueue ] [, jumpToEnd ] ),还可以选择队列名称</p>
+</li>
+<li><p>finish() 在一个元素上被调用，立即停止当前正在运行的动画和所有排队的动画（如果有的话），并且他们的CSS属性设置为它们的目标值 和.stop(true, true)很相似,但是stop只会把当前的动画跳转到目标值</p>
+</li>
+</ul>
+<blockquote>
+<p>关于动画队列,每个元素维护自己的一个动画队列,不会不同的动画元素放在一起</p>
+</blockquote>
+<h4 id="杂项"><a href="#杂项" class="headerlink" title="杂项"></a>杂项</h4><ul>
+<li><p>data() 在匹配元素上存储任意相关数据. .removeData()移除存储数据 通过data()函数存取的数据都是临时数据，一旦页面刷新，之前存放的数据都将不复存在</p>
+</li>
+<li><p>toArry() 返回包含jquery对象的DOM元素数组  get()返回一个对应的DOM元素</p>
+</li>
+</ul>
+<h4 id="高级事件处理"><a href="#高级事件处理" class="headerlink" title="高级事件处理"></a>高级事件处理</h4><ul>
+<li>理解早委托 : 把事件绑定到document,不必等到文档全部加载好才能够处理事件,当委托加载好就可以</li>
+<li>理解自定义事件 -自定义事件参数 : 用on函数定义 自定义事件处理 trigger 进行调用</li>
+<li><blockquote>
+<p>.on(“myCustomEvent”, function(e, myName, myValue){}) 自定义事件 还可以可以给与参数,在trigger调用时添加参数即可</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="使用插件"><a href="#使用插件" class="headerlink" title="使用插件"></a>使用插件</h4><ul>
+<li>使用插件原理是一样的,默认的只需要调用一个(插件自定义函数),如果想要自定义内容就要在函数中提供参数,来修改一些属性(这些属性只能通过插件API 文档获得)</li>
+</ul>
+<h4 id="插件开发"><a href="#插件开发" class="headerlink" title="插件开发"></a>插件开发</h4><ul>
+<li>添加jquery对象的全局函数    $.func    $.extend({})  </li>
+<li>扩展jquery 对象的方法    $.fn.func  $.fn.extend({})</li>
+<li><blockquote>
+<p>jQuery.fn对象是jQuery.prototype的别名</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>在任何插件方法内部，关键字this引用的都是当前的jQuery对象</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li>使用命名空间隔离函数 : 其他jQuery插件也可能定义相同的函数名。为了避免和自己定义插件的函数冲突，最好的办法是 把属于一个插件的全局函数都封装到一个对象中 (实际上创建一个对象,在对象里定义方法,这样就起到隔离的效果)</li>
+<li><blockquote>
+<p> $.mathUtils = { 函数 ) </p>
+</blockquote>
+<h5 id="开发插件注意的问题"><a href="#开发插件注意的问题" class="headerlink" title="开发插件注意的问题"></a>开发插件注意的问题</h5></li>
+</ul>
+<p>-考虑方法的隐式迭代问题 :  jQuery的选择符表达式可能会匹配零、一或多个元素, 调用.each()方法；这样就会执行隐式迭代 (在调用的.each()方法内部，this依次引用每个DOM元素)</p>
+<ul>
+<li><blockquote>
+<p>this.each(function(){})  这里this代表一个有很多元素集合的 jquery对象</p>
+</blockquote>
+</li>
+<li><p>考虑方法的连缀问题:  函数的返回值要是一个jquery 对象</p>
+</li>
+<li><p>参数默认值 默认参数的可修改 自定义参数 问题</p>
+</li>
+<li><p>提供自定义参数,做到和animate()方法一样,能够给与参数修改属性值的操作, 提供默认值,有时候不用给参数的属性值也可以调用 或者给一部分, </p>
+</li>
+<li><p>方法参数也可能不是一个简单的数字值，可能会更复杂。在各种jQuery API中经常可<br>以看到另一种参数类型，即回调函数</p>
+</li>
+<li><p>多次调用一个插件,给与同一个参数改变默认值,很麻烦,可以直接修改默认值,例如 jquery.fx.interval 可以直接修改默认的动画频率</p>
+</li>
+</ul>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs arcade">(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">$</span>) </span>&#123; <br>  $.fn.shadow = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">opts</span>) </span>&#123; <br>    <span class="hljs-keyword">var</span> defaults = &#123; <br>      copies: <span class="hljs-number">5</span>, <br>      opacity: <span class="hljs-number">0.1</span> <br>      copyOffset: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">index</span>) </span>&#123;    <span class="hljs-comment">//默认方法参数是一个函数</span><br>        <span class="hljs-keyword">return</span> &#123;<span class="hljs-attr">x</span>: index, <span class="hljs-attr">y</span>: index&#125;;<br>    &#125;; <br>    <span class="hljs-keyword">var</span> options = $.extend(defaults, opts); <br>    <span class="hljs-keyword">var</span> offset = options.copyOffset(i);   <span class="hljs-comment">//自定义参数 (函数形式)</span><br>    <span class="hljs-comment">// ...  自定义参数格式: options.参数名</span><br>  &#125;; <br>&#125;)(jQuery);<br></code></pre></td></tr></table></figure>
+<ul>
+<li>extend函数,会使opt对象对defaults 进行覆盖.</li>
+<li>上式只能改变自定义参数, 但是不能直接改变默认值,想直接改变默认值,默认值参数对象必须放在函数代码外,能够被外部调用</li>
+</ul>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs arcade"> (<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">$</span>) </span>&#123; <br>  $.fn.shadow = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">opts</span>) </span>&#123;  <br>    <span class="hljs-keyword">var</span> options = $.extend(&#123;&#125;,$.fn.shadow.defaults, opts); <span class="hljs-comment">//只能修改空对象,如果修改defaults, 在自定义参数中就会更改了默认值.</span><br> <br>    <span class="hljs-comment">// ...  自定义参数值 :  options.参数名</span><br>  &#125;; <br>  <span class="hljs-keyword">var</span> $.fn.shadow.defaults = &#123;<br>       copies: <span class="hljs-number">5</span>, <br>       opacity: <span class="hljs-number">0.1</span>,<br>  &#125;;<br>&#125;)(jQuery);<br><br></code></pre></td></tr></table></figure>
+<ul>
+<li>修改默认值 :   $.shadow.defaults.参数名=…</li>
+</ul>
+
+            </div>
+            <div><a href="https://github.com/thinkles/thinkles.github.io/blob/myblog/source/_posts/jquery 拾忆.md" target="_blank">编辑</a></div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Jquery/">Jquery</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Jquery/">Jquery</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/12/14/JQuery%20%20%E6%8C%87%E5%AF%BC/">
+                        <span class="hidden-mobile">Jquery指导</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.waitElementVisible('comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'thinkles/Utterances-comment-blog');
+      s.setAttribute('issue-term', 'title');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.start()
+    document.addEventListener('DOMContentLoaded', function() {
+      window.NProgress && window.NProgress.inc();
+    })
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>
