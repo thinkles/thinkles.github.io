@@ -1,28 +1,13 @@
 ---
-title: JqueryApi 进阶
-date: 
-tags: Jquery
-categories: Jquery
+
+title:  jQuery API
+date: {{ date }}
+updated: {{date}}
+tags: jQuery API
+categories: jQuery
+
 ---
-
-
-
-#### Ajax (等待)  高级ajax操作  高级DOM操作(对服务器传来的数排序)
-- 理解扩展事件 : 相当于给jquery新建事件,封装起来复用
-#### 延迟对象(不理解)
-  -  promise  都用于ajax 这中耗时操作中, 延迟对象一般不需要手动建立,一般建立好的知道使用方法即可
-  -  回调对象
-  -  > \$.Callbacks()模块开发目的是：给内部\$.ajax()和$.Deferred()模块提供统一的基本功能组件。它可以用来作为类似基础定义的新组件的功能
--涉及到jquery的原理层面
-##### 自定义遍历符(开发插件的一部分) 参考高级遍历
-- 选择符选择优化问题(原理)
--  利用 $.expr[':']  开发自定义选择器
-#### 工具类
----------------------------------
-
-
-
-### 根据API进行分类
+### Jquery API 解释
 
 #### 选择器过滤
 - .last()  获取匹配元素集合中最后一个元素 和:last 相同。  :last-child  判断匹配到的元素是否是其父元素的最后一个子元素  
@@ -38,13 +23,6 @@ categories: Jquery
 
 - closest() 从元素本身开始，逐级向上找到符合条件的第一个元素，该元素可能是当前元素自身，也可能是最靠近当前元素的一个祖先元素。
   
-
-- .children()  获得元素的子元素(可以进行选择筛选)   .contents()获得元素的子元素包括文字注释节点
-
-- nextAll() prevAll() 返回的结果都不包括自身
-
-- next([selector ] )   返回元素紧邻的后面的同辈元素,如果提供一个选择器，那么只有紧跟着的兄弟元素满足选择器时，才会返回此元素。
-
 - has() 筛选相匹配的元素,如果符合条件就留下来,最后返回一个集合    not() 通过条件筛选,符合条件的去除 和has 相反
 -  is()判断当前元素,返回布尔值
 
@@ -53,21 +31,24 @@ categories: Jquery
 
 - .slice(start [, end )  根据指定的下标范围，过滤匹配的元素集合 (从零开始计数,所以范围是到end-1) 
 
--find() 是往匹配元素的后代元素里寻找符合条件的
+
 
 #### 偏移 尺寸
 - offsetparent() 获得被定位后的祖先元素的top left值,没有就返回undefined
   
 - position()  获得当前元素针对被定位祖先元素的偏移量 没有就返回针对document的偏移量
+
 - >被定位 指的是 position不为static的元素
 
 - 指的注意的是 偏移的top left值的计算是不包括margin值,到maigrin的边界的值才是偏移量
   
-- height() 获取高度值(只包括内容)  innerheight() 获取高度值(包含padding不包含border) outerheight(包括 padding border 参数为true 则包含margin)
+- height() 获取高度值(只包括内容)  
+
+- innerheight() 获取高度值(包含padding不包含border) outerheight(包括 padding border 参数为true 则包含margin)
 
 #### DOM操作 (css属性 html属性 DOM增删改查)
 - 删除操作
- 
+
  - empty() 这个方法不仅移除子元素（和其他后代元素),同样移除元素里的文本
   
  - remove() 和.empty()相似 , 当我们想将元素自身移除时我们用 .remove()
@@ -85,22 +66,8 @@ categories: Jquery
 
 
 - DOM 操作分为几类 : 内部/外部添加到前面/后面   调用顺序不同
-#### 事件
 
-- .triggerHandler()   .triggerHandler() 方法的行为与 .trigger() 相似,不会触发默认行为 事件冒泡, 只会对匹配到的第一个元素生效   trigger()与之相反
-  
-- trigger() 除了一次模拟事件还可以给事件提供额外参数: .trigger( eventType [,extraParameters ])  额外参数是数组类型
-- > $("p").click( function (event, a, b) {}).triggr("click", ["foo", "bar"]);
-  
-- .one() 要绑定一个事件，并且只运行一次，然后删除自己
 
-- on()函数  .on( events [, selector ] [, data ], handler(eventObject) ) 
-- > .on( events [, selector ] [, data ] ) 这里的events是一个对象键值是事件名 值是处理函数,可以利用此一次处理多个事件
-
-- keydown  keypress 事件区别 : keypress表示被输入哪个字符(字符代码) ,若想捕获敲击了哪个特殊键的话，例如，方向键(keycode)，  使用 .keydown()或.keyup() 更好。想要得到输入的文本内容只能是keyup,其他的只能获取输入前的文本
-  
-
-- change 事件被< input>, < select>, 和< textarea> 触发,对元素值**更改后**触
 
 
 #### 特效
@@ -149,69 +116,6 @@ categories: Jquery
 
 - toArry() 返回包含jquery对象的DOM元素数组  get()返回一个对应的DOM元素
   
-#### 高级事件处理
-- 理解早委托 : 把事件绑定到document,不必等到文档全部加载好才能够处理事件,当委托加载好就可以
-- 理解自定义事件 -自定义事件参数 : 用on函数定义 自定义事件处理 trigger 进行调用
-- >.on("myCustomEvent", function(e, myName, myValue){}) 自定义事件 还可以可以给与参数,在trigger调用时添加参数即可
 
-#### 使用插件
-- 使用插件原理是一样的,默认的只需要调用一个(插件自定义函数),如果想要自定义内容就要在函数中提供参数,来修改一些属性(这些属性只能通过插件API 文档获得)
 
-#### 插件开发
-- 添加jquery对象的全局函数    $.func    $.extend({})  
-- 扩展jquery 对象的方法    $.fn.func  $.fn.extend({})
-- >jQuery.fn对象是jQuery.prototype的别名
-- > 在任何插件方法内部，关键字this引用的都是当前的jQuery对象
-  
-
-- 使用命名空间隔离函数 : 其他jQuery插件也可能定义相同的函数名。为了避免和自己定义插件的函数冲突，最好的办法是 把属于一个插件的全局函数都封装到一个对象中 (实际上创建一个对象,在对象里定义方法,这样就起到隔离的效果)
-- >  $.mathUtils = { 函数 ) 
-##### 开发插件注意的问题
-
--考虑方法的隐式迭代问题 :  jQuery的选择符表达式可能会匹配零、一或多个元素, 调用.each()方法；这样就会执行隐式迭代 (在调用的.each()方法内部，this依次引用每个DOM元素)
-- > this.each(function(){})  这里this代表一个有很多元素集合的 jquery对象
-  
-- 考虑方法的连缀问题:  函数的返回值要是一个jquery 对象
-
-- 参数默认值 默认参数的可修改 自定义参数 问题
- - 提供自定义参数,做到和animate()方法一样,能够给与参数修改属性值的操作, 提供默认值,有时候不用给参数的属性值也可以调用 或者给一部分, 
-  
- - 方法参数也可能不是一个简单的数字值，可能会更复杂。在各种jQuery API中经常可
- 以看到另一种参数类型，即回调函数
-
- - 多次调用一个插件,给与同一个参数改变默认值,很麻烦,可以直接修改默认值,例如 jquery.fx.interval 可以直接修改默认的动画频率
-
-```
-(function($) { 
-  $.fn.shadow = function(opts) { 
-    var defaults = { 
-      copies: 5, 
-      opacity: 0.1 
-      copyOffset: function(index) {    //默认方法参数是一个函数
-        return {x: index, y: index};
-    }; 
-    var options = $.extend(defaults, opts); 
-    var offset = options.copyOffset(i);   //自定义参数 (函数形式)
-    // ...  自定义参数格式: options.参数名
-  }; 
-})(jQuery);
-```
-- extend函数,会使opt对象对defaults 进行覆盖.
-- 上式只能改变自定义参数, 但是不能直接改变默认值,想直接改变默认值,默认值参数对象必须放在函数代码外,能够被外部调用
-
-```
- (function($) { 
-  $.fn.shadow = function(opts) {  
-    var options = $.extend({},$.fn.shadow.defaults, opts); //只能修改空对象,如果修改defaults, 在自定义参数中就会更改了默认值.
- 
-    // ...  自定义参数值 :  options.参数名
-  }; 
-  var $.fn.shadow.defaults = {
-       copies: 5, 
-       opacity: 0.1,
-  };
-})(jQuery);
-
-```
-- 修改默认值 :   $.shadow.defaults.参数名=...
 

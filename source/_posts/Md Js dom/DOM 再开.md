@@ -1,11 +1,12 @@
 ---
-title: DOM指导
-date: 
-tags: DOM
+
+title:  DOM 基础
+date: {{ date }}
+updated: {{date}}
+tags: jsDOM
 categories: Javascript
+
 ---
-
-
 ### Document
 
 #### 浏览器环境
@@ -27,8 +28,9 @@ categories: Javascript
 - 根据文档对象模型（DOM），每个 HTML 标签都是一个对象(元素节点)
 
 - 文本节点中,空格和换行符都是完全有效的字符，就像字母和数字
-- > 所以在标签之间的空格 换行符可能会被解析成文本节点 
-- > 例外 : < head> 之前的空格和换行符均被忽略 , 
+- > **所以在标签和标签之间的空格 换行符会被解析成文本节点 **
+  >
+  > 例外 : < head> 之前的空格和换行符均被忽略 , 
 - > HTML规范要求所有内容必须位于 < body> 内. 所以 </ body>之后不能有空格, body之后的内容会被自动移动到body中,并处在最下面
 - 与 DOM 一起使用的浏览器工具,通常不会在文本的开始/结尾显示空格，并且在标签之间也不会显示空文本节点（换行符）。
 
@@ -52,38 +54,47 @@ categories: Javascript
         <head> = document.head
 
 - > document.body有可能为空,脚本无法访问在运行时不存在的元素。尤其是，如果一个脚本是在 < head> 中，那么脚本是访问不到 document.body 元素的(其他元素也访问不到。获得null值)
-> 在 DOM 中，null 值就意味着“不存在”或者“没有这个节点”
-
-- 节点之间的关系
-        
-        parentNode
-        
-        childNodes : childNodes 集合(可迭代对象)列出了所有子节点，包括文本节点。  返回的DOM集合是实时更新的
-        firstChild 
-        lastChild
-        
-        nextSibling  
-        previouSibling
+- 在 DOM 中，null 值就意味着“不存在”或者“没有这个节点”
 
 
-- > DOM 集合是只读的 ，只能通过函数对节点进行操作，不能直接通过 “=” 赋值进行更改节点
+
+- **遍历节点属性**
+  
+    > 子节点 :
+    > childNodes : 返回集合(一个类数组的可迭代对象)列出了所有子节点，包括文本节点。 
+    > firstChild 
+    > lastChild     
+    >
+    > 兄弟节点和父节点:
+    > parentNode
+    > nextSibling  
+    > previouSibling
+    
+    
+
+
+- > 遍历DOM属性都是只读的，只能通过函数对节点进行操作，不能直接通过 “=” 赋值进行更改节点
+    >
+    > 几乎所有的 DOM 集合都是 **实时** 的。换句话说，它们反映了 DOM 的当前状态。当保留引用时,节点更新自动会出现在集合中
 
 - > elem.hasChildNodes() 用于检查节点是否有子节点。
 
-- 只获取元素节点 ：
-  
-     ```
-     children — 仅那些作为元素节点的子代的节点。 返回实时更新的DOM集合
-firstElementChild，lastElementChild — 第一个和最后一个子元素。
-     previousElementSibling，nextElementSibling — 兄弟元素。
-parentElement — 父元素。
-     ```
 
-  ·
+
+
+
+- **遍历元素节点属性 ：**
   
+     > children — 仅那些作为元素节点的子代的节点。 返回实时更新的DOM集合
+     > firstElementChild，lastElementChild — 第一个和最后一个子元素。
+> previousElementSibling，nextElementSibling — 兄弟元素。
+     > parentElement — 父元素。
+
 - > parentElement 属性返回的是“元素类型”的父节点，而 parentNode 返回的是“任何类型”的父节点,这些属性通常来说是一样的 
-    >
-    > 唯一的例外就是 document.documentElement  因为document.documentElement.parentNode       //document      parentElement 属性则返回null  因为document不是一个元素节点
+  >
+  > 唯一的例外就是 document.documentElement  因为document.documentElement.parentNode       //document   
+>
+  >  parentElement 属性则返回null  因为document不是一个元素节点
 
 - 某些类型的 DOM 元素还可能会提供特定于其类型的其他属性。表格（Table）是一个很好的例子  。
 
@@ -116,17 +127,19 @@ querySelectorAll() 采用了css选择器的格式, 当元素只有一个,使用�
 
   > 这种容易和相同命名的全局变量冲突,不建议使用
 
-- 所有的 "getElementsBy*" 方法都会返回一个 实时的（live）** 集合**。这样的集合始终反映的是文档的当前状态，并且在文档发生更改时会“自动更新”。  相反，querySelectorAll 返回的是一个 静态的 集合。就像元素的固定数组
+- 所有的 `getElementsBy` 方法都会返回一个 `实时的（live） 集合`。这样的集合始终反映的是文档的当前状态，并且在文档发生更改时会“自动更新”。
 
-- elem.matches(css) 不会查找任何内容，它只会检查 elem 是否与给定的 CSS 选择器匹配。它返回 true 或 false。
+  >  相反，`querySelectorAll `返回的是一个 静态的 集合。就像元素的固定数组
+
+
+
+- `elem.matches(css)` 不会查找任何内容，它只会检查 elem 是否与给定的 CSS 选择器匹配。它返回 true 或 false。
 
 - > 当我们遍历元素（例如数组或其他内容）并试图过滤那些我们感兴趣的元素时，这个方法会很有用。
 
-- elem.closest(css) 方法会查找与 CSS 选择器匹配的最近的祖先。elem 自己也会被搜索。与选择器匹配，则停止搜索并返回该祖先。
+- `elem.closest(css) `  向上查找与 CSS 选择器匹配的最近的祖先。elem 自己也会被搜索。与选择器匹配，则停止搜索并返回该祖先。
 
-- 用来检查子级与父级之间关系的方法 : 如果 `elemB` 在 `elemA` 内 : elemA.contains(elemB)返回true
-
-  
+- `elemA.contains(elemB)`  用来检查子级与父级之间关系的方法 ,返回Boolen
 
   
 
@@ -148,32 +161,46 @@ querySelectorAll() 采用了css选择器的格式, 当元素只有一个,使用�
 - >HTMLElement — 最终是所有 HTML 元素的基本类。各种 HTML 元素均继承自它 ,它提供了通用（common）的 HTML 元素方法（以及 getter 和 setter）
 
 - 给定节点的全部属性和方法都是继承的结果。  
+
 - 正如我们所看到的，DOM 节点是常规的 JavaScript 对象。它们使用基于原型的类进行继承
 
-  ##### 查看DOM节点
-
-- 我们可以通过回调来查看 DOM 节点类名，因为对象通常都具有 constructor 属性。
-- > alert( document.body.constructor.name ); // HTMLBodyElement
-- 或者我们可以对其使用 toString 方法：  我们还可以使用 instanceof 来检查继承
 
 
-- console.log(elem) 显示元素的 DOM 树。  
 
-- console.dir(elem) 将元素显示为 DOM 对象适合探索其属性。
+- 查看 DOM 节点类名:
+
+- > 对象通常都具有 constructor 属性。
+  >
+  > alert( document.body.constructor.name ); // HTMLBodyElement
+  >
+  > 或者我们可以对其使用 toString 方法
+  >
+  > 我们还可以使用 instanceof 来检查继承
+
+
+- > console.log(elem) 显示元素的 DOM 树。
+  >
+  > console.dir(elem) 将元素显示为 DOM 对象适合探索其属性。  
 
   
 
-  ##### nodetype nodeName 和 tagName属性:标签操作
+  
 
-- nodeType 属性提供了数值类型, 我们只能读取 nodeType 而不能修改它。
+  ##### 节点属性 :nodetype nodeName 和 tagName属性
 
-- 给定一个 DOM 节点，我们可以从 nodeName 或者 tagName 属性中读取它的标签名：
+- nodeType 属性返回数值表示节点类型, 我们只能读取 nodeType 而不能修改它。它是一种过时的方法
 
-  > tagName 属性仅适用于 Element 节点。nodeName 是为任意 Node 定义的：对于元素，它的意义与 tagName 相同。对于其他节点类型（text，comment 等），它拥有一个对应节点类型的字符串。
+- 从 nodeName 或者 tagName 属性中读取它的标签名：
 
-  ##### inner/outerHTML属性 :内容操作
+  > tagName 属性仅适用于 Element 节点。nodeName 是为任意 Node 定义的：对于元素，它的意义与 tagName 相同。
+  >
+  > 对于其他节点类型（text，comment 等），它拥有一个对应节点类型的字符串。#text #comment...
 
-- innerHTML 属性允许将元素中的 HTML 获取为**字符串形式**。我们也可以修改它。(替换原来的元素)
+  
+
+  ##### 节点内容: inner/outerHTML属性 
+
+- `innerHTML` 属性允许将元素内的 HTML 获取为**字符串形式**。我们也可以修改它。(替换原来的元素)
 
 - “innerHTML+=” 会进行完全重写,移除旧的内容。然后写入新的 innerHTML（新旧结合）。
 
@@ -181,70 +208,66 @@ querySelectorAll() 采用了css选择器的格式, 当元素只有一个,使用�
 
 - innerHTML 不包括外围的元素标签,只在元素内中作用
 
+- `outerHTML` 属性包含了元素的完整 HTML。就像 innerHTML 加上元素本身一样。
+
+- > 与 `innerHTML` 不同，写入 `outerHTML` 不会改变元素。而是在 DOM 中替换它。 换句话说 div.outerHTML = '< p>..< /p>'   这时Dom被替换了,但是div.outerHTML的值还是不会改变
 
 
-- outerHTML 属性包含了元素的完整 HTML。就像 innerHTML 加上元素本身一样。
 
-- > 与 innerHTML 不同，写入 outerHTML 不会改变元素。而是在 DOM 中替换它, 将其从 DOM 中删除并在其位置插入新的 HTML。仅仅在DOM上移除,但并没有删除该元素,通过引用还可以得到旧值,所以我们说outerHTML不会改变元素,使用时我们需要查询DOM获取对新元素的引用
 
-  
+- **nodeValue/data**：读取/设置文本节点内容 , **仅对文本节点有效**
 
-- **nodeValue/data**：读取/设置文本节点内容 
-
-- > **仅对文本节点有效**,返回文本内容 
-
-- innerHTML 属性**仅对元素节点有效。**
-
-- > 其他节点类型，例如文本节点，具有它们的对应项：nodeValue 和 data 属性。这两个属性在实际使用中几乎相同,获取修改节点内容
-
-  
+  > 和innerHTML  的区别: innerHTML 属性仅对元素节点有效
 
   ##### textContent: 纯文本
 
-- > textContent  对所有节点有效
-
-- textContent 提供了对元素内的 文本 的访问权限：仅文本，去掉所有 < tags>。在实际开发中，用到这样的文本读取的场景非常少。
+- > textContent  对所有节点有效, 获取文本,去掉所有 < tags>
 
 - 写入 textContent 要有用得多，因为它允许以“安全方式”写入文本。 所有符号（symbol）均按字面意义处理。例如可以写入 < b> 等标签像普通字符一样
 
 
+- > innerText 和textContent  区别, textContent 可以输出所有文本内容,innerText只能输出哪些在页面渲染出来的文本, 如果部分文本隐藏,无法显示
+  >
+  > innerHTML 和textContent 区别在于, innerHtml会连同标签一起输出
+
+  
+
 - “hidden” 特性（attribute）和 DOM 属性（property）指定元素是否可见。我们可以在 HTML 中使用它，或者使用 JavaScript 进行赋值
-- innerText 和textContent  区别, textContent 可以输出所有文本内容,innerText只能输出哪些在页面渲染出来的文本, 如果部分文本隐藏,无法显示
-- 和innerHTML 区别在于,innerHtml会连同标签一起输出
 
 #### 特性和属性（Attributes and properties）
-- 特性（attribute）— 写在 HTML 中的内容。
-
-- 属性（property）— DOM 对象中的内容。
+- 特性（attribute）— 写在 HTML 中的内容。属性（property）— DOM 对象中的内容。
 
 - 对于元素节点，大多数标准的 HTML 特性（attributes）会自动变成 DOM 对象的属性（properties）, 
 
-- > 特性 — 属性映射并不是一一对应的
+- > 但是 特性 — 属性映射并不是一一对应的
 
 - DOM 属性 :  DOM 节点是常规的 JavaScript 对象,我们可以创建一个新的属性(属性值 函数...),还可以修改内建属性的原型，例如修改 Element.prototype 为所有元素添加一个新方法
 
 - HTML特性 :  在HTML中，标签可能拥有特性（attributes）。当浏览器解析HTML文本，并根据标签创建 DOM 对象时，浏览器会辨别 标准的 特性并以此创建 DOM 属性。但是非 标准的 特性则不会。
 
-- > 如果一个特性不是标准的，那么就没有相对应的 DOM 属性
+  > 如果一个特性不是标准的，那么就没有相对应的 DOM 属性
 
 - > 一个元素的标准的特性对于另一个元素可能是未知的。例如 "type" 是 < input> 的一个标准的特性（HTMLInputElement），但对于 < body>（HTMLBodyElement）来说则不是。
 
-    ##### 特性操作 (所有特性都可以通过使用以下方法进行访问):
+  
 
+    ##### 特性操作 (所有特性都可以通过使用以下方法进行访问):
+  
         elem.hasAttribute(name) — 检查特性是否存在。
         elem.getAttribute(name) — 获取这个特性值。
-        elem.setAttribute(name, value) — 设置这个特性值。
+      elem.setAttribute(name, value) — 设置这个特性值。
         elem.removeAttribute(name) — 移除这个特性。
-
-    > 也可以使用 elem.attributes 读取所有特性：属于内建 Attr 类的对象的集合，具有 name 和 value 属性。
+        elem.attributes 读取所有特性, 属于内建 Attr 类的对象的集合,具有 name 和 value 属性。(可迭代对象)
+  
+  
 
 
 - HTML特性有以下几个特征：它们的名字是大小写不敏感的（id 与 ID 相同）。它们的值总是字符串类型的(使用alert输出总是字符串)。
 - >   使用get...获取时大小写不敏感 ; 
   >
   >   将任何东西赋值set..给特性，这些东西会变成字符串类型 ;
-  >
-  >    attributes 集合是可迭代对象
+  
+  
 
 - 当一个标准的特性被改变，对应的属性也会自动更新，（除了几个特例）反之亦然。
 - > 例如 input.value 只能从特性同步到属性，反过来则不行：
@@ -255,6 +278,8 @@ querySelectorAll() 采用了css选择器的格式, 当元素只有一个,使用�
 
 - DOM 属性不总是字符串类型的 :   input.checked 属性（对于 checkbox 的）是布尔型的。 style 属性是一个对象
 - > 尽管大多数 DOM 属性都是字符串类型的。有一种非常少见的情况，即使一个 DOM 属性是字符串类型的，但它可能和 HTML 特性也是不同的。 href 属性 : 一直是一个完整的 URL  href特性 : 标签中的值
+
+  
 
   ##### 自定义(非标准)特性
 
@@ -276,24 +301,27 @@ querySelectorAll() 采用了css选择器的格式, 当元素只有一个,使用�
 --------------
 #### 修改文档(document)
 
-- 创建元素 : document.createElement(tag) //元素节点  document.createTextNode(text) //文本节点
+- 创建元素 : 
+  
+- > document.createElement(tag) //元素节点
+  >
+  > document.createTextNode(text) //文本节点
   
 - 插入元素 :
-        
-        node.append(...nodes or strings) — 在 node 末尾 插入节点或字符串，
+      node.append(...nodes or strings) — 在 node 末尾 插入节点或字符串，
         node.prepend(...nodes or strings) — 在 node 开头 插入节点或字符串，
         node.before(...nodes or strings) — 在 node 前面 插入节点或字符串，
         node.after(...nodes or strings) — 在 node 后面 插入节点或字符串，
         node.replaceWith(...nodes or strings) — 将 node 替换为给定的节点或字符串。
-    
-- > 这些方法可以在单个调用中插入多个节点列表和文本片段。
+  
+- > 这些方法可以在单个调用中一次**插入多个节点列表**和文本片段。
     >
-    >  div.before('<p>Hello</p>',document.createElement('hr')); 
+    >  div.before('<p>Hello</p>',document.createElement('hr')); 这里的文字都被“作为文本”插入，而不是“作为 HTML 代码”
     >
-    > 字符串被以一种安全的方式插入到页面中,就像 elem.textContent 所做的一样。 < p> 将不会有任何意义,插入后会被转义成 &lt...
+    > 这些方法只能用来插入 DOM 节点或文本片段。
 
-- > 这些方法只能用来插入 DOM 节点或文本片段。
-
+  
+  
 - 如果我们想要将内容“作为 HTML 代码插入”，像使用 `elem.innerHTML` 所表现的效果一样,我们可以使用另一个非常通用的方法：elem.insertAdjacentHTML(where, html)。
 
 - **elem.insertAdjacentHTML(where, html): **
@@ -307,34 +335,44 @@ querySelectorAll() 采用了css选择器的格式, 当元素只有一个,使用�
     "beforeend" — 将 html 插入到 elem 末尾，
     ```
     
-- elem.insertAdjacentText(where, text) — 语法一样，但是将 text 字符串“作为文本”插入而不是作为 HTML，     elem.insertAdjacentElement(where, elem) — 语法一样，但是插入的是一个元素。  
+- > elem.insertAdjacentText(where, text) — 语法一样，但是将 text 字符串“作为文本”插入而不是作为 HTML，    
+>
+    > elem.insertAdjacentElement(where, elem) — 语法一样，但是插入的是一个元素。  
 
     > 它们的存在主要是为了使语法“统一”。因为对于元素和文本，我们有 append/prepend/before/after 方法 
 
 
-- 节点移除 
+- 节点移除:
 - 想要移除一个节点 :  node.remove()。
 - > 如果我们要将一个元素移动到另一个地方,不需要删除后再添加,插入方法会自动从旧位置删除该节点。在新的位置添加
 
 - 克隆节点：
-- cloneNode  调用 elem.cloneNode(true) 来创建元素的一个“深”克隆 — 具有所有特性（attribute）和子元素。        如果我们调用 elem.cloneNode(false)，那克隆就不包括子元素。
+- >  调用 `elem.cloneNode(true)` 来创建元素的一个“深”克隆 — 具有所有特性（attribute）和子元素。     
+  >
+  >   如果我们调用` elem.cloneNode(false)`，那克隆就不包括子元素。
 
 
-- DocumentFragment 是一个特殊的 DOM 节点，用作来传递节点列表的包装器（wrapper）。
+- DocumentFragment 是一个特殊的 DOM 节点，用作来传递节点列表的包装器（wrapper）。....之所以提到 DocumentFragment ，主要是因为它上面有一些概念，例如 [template](https://zh.javascript.info/template-element) 元素，我们将在以后讨论。
+
+  
+
+  
 
   ##### 老式的 insert/remove 方法
 
 - 由于历史原因，还存在“老式”的 DOM 操作方法。我们在这儿列出这些方法的唯一原因是，你可能会在许多就脚本中遇到它们。
 
-- parentElem.appendChild(node)  将 node 附加为 parentElem 的最后一个子元素。
-
-- parentElem.insertBefore(node, nextSibling)  在 parentElem 的 nextSibling 前插入 node。
-
-- parentElem.replaceChild(node, oldChild)  将 parentElem 的后代中的 oldChild 替换为 node。
-
-- parentElem.removeChild(node) 从 parentElem 中删除 node（假设 node 为 parentElem 的后代）。
+  > parentElem.appendChild(node)  将 node 附加为 parentElem 的最后一个子元素。
+  >
+  > parentElem.insertBefore(node, nextSibling)  在 parentElem 的 nextSibling 前插入 node。
+  >
+  > parentElem.replaceChild(node, oldChild)  将 parentElem 的后代中的 oldChild 替换为 node。
+  >
+  > parentElem.removeChild(node) 从 parentElem 中删除 node（假设 node 为 parentElem 的后代）。
 
 - >所有这些方法都会返回插入/删除的节点。换句话说，parentElem.appendChild(node) 返回 node。
+
+  
 
 - 还有一个非常古老的向网页添加内容的方法：document.write 调用 document.write(html) 意味着将 html “就地马上”写入页面。document.write`调用只在页面加载时工作,如果我们稍后调用它，则现有文档内容将被擦除。
 
@@ -378,16 +416,16 @@ querySelectorAll() 采用了css选择器的格式, 当元素只有一个,使用�
   
   - > 可以通过设置一个特性（attribute）来实现同样的效果：div.setAttribute('style', 'color: red...')。
 
-> 不要忘记将 CSS 单位添加到值上.
->
-> style 属性仅对 "style" 特性（attribute）值起作用,不能获取在style外应用的 样式,如果想要获得当前应用的css样式使用以下 :
+
+
+- style 属性仅对 "style" 特性（attribute）值起作用,不能获取在style外应用的样式,如果想要获得**当前应用的css样式**使用以下 :
 
 
 - **计算样式**：getComputedStyle(element, [pseudo])  
 
 - > 结果是一个具有样式属性的对象 ,通过 . 调用获得当前应用样式
   >
-  > pseudo : 表示一个伪元素  ::before .. 要添加引号
+  > pseudo : 表示一个伪元素  ::before    要添加引号
 
 
 - 计算值和解析值
@@ -401,7 +439,7 @@ querySelectorAll() 采用了css选择器的格式, 当元素只有一个,使用�
 
 - getComputedStyle 需要完整的属性名,我们应该总是使用我们想要的确切的属性，例如 paddingLeft、marginTop 或 borderTopWidth。否则，就不能保证正确的结果。
 
-- > 如果有 paddingLeft/paddingTop 属性，那么对于 getComputedStyle(elem).padding，我们会得到什么？什么都没有，或者是从已知的 padding 中“生成”的值？这里没有标准的规则。
+- > 如果有 paddingLeft/paddingTop 属性，那么对于getComputedStyle(elem).padding，我们会得到什么？什么都没有，或者是从已知的 padding 中“生成”的值？这里没有标准的规则。
 
 -   getComputedStyle 没有办法是用伪类获取 样式
 
@@ -418,8 +456,6 @@ querySelectorAll() 采用了css选择器的格式, 当元素只有一个,使用�
 - > google 内容宽度计算会减去滚动条的宽度   火狐则是 内容大小不变(但实际滚动条仍是占据了内容宽度)   不管有无padding都遵循上述内容
 
 - > 如果元素中有很多文本，并且溢出了，那么浏览器会在 padding-bottom 处显示“溢出”文本，这是正常现象。
-
-    
 
 - 如果一个元素（或其任何祖先）具有 display:none 或不在文档中，则所有几何属性均为零（或 offsetParent 为 null）。 我们可以用它来检查一个元素是否被隐藏 :    
 
@@ -525,33 +561,29 @@ let scrollHeight = Math.max(
 ####  坐标
 - 大多数 JavaScript 方法处理的是以下**两种坐标系**中的一个：
 
-- > 相对于窗口 — 类似于 position:fixed，从窗口的顶部/左侧边缘计算得出。
-> 我们将这些坐标表示为 clientX/clientY
-    > 相对于文档 — 与文档根（document root）中的 position:absolute 类似，从文档的顶部/左侧边缘计算得出。我们将它们表示为 pageX/pageY。
-
-- >当页面滚动到最开始时，此时窗口的左上角恰好是文档的左上角，它们的坐标彼此相等。但是，在文档移动之后，元素的窗口相对坐标会发生变化，因为元素在窗口中移动，而元素在文档中的相对坐标保持不变。
+- > 相对于窗口 — 类似于 position:fixed，从窗口的顶部/左侧边缘计算得出。我们将这些坐标表示为` clientX/clientY`
+  >
+  > 相对于文档 — 与文档根中的 position:absolute 类似，从文档的顶部/左侧边缘计算得出。我们将它们表示为 `pageX/pageY`。
 
 
 - **元素坐标**：elem.getBoundingClientRect() 
 
 - > 方法 `elem.getBoundingClientRect()` 返回最小矩形的窗口坐标，该矩形将 `elem` 作为内建 [DOMRect](https://www.w3.org/TR/geometry-1/#domrect) 类的对象
->
-> 返回值是一个 DOMRect 对象
+
+- > 返回值是一个 DOMRect 对象
   >
   > 主要 DOMRect 属性 :
   >
-  >   x/y — 矩形原点相对于窗口的 X/Y 坐标，
-  >   width/height — 矩形的 width/height（可以为负）。
-  >   此外，还有派生（derived）属性：
+  > x/y — 矩形原点相对于窗口的 X/Y 坐标，
+  > width/height — 矩形的 width/height（可以为负）。
+  > 此外，还有派生（derived）属性：
   >
-  >   top/bottom — 顶部/底部矩形边缘的 Y 坐标，
-  >   left/right — 左/右矩形边缘的 X 坐标。    
-  >
-  > ​        
+  > top/bottom — 顶部/底部矩形边缘的 Y 坐标，
+  > left/right — 左/右矩形边缘的 X 坐标。    
   >
   > 窗口的所有坐标都从左上角开始计数 ,与CSS position top/bottom属性不同
 
-  
+
 
 - elementFromPoint(x, y), 会返回在窗口坐标 (x, y) 处嵌套最多（the most nested）的元素。
 
@@ -575,58 +607,64 @@ let scrollHeight = Math.max(
 
 - 常用事件:      
 
-- Document 事件DOMContentLoaded —— 当 HTML 的加载和处理均完成，DOM 被完全构建完成时。
+  > Document 事件 : DOMContentLoaded —— 当 HTML 的加载和处理均完成，DOM 被完全构建完成时。
+  >
+  > CSS 事件：transitionend —— 当一个 CSS 动画完成时。
+  >
+  > 键盘事件  鼠标事件  表单事件
 
-- CSS 事件：transitionend —— 当一个 CSS 动画完成时。
+  
 
   ##### 事件处理  
 
-  - 事件处理程序可以设置在 HTML 中名为 on<event> 的特性（attribute）中。
+  1. 事件处理程序可以设置在 HTML 中名为 on< event> 的特性（attribute）中。
 
-  - > 不要对处理程序使用 setAttribute。 document.body.setAttribute('onclick', function() { alert(1) });  
-    >
-    > //失效
+     > 如果在HTML特性中写处理程序,this表示全局对象 
+     >
+     > window 在严格模式中为 undefined。 
 
-  - > 如果一个处理程序是通过 HTML 特性（attribute）分配的，浏览器读取特性的内容创建一个新函数，并将这个函数写入 DOM 属性（property）
-    >
-    > onclick="sayThanks()" ---->创建一个处理程序 :  button.onclick = function() {sayThanks();};
+  - 不要对处理程序使用 setAttribute。
+    
+    >  document.body.setAttribute('onclick', function() { alert(1) });   //失效
 
-  - > 如果在html特性中写处理程序,this表示全局对象 window 在严格模式中为 undefined。 
+  - 如果一个处理程序是通过 HTML 特性（attribute）分配的，浏览器读取特性的内容创建一个新函数，并将这个函数写入 DOM 属性（property）
 
     
 
-  - 我们还可以使用 DOM 属性（property）on<event> 来分配处理程序。
 
-  - > elem.onclick = function() {}  
+  2. 我们还可以使用 DOM 属性（property）on< event> 来分配处理程序。
+
+     > elem.onclick = function() {}  
+     >
+     > 要移除一个处理程序 —— 赋值 elem.onclick = null。
+     >
+     > 使用dom属性分配处理程序, 如果为此事件分配两个处理程序,新的 DOM 属性将覆盖现有的 DOM 属性  
+  3. addEventListener 和 removeEventListener 来管理处理程序的替代方法,可以为一个事件分配多个处理程序
+
+     > `element.addEventListener(event, handler[, options]);`  
+     >
+     > 和`removeEventListener`语法相同
+     >
+     > options具有以下属性的附加可选对象：
+     > once：如果为 true，那么会在被触发后自动删除监听器。
+     > capture：事件处理的阶段，true :捕获阶段处理程序
+     > passive：如果为 true，那么处理程序将不会调用 preventDefault()，
+     >
+     > 由于历史原因，options 也可以是 false/true，它与 {capture: false/true} 相同。
+
+  - 要移除处理程序，我们需要传入与分配的函数完全相同的函数
+
+  - > 直接给于匿名函数(或箭头函数)来移除处理程序无法实现,过程中相当于创建了两个相同内容的不同的函数,
     >
-    > 要移除一个处理程序 —— 赋值 elem.onclick = null。
+    > **所以如果我们不将函数存储在一个变量中，那么我们就无法移除它**
     >
-    > 使用上述 方法只能添加一个 onclick 属性,后面的覆盖前面
+    > 对于某些事件，只能通过 addEventListener 设置处理程序,例如 transtionend 和 DOMContentLoaded
 
-    
-
-  - addEventListener 和 removeEventListener 来管理处理程序的替代方法,可以为一个事件分配多个处理程序
-
-  - > ```javascript
-    > element.addEventListener(event, handler[, options]);  和removeEventListener语法相同
-    > 
-    > options具有以下属性的附加可选对象：
-    > once：如果为 true，那么会在被触发后自动删除监听器。
-    > capture：事件处理的阶段，true :捕获阶段处理程序
-    > passive：如果为 true，那么处理程序将不会调用 preventDefault()，
-    > 
-    > 由于历史原因，options 也可以是 false/true，它与 {capture: false/true} 相同。
-    > ```
-
-    - 要移除处理程序，我们需要传入与分配的函数完全相同的函数
-
-    - > 直接给于匿名函数(或箭头函数)来移除处理程序无法实现,过程中相当于创建了两个相同内容的不同的函数
-      >
-      > 对于某些事件，只能通过 addEventListener 设置处理程序,例如 transtionend 和 DOMContentLoaded
-    
-    
+  
 
 - HTML特性中处理函数带括号,而其余的处理方式不带括号,带括号相当于直接函数调用
+
+  
 
 - 为什么要使用 `addEventListener`?
 
@@ -636,8 +674,10 @@ let scrollHeight = Math.max(
   >
   > 它对任何 DOM 元素都是有效的
 
-  ##### 事件对象
+  
 
+  ##### 事件对象
+  
 - 当事件发生时，浏览器会创建一个 event 对象，将详细信息放入其中，并将其作为参数传递给处理程序。
 
 - event 对象的一些属性：
@@ -664,7 +704,7 @@ let scrollHeight = Math.max(
 
   > handleEvent 方法不必通过自身完成所有的工作。它可以调用其他特定于事件的方法
 
-  > 这样会使事件处理程序分离出来,更利于后期维护   : 事件委托章节中的实例诠释了这种写法
+  > 这样会使事件处理程序分离出来,处理多个事件时更加方便, 利于后期维护   : 事件委托章节中的实例诠释了这种写法
 
 
 #### 冒泡和捕获
@@ -674,6 +714,7 @@ let scrollHeight = Math.max(
 - > event.target —— 是引发事件的“目标”元素，它在冒泡过程中不会发生变化。  计划运行的元素
   >
   > this —— 实际上处理事件的"当前"元素.  ( == event.currentTarget)  
+  
 - 冒泡事件从目标元素开始向上冒泡 ,它们会调用路径上所有的处理程序。
 
 - **停止冒泡的方法**是 event.stopPropagation()。 如果一个元素在一个事件上有多个处理程序，即使其中一个停止冒泡，其他处理程序仍会执行, event.stopImmediatePropagation() 方法，可以用于停止冒泡，并阻止当前元素上的其他处理程序运行
@@ -681,7 +722,14 @@ let scrollHeight = Math.max(
 - > 通常，没有真正的必要去阻止冒泡。一项看似需要阻止冒泡的任务，可以通过其他方法解决。
 
 - **捕获** : 
-- DOM 事件标准描述了事件传播的 3 个阶段：捕获阶段（Capturing phase）—— 事件（从 Window）向下走近元素。      目标阶段（Target phase）—— 事件到达目标元素。   冒泡阶段（Bubbling phase）—— 事件从元素上开始冒泡。
+
+- DOM 事件标准描述了事件传播的 3 个阶段：
+
+  > 捕获阶段（Capturing phase）—— 事件（从 Window）向下走近元素。      
+  >
+  > 目标阶段（Target phase）—— 事件到达目标元素。
+  >
+  > 冒泡阶段（Bubbling phase）—— 事件从元素上开始冒泡。
 
 - > 为了在捕获阶段捕获事件，我们需要将处理程序的 capture 选项设置为 true 如果为 false（默认值），则在冒泡阶段设置处理程序。
 
@@ -723,24 +771,20 @@ let scrollHeight = Math.max(
   
 - >  主流的方式是使用 event 对象。有一个 event.preventDefault() 方法。
   >
-  >  如果处理程序是使用 on<event>（而不是 addEventListener）分配的，那返回 false 也同样有效。从处理程序返回 false 是一个例外, 事件处理程序返回的值通常会被忽略。唯一的例外是从使用 on<event> 分配的处理程序中返回的 return false。
-    >
-    > addEventListener 的可选项 passive: true 向浏览器发出信号，表明处理程序将不会调用 preventDefault()。
-  
-  
-  
-- 如果默认行为被阻止，那么 event.defaultPrevented 属性为 true，否则为 false。
-
-- > 有时我们可以使用 event.defaultPrevented 来代替，来通知其他事件处理程序，该事件已经被处理。
+  >  如果处理程序是使用 on< event>（而不是 addEventListener）分配的，那返回 false 也同样有效。
   >
-  > 不而再使用event.stopPropagation() , 来阻止冒泡
->
-  > 
-  >
-  > 例如,同一个右击事件通过冒泡,丛子级到祖先,在祖先处理事件中验证event.defaultPrevented 的值,就可以得到该事件是否已经触发过了。
-
+  >  从处理程序返回 false 是一个例外, 事件处理程序返回的值通常会被忽略。唯一的例外是从使用 on<event> 分配的处理程序中返回的 return false。
   
+  
+  
+- addEventListener 的可选项 passive: true 向浏览器发出信号，表明处理程序将不会调用 preventDefault()。
 
+  > 为什么需要?  
+
+- 如果默认行为被阻止，那么 `event.defaultPrevented 属性`为 true，否则为 false。
+
+- > 有时我们可以使用 event.defaultPrevented 来代替，来通知其他事件处理程序，该事件已经被处理。 不再使用event.stopPropagation() , 来阻止冒泡  
+  >
 - event.stopPropagation() 和 event.preventDefault()是两个不同的东西。它们之间毫无关联。
 
   
@@ -749,7 +793,7 @@ let scrollHeight = Math.max(
 
 -  **创建自定义事件过程** :
 
-  - 1.let event = new Event(type[, options]); // 创建事件对象
+  - new Event(type[, options]); 
 
   > type —— 事件类型，可以是像这样 "click" 的字符串，或者我们自己的像这样 "my-event" 的参数。
   >
@@ -761,9 +805,9 @@ let scrollHeight = Math.max(
   >
   > 默认情况下，以上两者都为 false：必须设置 bubbles:true，否则事件不会向上冒泡。
 
-  - 2.事件对象被创建后，我们应该使用 elem.dispatchEvent(event) 调用在元素上''运行''它。然后,处理程序会对它做出反应，就好像它是一个常规的浏览器事件一样     event 是新建的事件对象名字
+  - 事件对象被创建后，使用 elem.dispatchEvent(event) 调用,在元素上''运行''。然后,就可以像常规事件一样捕获该事件 进行处理
 
-  - > 我们应该对我们的自定义事件使用 addEventListener，因为 on<event> 仅存在于内建事件中，document.onhello 则无法运行。
+  - > 我们应该对我们的自定义事件使用 addEventListener，因为 on< event> 仅存在于内建事件中，document.onhello 则无法运行。
 
   
 
@@ -775,7 +819,7 @@ let scrollHeight = Math.max(
 
   
   
-- 其他像 MouseEvent 和 KeyboardEvent ,如果我们想要创建这样的事件，我们应该使用它们而不是 `new Event`。例如，`new MouseEvent("click")`。
+- 对于UI事件, 像 MouseEvent 和 KeyboardEvent ,如果我们想要创建这样的事件，我们应该使用它们而不是 `new Event`。例如，`new MouseEvent("click")`。
 
 - > 正确的构造器允许为该类型的事件指定标准属性。就像鼠标事件的 `clientX/clientY` 一样：
   >
@@ -822,15 +866,13 @@ let scrollHeight = Math.max(
 
 
 
-- 通常事件是在队列中处理的。也就是说：如果浏览器正在处理 onclick，这时发生了一个新的事件，例如鼠标移动了，那么它会被排入队列，相应的 mousemove 处理程序将在 onclick 事件处理完成后被调用。
+- 通常事件是在队列中处理的。根据顺序进行调用
 
 - >值得注意的例外情况就是，一个事件是在另一个事件中发起的,例如使用 `dispatchEvent`。这类事件将会被立即处理
   >
   >如果不想改变顺序,可以把另一个触发事件的调用包装到零延迟的 setTimeout 中
 
   
-
-
 
 ### UI事件
 
@@ -861,7 +903,7 @@ let scrollHeight = Math.max(
         相对于文档的坐标：pageX 和 pageY。
         相对于屏幕的坐标 :ScreenX ScreenY
 
-- 如果我们想禁用选择以保护我们页面的内容不被复制粘贴，那么我们可以使用另一个事件：oncopy。
+- 如果我们想禁用选择以保护我们页面的内容不被复制粘贴，那么我们可以使用另一个事件：oncopy。return false
 
 - 如何防止 ,鼠标左键不松情况的文本选择,最合理的方式是防止浏览器对 `mousedown` 进行操作,mousedown事件返回false
 ##### 移动鼠标事件  
@@ -870,6 +912,7 @@ let scrollHeight = Math.max(
 
         event.target —— 是鼠标移过的那个元素。
         event.relatedTarget —— 是鼠标来自的那个元素（relatedTarget → target）。
+    
 - mouseout 则与之相反：
 
         event.target —— 是鼠标离开的元素。
@@ -878,31 +921,27 @@ let scrollHeight = Math.max(
 - > relatedTarget 属性可以为 null。这是正常现象，仅仅是意味着鼠标不是来自另一个元素，而是来自窗口之外。或者它离开了窗口。
 
 - ##### **跳过元素**
+
 - 当鼠标移动时，就会触发 mousemove 事件。但这并不意味着每个像素都会导致一个事件。如果访问者非常快地移动鼠标，那么某些 DOM 元素就可能被跳过：
-- > 这对性能很有好处，因为可能有很多中间元素。我们并不真的想要处理每一个移入和离开的过程。另一方面，我们应该记住，鼠标指针并不会“访问”所有元素。它可以“跳过”一些元素。
+
+- > 这对性能很有好处，因为可能有很多中间元素。我们并不真的想要处理每一个移入和离开的过程
     >
     > 但是如果mouseover 被触发了，则必须有 mouseout事件
 
     
 
+- 鼠标转到另一个元素（甚至是一个后代），那么它将离开前一个元素,所以当鼠标指针从元素移动到其后代时触发 mouseout 事件
 
-
-- **当鼠标指针从元素移动到其后代时**触发 ,父元素的mouseout事件，子元素冒泡mouserover事件
-
-- > 原因: 鼠标转到另一个元素（甚至是一个后代），那么它将离开前一个元素
-
-- 如果离开父元素时有一些行为，当鼠标指针深入子元素时，我们并不希望发生这种行为。
-
-- > 为了避免它，我们可以在mouseout 处理程序中检查 relatedTarget，如果鼠标指针仍在元素内，则忽略此类事件, 在处理程序中return结束处理 。
+   > 如果离开父元素时有一些行为，当鼠标指针深入子元素时，我们并不希望发生这种行为。
    >
-   > 另外，我们可以使用其他事件：mouseenter 和 mouseleave，它们没有此类问题
+   > 我们可以在mouseout 处理程序中检查` relatedTarget`，如果鼠标指针仍在元素内，则忽略此类事件, 在处理程序中return结束处理 。
 
 - 事件 mouseenter 和 mouseleave
 
-       元素内部与后代之间的转换不会产生影响。
-       事件 mouseenter/mouseleave 不会冒泡。  （因为不会冒泡所以不能事件委托）
+   > 元素内部与后代之间的转换不会产生影响。当鼠标移入更深入的子元素时，不会触发离开父元素的事件
+   > 事件 mouseenter/mouseleave 不会冒泡。（因为不会冒泡所以不能事件委托）
 
-- > 当鼠标移入更深入的子元素时，不会触发离开父元素的事件
+   
 
 ##### 鼠标拖放事件
 
@@ -956,8 +995,6 @@ let scrollHeight = Math.max(
      >   数字键的代码为："Digit<number>"："Digit0"，"Digit1" 等。
      >    特殊按键的代码为按键的名字："Enter"，"Backspace"，"Tab" 等。
 
-  
-
 - 选择按键处理方式 :
 
 - > 例如有些键盘布局不同,但我们只绑定按到"z"键才触发,不管键盘怎样布局 ---- 使用event.key
@@ -965,8 +1002,6 @@ let scrollHeight = Math.max(
   > 就算键盘布局不同, 只要物理位置正确,无所谓是不是按到"z",都可以执行  ---- 使用event.code
 
   
-
-
 
 - 阻止对 keydown 的默认行为可以取消大多数的网页行为
 
@@ -987,7 +1022,11 @@ let scrollHeight = Math.max(
 ##### 滚动
 - scroll 事件允许对页面或元素滚动作出反应
 
-- 我们如何使某些东西变成不可滚动？我们不能通过在 onscroll 监听器中使用 event.preventDefault() 来阻止滚动，因为它会在滚动发生 之后 才触发。但是我们可以在导致滚动的事件上，例如在 pageUp 和 pageDown 的 keydown 事件上，使用 event.preventDefault() 来阻止滚动。
+- 我们如何使某些东西变成不可滚动？
+
+  > 我们不能通过在 onscroll 监听器中使用 event.preventDefault() 来阻止滚动，因为它会在滚动发生之后才触发。
+  >
+  > 但是我们可以在导致滚动的事件上，例如在 pageUp 和 pageDown 的 keydown 事件上，使用 event.preventDefault() 来阻止滚动。
 
 - 通过设置 overflow 可以控制页面滚动 不滚动
 
@@ -1012,7 +1051,7 @@ let scrollHeight = Math.max(
 
   
 
-- < fieldset> 元素。它们也具有 elements 属性，该属性列出了 <fieldset> 中的表单控件。
+- < fieldset> 元素。它们也具有 elements 属性，通过*form.elements.name* 获得
 
 - 我们可以将 form.elements.login 写成 form.login 或者 form[login]
 - > 这样写会有一个小问题 , 如果我们访问一个元素，然后修改它的 name，之后它仍然可以被通过旧的 name 访问到（当然也能通过新的 name 访问） 
@@ -1094,10 +1133,10 @@ let scrollHeight = Math.max(
   > 方案一，有一个遗留下来的有趣的特性（feature）：focus/blur 不会向上冒泡，但会在捕获阶段向下传播。
   >
   > 方案二，可以使用 focusin 和 focusout 事件 —— 与 focus/blur 事件完全一样，只是它们会冒泡。必须使用 elem.addEventListener 来分配它们，而不是 on<event>。
+>
+  > 
 
-  
-
-- 可以通过 document.activeElement 来获取当前所聚焦的元素。
+- 可以通过 `document.activeElement `来获取当前所聚焦的元素。
 
 ##### 事件：change，input，cut，copy，paste
 
@@ -1106,7 +1145,7 @@ let scrollHeight = Math.max(
   > 对于文本输入框，当其失去焦点时，就会触发 change 事件
 
 - 每当用户对输入值进行修改后，就会触发 input 事件。
-- >如果我们想要处理对 <input> 的每次更改，那么此事件是最佳选择。  
+- >如果我们想要处理对 < input> 的每次更改，那么此事件是最佳选择。  
   >
   >**无法阻止** `oninput`事件 :当输入值更改后，就会触发 input 事件。我们无法使用 event.preventDefault() —— 已经太迟了，不会起任何作用了。
 
@@ -1118,14 +1157,10 @@ let scrollHeight = Math.max(
 
 - 提交表单时，会触发 submit 事件，它通常用于在将表单发送到服务器之前对表单进行校验，或者中止提交，并使用 JavaScript 来处理表单。
 
-- > form.submit() 方法允许从 JavaScript 启动表单发送。
-  >
-  > 我们可以动态地创建表单，使用该方法将其发送到服务器。
-  >
-  > 
-  >
-  > 如果要手动将表单提交到服务器，我们可以调用 form.submit()。这样就不会产生 submit 事件
-
+- > 如果要手动将表单提交到服务器，我们可以调用 form.submit()。这样就不会产生 submit 事件。我们可以动态地创建表单，使用该方法将其发送到服务器。
+  
+  
+  
 - 提交表单主要有两种方式：
 
 - >- 第一种 —— 点击 < input type="submit"> 或 < input type="image">。
@@ -1138,7 +1173,7 @@ let scrollHeight = Math.max(
 
   
 
-  > 在输入框中使用 Enter 发送表单时，会在 <input type="submit"> 上触发一次 click 事件
+  > 在输入框中使用 Enter 发送表单时，会在 < input type="submit"> 上触发一次 click 事件
 
   
 
@@ -1173,11 +1208,12 @@ let scrollHeight = Math.max(
 
   
 
-- > 例外 :
-  >
+  例外 :
+
   > 具有 async 特性（attribute）的脚本不会阻塞 DOMContentLoaded，稍后 我们会讲到。
   >
   > 使用 document.createElement('script') 动态生成并添加到网页的脚本也不会阻塞 DOMContentLoaded。
+
 
 
 - Firefox，Chrome 和 Opera 都会在 `DOMContentLoaded` 中自动填充表单。
@@ -1206,6 +1242,8 @@ let scrollHeight = Math.max(
 
 - > 还有一个 readystatechange 事件，会在状态发生改变时触发
 
+
+
 ##### 脚本：async，defer
 
 - 当浏览器加载 HTML 时遇到 <script>...</script> 标签，浏览器就不能继续构建 DOM。对于外部脚本 <script src="..."></script> 也是一样的.
@@ -1222,7 +1260,7 @@ let scrollHeight = Math.max(
   >
   > 对于长的 HTML 文档来说，这样可能会造成明显的延迟。
   >
-  > 使用 defer asynv解决
+  > 使用 defer async解决
 
   
 

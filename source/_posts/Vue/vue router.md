@@ -1,12 +1,12 @@
 ---
-title: vue router
-date: 
-tags: Vue
+
+title:  Vue Router
+date: {{ date }}
+updated: {{date}}
+tags: vue router
 categories: Vue
+
 ---
-
-
-
 ## Vue Router
 
 #### 动态路由匹配

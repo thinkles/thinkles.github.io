@@ -1,15 +1,17 @@
 ---
-title: js网络请求
-date: 
-tags: js网络
-categories: Javascript
----
 
-# 网络请求
+title:  网络请求
+date: {{ date }}
+updated: {{date}}
+tags: ajax
+categories: Javascript
+
+---
+## 网络请求
 
 - **传统网页的网络请求:**
 
-- 最初加载页面很简单 -- 你为网站发送一个请求到服务器， 只要没有出错你将会获取资源并显示网页到你的电脑上。
+- 最初加载页面很简单 ---- 你为网站发送一个请求到服务器， 只要没有出错你将会获取资源并显示网页到你的电脑上。
 
 - > 这种方法导致不管 用户是否需要全部数据,都会重新加载整个页面
   >
@@ -64,7 +66,7 @@ categories: Javascript
   > user，password —— HTTP 基本身份验证（如果需要的话）的登录名和密码。  如果填写该功能 请求地址会加上该参数   `http://user:pass@domain.com` 类似这种,但是有些浏览器可能不支持 ,
 >
   > 这时我们需要在open 方法之后 设置头setRequestHeader("Authorization",..)
-  
+
 - > 如果在 open 方法中将第三个参数 async 设置为 false，那么请求就会以**同步的方式进行**。JavaScript 执行在 send() 处暂停，并在收到响应后恢复执行。这有点儿像 alert 或 prompt 命令
 
 
@@ -260,7 +262,7 @@ categories: Javascript
 
 - > 就像 fetch 一样，默认情况下不会将 cookie 和 HTTP 授权发送到其他域。
   >
-  > 要启用它们，可以将 xhr.withCredentials 设置为 true, 服务器还应该在响应中添加 header Access-Control-Allow-Credentials: true。
+  > 要启用它们，可以将` xhr.withCredentials` 设置为 true, 服务器还应该在响应中添加 header Access-Control-Allow-Credentials: true。
 
 
 
@@ -345,6 +347,8 @@ categories: Javascript
 
 
 - 如果 fetch 无法建立一个 HTTP 请求，例如网络问题，亦或是请求的网址不存在，那么 promise 就会 reject。异常的 HTTP 状态，例如 404 或 500，不会导致出现 error。 导致try catch 无法处理
+
+  > 当接收到一个代表错误的 HTTP 状态码时，从 fetch()返回的 Promise 不会被标记为 reject， 即使该 HTTP 响应的状态码是 404 或 500。相反，它会将 Promise 状态标记为 resolve （但是会将 resolve 的返回值的 ok 属性设置为 false ），仅当网络故障时或请求被阻止时，才会标记为 reject。
 
 
 
@@ -619,7 +623,7 @@ const contentLength = +response.headers.get('Content-Length');
 
 - 默认情况下，由 JavaScript 代码发起的跨源请求不会带来任何凭据（cookies 或者 HTTP 认证（HTTP authentication））。
 
-- > 要在 fetch 中发送凭据，我们需要添加 credentials: "include" 选项, 
+- > 要在 fetch 中发送凭据，我们需要添加` credentials: "include" `选项, 
   >
   > 如果服务器同意接受 带有凭据 的请求，则除了 Access-Control-Allow-Origin 外，服务器还应该在响应中添加 header Access-Control-Allow-Credentials: true。
 - > 对于具有凭据的请求，禁止 Access-Control-Allow-Origin 使用星号 *。它必须有一个确切的源。这是另一项安全措施，以确保服务器真的知道它信任的发出此请求的是谁
