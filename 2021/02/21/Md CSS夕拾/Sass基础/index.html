@@ -1,0 +1,650 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Yangsir">
+  <meta name="keywords" content="">
+  <title>sass基础 - Yangsir&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.6","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Yangsir-Zone</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/images/bag.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="sass基础">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-02-21 11:41" pubdate>
+        2021年2月21日 中午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.6k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      18
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">sass基础</h1>
+            
+            <div class="markdown-body">
+              <h2 id="Sass"><a href="#Sass" class="headerlink" title="Sass"></a>Sass</h2><ul>
+<li><p><code>引入</code> 允许你创建多个文件，然后在一个文件中引入。</p>
+</li>
+<li><p><code>变量</code>  不在进行重复写一个值 ,而是直接使用变量</p>
+</li>
+<li><p><code>嵌套</code>  在嵌套中写css规则 , 更方便..</p>
+</li>
+<li><p><code>继承</code>  通过继承, 我们可以写一些基本样式, 然后继承他</p>
+</li>
+<li><p>sCSS是 sass 的升级版本  scss使用花括号表示关系, sass则是使用空白符和缩进</p>
+</li>
+</ul>
+<h4 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h4><ul>
+<li><p>使用<code>$</code>符号来标识变量,任何可以用作css属性值的赋值都 可以用作sass的变量值，甚至是以空格分割的多个属性值</p>
+</li>
+<li><p>当变量定义在css规则块内，那么该变量只能在此规则块内使用。 变量之间也可以相互引用</p>
+</li>
+</ul>
+<h4 id="嵌套"><a href="#嵌套" class="headerlink" title="嵌套"></a>嵌套</h4><ul>
+<li><p>使用嵌套处理重复的书写选择器</p>
+<blockquote>
+<p>CSS在处理嵌套过程中,会用空格使用后代选择器, 但是有些时候比如 :first :hover 等情况, 我们不希望有空格, 这时候使用 &amp;:的符号</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>&amp; 本质上代表外层的父元素, 所以可以在嵌套中还可以使用后代选择</p>
+<p>例如: p &amp;{}  但是尽量只定义 后代选择器, 这样导入时比较安全</p>
+</blockquote>
+</li>
+<li><p>对于 &gt; + ~的处理来说, 可以放在外层选择器后边，或里层选择器前边</p>
+</li>
+<li><p>嵌套处理重复的属性  例如 : border-radius  -style …</p>
+</li>
+</ul>
+<h4 id="导入SASS文件"><a href="#导入SASS文件" class="headerlink" title="导入SASS文件"></a>导入SASS文件</h4><ul>
+<li><p>CSS@import规则，允许在一个CSS文件中导入其他CSS文件。然而，只有执行到@import时，浏览器才会去下载其他CSS文件，这导致页面加载起来特别慢。</p>
+</li>
+<li><p>SCSS@import规则不同, 在生成CSS文件时就进行导入,把所有样式整合到一起,而无需发送多个下载请求</p>
+<blockquote>
+<p>所有被导入文件中定义的变量和混合器均可在导入文件中使用。</p>
+<p>使用sass的@import规则可以省略.sass或.scss文件后缀 </p>
+<p>允许同时导入多个文件</p>
+</blockquote>
+</li>
+<li><p>局部文件:</p>
+<blockquote>
+<p>把Sass 样式 分成多个文件进行管理,然而只想生成几个CSS文件, 那么就要使用局部文件 : 名字以<code>下划线开头</code>的sass文件 </p>
+</blockquote>
+</li>
+<li><p>在引入文件时,防止被覆盖已经声明的变量, </p>
+<blockquote>
+<p>变量声明的后面使用!default  关键字, 如果这个变量被声明赋值了，那就用它声明的值，否则就用这个默认值。</p>
+</blockquote>
+</li>
+<li><p>sass允许@import命令写在css规则内。这种导入方式会直接导入css规则内,成为嵌套语法</p>
+</li>
+</ul>
+<ul>
+<li>原生的CSS导入</li>
+<li><blockquote>
+<p>被导入文件的  名字以.CSS结尾；或者URL值,文件名以 http:// 开头, 或者通过URL()</p>
+<p>这里推荐 @import url() 的方式 , 用css结尾导入可能会补上多余的前缀(vscode中) </p>
+<p>换句话说,你不能用sass的@import直接导入一个原始的CSS文件，因为sass会认为你想用CSS原生的@import。</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li>静默注释,在生成的CSS文件中不会产生注释 格式: //</li>
+</ul>
+<h4 id="混合器"><a href="#混合器" class="headerlink" title="混合器"></a>混合器</h4><ul>
+<li><p>处理重复的大段样式代码</p>
+</li>
+<li><blockquote>
+<p>通过@mixin name 定义  @include引入 </p>
+</blockquote>
+</li>
+<li><p>避免滥用混合器 ,在何时使用混合器</p>
+<blockquote>
+<p>判断一组属性是否应该组合成一个混合器，一条经验法则就是你能否为这个混合器想出一个好的名字。</p>
+</blockquote>
+</li>
+<li><p>CSS类名应该是表述标签的含义,  混合器名字应该是展示性描述,应该具备应用样式的表述含义</p>
+</li>
+<li><p>混合器传参</p>
+<blockquote>
+<p>@mixin name($name), include时传递参数</p>
+<p>参数默认值  使用$name: default-value</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h4><ul>
+<li><p>选择器继承  @extend语法实现,选择器可以继承另一个选择器定义的所有样式</p>
+<blockquote>
+<p>继承被编译后是 使用<code>,</code>的并集选择器</p>
+</blockquote>
+</li>
+<li><p>选择器不仅会继承所有样式，任何该选择器有关的组合选择器样式 也会以组合选择器的形式继承</p>
+<blockquote>
+<p>//.seriousError从.error继承样式<br>.error a{  //应用到.seriousError a<br>  color: red;<br>  font-weight: 100;<br>}</p>
+</blockquote>
+</li>
+<li><p>像#main .error这种后代选择器序列是不能被继承的。但可以反过来继承,我们也应该避免这种情况</p>
+</li>
+<li><p>继承 交集选择器:</p>
+<blockquote>
+<p>@extend.important.error ， 那么.important.error 和h1.important.error 的样式都会被.seriousError继承</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p>继承只会在生成CSS时复制选择器，而不会复制大段的CSS属性。比起混合器更加节省空间,但是如果继承的选择器较复杂,可能会复制很多选择器</p>
+<blockquote>
+<p>避免这种情况出现的最好方法就是不要在CSS规则中使用后代选择器（比如.foo .bar）去继承CSS规则。 为了匹配可能的情况,它会复制大量的选择器</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="sassScript"><a href="#sassScript" class="headerlink" title="sassScript"></a>sassScript</h4><ul>
+<li><p>CSS规则块内可以进行运算</p>
+</li>
+<li><blockquote>
+<p>如果需要使用变量，同时又要确保 / 不做除法运算而是完整地编译到 CSS文件中，只需要用 #{} 插值语句将变量包裹。</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>font: #{$font-size}/#{$line-height};</p>
+<p>通过 #{} 插值语句可以在选择器或属性名中使用变量</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h4><ul>
+<li>Sass 中 @media 指令与 CSS中用法一样，只是增加了一点额外的功能：允许其在 CSS规则中嵌套。如果 @media 嵌套在 CSS规则内，编译时，@media 将被编译到文件的最外层，包含嵌套的父选择器。</li>
+</ul>
+<ul>
+<li><p>@extend-Only 选择器  Sass 引入了“占位符选择器” (placeholder selectors)，看起来很像普通的 id 或 class 选择器，只是 # 或 . 被替换成了 %。可以像 class 或者 id 选择器那样使用，当它们单独使用时，不会被编译到 CSS文件中。</p>
+</li>
+<li><p>!optional 声明 要求 @extend 不生成新选择器</p>
+</li>
+<li><p>在指令中使用 @extend 时（比如在 @media 中）有一些限制,这能继承在media规则内的选择器</p>
+</li>
+<li><p>@at-root  指令使嵌套在父元素的规则,编译时作为独立的样式,而不是后代选择器</p>
+</li>
+<li><p>@debug 把表达式打印出来 @ warn 指令将 SassScript 表达式的值打印到标准错误输出流。</p>
+</li>
+<li><p>@ error 将 SassScript 表达式的值作为一个致命错误抛出,对于验证 mixin 和函数的参数非常有用</p>
+</li>
+</ul>
+<ul>
+<li><p>@if指令  @while指令</p>
+</li>
+<li><p>@for指令 </p>
+</li>
+<li><blockquote>
+<p>@for $i from 1 through 3  @for $i from 1 to 3  ,区别在于 to不包括end</p>
+</blockquote>
+</li>
+<li><p>@each 指令</p>
+</li>
+<li><blockquote>
+<p>@each $animal in puma, sea-slug, egret, salamander </p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li>Sass 支持自定义函数，并能在任何属性值或 Sass script 中使用：</li>
+<li><blockquote>
+<p>@function grid-width($n) {<br>@return $n * $grid-width + ($n - 1) * $gutter-width;} </p>
+</blockquote>
+</li>
+</ul>
+
+            </div>
+            <div><a href="https://github.com/thinkles/thinkles.github.io/blob/myblog/source/_posts/Md CSS夕拾/Sass基础.md" target="_blank">编辑</a></div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/CSS/">CSS</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/sass/">sass</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/02/21/Md%20HTML5/HTML%E5%9F%BA%E7%A1%80/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">HTML基础</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/02/21/Md%20CSS%E5%A4%95%E6%8B%BE/CSS3%20%E6%89%A9%E5%B1%95/">
+                        <span class="hidden-mobile">CSS3 指南</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.waitElementVisible('comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'thinkles/Utterances-comment-blog');
+      s.setAttribute('issue-term', 'title');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.start()
+    document.addEventListener('DOMContentLoaded', function() {
+      window.NProgress && window.NProgress.inc();
+    })
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>

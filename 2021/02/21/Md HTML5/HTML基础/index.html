@@ -1,0 +1,711 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Yangsir">
+  <meta name="keywords" content="">
+  <title>HTML基础 - Yangsir&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.6","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Yangsir-Zone</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/images/bag.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="HTML基础">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-02-21 11:41" pubdate>
+        2021年2月21日 中午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.9k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      33
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">HTML基础</h1>
+            
+            <div class="markdown-body">
+              <h2 id="HTML基础："><a href="#HTML基础：" class="headerlink" title="HTML基础："></a>HTML基础：</h2><h4 id="基本标签使用"><a href="#基本标签使用" class="headerlink" title="基本标签使用:"></a>基本标签使用:</h4><ol>
+<li><p>段落标题：   h  p</p>
+</li>
+<li><p>列表:  ul li  ol li  (列表的嵌套也是可以的)   描述列表: dl dt dd</p>
+<blockquote>
+<p>描述列表,浏览器的默认样式会在描述列表的描述部分&lt; dd&gt;和描述术语&lt; dt&gt;缩进</p>
+</blockquote>
+</li>
+<li><p>强调语义：strong  em (更强的可访问性 语义性)   b i u(仅仅影响表象而且没有语义，被称为表象元素)</p>
+</li>
+<li><p>超链接:  a    属性title :补充信息    通过id还可以设置锚点</p>
+</li>
+</ol>
+<blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;https://download.mozilla.org...&quot;</span> <span class="hljs-attr">download</span>=<span class="hljs-string">&quot;firefox-installer.exe&quot;</span>&gt;</span>下载<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>   <br>// 当链接是下载资源时 使用download属性给一个资源名字<br><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;mailto:nowhere@mozilla.org&quot;</span>&gt;</span>向 nowhere 发邮件<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><br>//可以通过mailto: 来给一个邮件地址<br></code></pre></td></tr></table></figure>
+</blockquote>
+<ol start="5">
+<li><p>&lt; abbr title=”” &gt; 包裹一个缩略语或缩写,title属性里面是详细介绍,<br>&lt; address&gt;  标记联系方式   &lt; sup&gt; 和&lt; sub&gt;上标和下标。&lt; code&gt;标记计算机代码<br>&lt; pre&gt;用来保存空白字符, 默认浏览器是忽略缩进和空格</p>
+</li>
+<li><p>&lt; time datetime=””&gt;  将时间和日期标记为可供机器识别的格式</p>
+</li>
+<li><p>块级内容引用:  blockquote 包裹起来表示，并且在cite属性里用URL来指向引用的资源 行内引用: q 包裹起来, 写cite属性</p>
+<blockquote>
+<p>块级引用:浏览器在渲染块引用时默认会增加缩进</p>
+<p>行内引用:默认将其作为普通文本放入引号内表示引用</p>
+<p>cite属性默认不会显示,更好的做法是使用cite元素 附上a链接,元素默认的字体样式为斜体</p>
+</blockquote>
+</li>
+</ol>
+<ol start="8">
+<li><p>文档结构标签 &lt; header&gt; &lt; footer &gt; &lt; aside&gt;  &lt; nav&gt;  &lt; main&gt;</p>
+<blockquote>
+<p>main 主题部分中  可用article   section  div等元素表示。</p>
+<p>标签本质上没有特别,主要有语义的作用,   他会让可访问性更强</p>
+</blockquote>
+</li>
+<li><p>换行和切割线 : hr  br</p>
+</li>
+<li><p>ins  del 元素, 删除文本和标记文本分别出现  文字划线 和 下划线 可以通过css改变样式,变成漂亮的标注 </p>
+</li>
+</ol>
+<hr>
+<h4 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h4><ol>
+<li><p>&lt; table&gt;  &lt; tr&gt;&lt; td&gt;  &lt; th&gt;: 样式加粗 一般设置小标题, &lt; caption&gt;</p>
+</li>
+<li><p>colspan 横跨 rowspan 竖跨  </p>
+</li>
+<li><p>表格内结构标签：&lt; thead&gt;  &lt; tbody&gt; &lt; tfoot&gt;：没有特效，只是格式标签 . </p>
+<p>scope 属性,添加在&lt; th&gt; 元素中 用来说明是列标题还是行标题  scope=”col” scope=”row”  (id headers也可以标记但是太麻烦了)</p>
+</li>
+<li><p>&lt; colgroup&gt;  &lt; col&gt;为一列添加样式 ,每个col 代表一列 ,这里是第二列应用样式,<br>使用 span 可以指定列数  ,这里可以改成 一个&lt; col span=2&gt;  (为每一行设置样式是比较简单的,但是为每一列设置的话使用这种方法比较简单 或者 nth-child)</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">table</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">colgroup</span>&gt;</span><br>   <span class="hljs-tag">&lt;<span class="hljs-name">col</span>&gt;</span><br>   <span class="hljs-tag">&lt;<span class="hljs-name">col</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;background-color: yellow&quot;</span>&gt;</span><br> <span class="hljs-tag">&lt;/<span class="hljs-name">colgroup</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">table</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<hr>
+<h4 id="HTML多媒体"><a href="#HTML多媒体" class="headerlink" title="HTML多媒体"></a>HTML多媒体</h4><ul>
+<li><p><strong>img 图片标签:</strong>    </p>
+</li>
+<li><blockquote>
+<p>title 鼠标悬停的信息</p>
+<p>alt 在图片无法显示时, 显示的描述信息</p>
+<p>width height  </p>
+<p>srcset 用于浏览器根据宽、高和像素密度来加载相应的图片资源</p>
+</blockquote>
+</li>
+<li><p>html5 中的&lt; figure&gt; 和 &lt; figcaption &gt;元素 （放置图片的说明信息）：为图片提供一个语义容器，在标题和图片之间建立清晰的关联。</p>
+</li>
+<li><blockquote>
+<p>注意 figure 里不一定要是一张图片，只要是一个这样的独立内容单元：图片、一段代码、音视频、方程、表格..  </p>
+<p>它本身没有一个实质的作用,是一个语义化的容器</p>
+</blockquote>
+</li>
+<li><p><strong>如何选择img 还是 background背景:</strong></p>
+</li>
+<li><blockquote>
+<p>如果图像对您的内容里有意义，则应使用HTML图像。</p>
+<p>如果图像纯粹是装饰，则应使用CSS背景图片。这样插入的图片完全没有语义上的意义, 也不能被屏幕阅读器识别。</p>
+</blockquote>
+</li>
+<li><p>像 img 和 video  ifram这样的元素有时被称之为<strong>替换元素</strong>，这样的元素的内容和尺寸由外部资源所定义，而不是元素自身。</p>
+</li>
+<li><blockquote>
+<p>替换元素: 当资源加载出来后,元素将被替换掉,所以尺寸是外部资源所定义的,但是我们可以进行设置元素的大小</p>
+</blockquote>
+<hr>
+</li>
+</ul>
+<h5 id="自适应图片"><a href="#自适应图片" class="headerlink" title="自适应图片"></a>自适应图片</h5><ul>
+<li><blockquote>
+<p>解决方法:    </p>
+<ol>
+<li><p>准备两套图片  img元素通过 srcset  sizes属性根据尺寸切换</p>
+</li>
+<li><p>利用&lt; picture&gt; 中的source标签  通过他的media srcset属性实现</p>
+<p>为什么不可以通过css  js 来实现响应式?</p>
+<p>因为浏览器预加载 任意的图片 , 你不能先加载好 img 元素后, 再用 JavaScript 检测可视窗口的宽度，动态地加载小的图片替换已经加载好的图片，这就加载了两次</p>
+</li>
+</ol>
+</blockquote>
+<hr>
+</li>
+</ul>
+<ul>
+<li><p><strong>音视频标签: audio  video</strong></p>
+</li>
+<li><blockquote>
+<p>属性值: </p>
+<p>width 和 height 控制尺寸,如果没有保持纵横比,那么没有内容填充的部分默认为背景色</p>
+<p>controls : 为网页中的音频显示标准的HTML5控制器。<br>autoplay : 使音频自动播放。<br>loop : 使音频自动重复播放。<br>muted  这个属性会导致媒体播放时，默认关闭声音。<br>poster:这个属性指向了一个图像的URL，这个图像会在视频播放前显示。通常用于粗略的预览或者广告。<br>preload 这个属性被用来缓冲较大的文件</p>
+<p>&lt; audio&gt; 上使用方式几乎一样，但不支持宽高设置 同时也不支持poster属性</p>
+</blockquote>
+</li>
+<li><p>video 标签内为备选内容, 用 &lt; source  type=’’&gt; 标签来指定多个文件，以为不同浏览器提供可支持的编码格式</p>
+</li>
+<li><p>关于这种媒体元素,会有响应的事件和函数可以调用,详情查阅MDN ,常用的有 play() pause()….</p>
+</li>
+<li><p>&lt; track&gt;标签, 提供一个音频内容的文本(字幕)</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p><strong>html 中的向量图</strong>—svg图片,通过img标签添加,或者通过svg标签添加(这成为内联svg)</p>
+</li>
+<li><blockquote>
+<p>矢量图形相较于同样的位图，通常拥有更小的体积，因为它们仅需储存少量的算法，而不是逐个储存每个像素的信息。在放大时不会产生失真</p>
+<p>缺点 : </p>
+<p>无法使用JavaScript操作图像。<br>如果要使用CSS控制SVG内容，则必须在SVG代码中包含内联CSS样式。 </p>
+</blockquote>
+</li>
+<li><p>可以使用SVG作为CSS背景图像</p>
+</li>
+<li><p>内联svg优缺点:</p>
+</li>
+<li><blockquote>
+<p>将 SVG 内联减少 HTTP 请求，可以减少加载时间。</p>
+<p>浏览器不能像缓存普通图片一样缓存内联SVG。</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li>&lt; iframe&gt;元素旨在允许您将其他Web文档嵌入到当前文档中。&lt; embed&gt;和&lt; object&gt;元素的功能不同于&lt; iframe&gt;—— 这些元素是用来嵌入多种类型的外部内容的通用嵌入工具,不太使用</li>
+</ul>
+<h4 id="URL和Path"><a href="#URL和Path" class="headerlink" title="URL和Path"></a>URL和Path</h4><ul>
+<li><p>URL: 统一资源定位符（英文：<strong>U</strong>niform <strong>R</strong>esource <strong>L</strong>ocator）是一个定义了在网络上的位置的一个文本字符串, URL使用路径Path查找文件。路径指定文件系统中您感兴趣的文件所在的位置。URL分为:<strong>绝对URL</strong>和<strong>相对URL</strong></p>
+<ul>
+<li><strong>绝对URL</strong>: 指向由其在Web上的绝对位置定义的位置，包括 protocol（协议） 和 domain name（域名）</li>
+<li><strong>相对URL</strong>:指向与您链接的文件相关的位置, 相对的基准默认是index.html主入口</li>
+</ul>
+</li>
+<li><blockquote>
+<p>当链接到同一网站的其他位置时，你应该使用相对链接,当链接到另一个网站时，你需要使用绝对链接  </p>
+<p>相对URL，浏览器只在同一服务器上查找被请求的文件。如果使用绝对URL会不断地让你的浏览器做额外的工作</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="关于meta元数据"><a href="#关于meta元数据" class="headerlink" title="关于meta元数据"></a>关于meta元数据</h4><ul>
+<li><p>视口元标签:</p>
+<blockquote>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk">&lt;meta name=<span class="hljs-string">&quot;viewport&quot;</span> content=<span class="hljs-string">&quot;width=device-width&quot;</span>&gt;<br><span class="hljs-regexp">//</span>除了这项选项,还有别的可用的选项<br></code></pre></td></tr></table></figure>
+
+<p>这行代码会强制地让手机浏览器采用它们真实可视窗口的宽度来加载网页</p>
+<p>**原因 :**这个元标签的存在，是由于原来iPhone发布以后，人们开始在小的手机屏幕上阅览网页，而大多数站点未对移动端做优化的缘故。移动端浏览器因此会把视口宽度设为960像素, 渲染出缩小版本的网页, 但是你的媒体查询可能在960像素下不会生效</p>
+<p>所以不加这行代码,可能只会渲染出缩小版本的网页</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p><code>meta</code>元素包含了 name 和 content特性：</p>
+</li>
+<li><blockquote>
+<p>name  指定了 meta 元素的类型</p>
+<p>content  指定了实际的元数据内容</p>
+</blockquote>
+</li>
+<li><p>常见的  name =’description’     meta charset=”utf-8”</p>
+</li>
+</ul>
+<blockquote>
+<p>关于有些meta元数据。可以是自定义的，它旨在向某些网站 (如社交网站) 提供可使用的特定信息。例如，Facebook 编写的元数据协议 <a target="_blank" rel="noopener" href="http://ogp.me/">Open Graph Data</a> 为网站提供了更丰富的元数据,  Twitter 还拥有自己的类型的专有元数据协议</p>
+</blockquote>
+<h4 id="页面添加图标的方式"><a href="#页面添加图标的方式" class="headerlink" title="页面添加图标的方式"></a>页面添加图标的方式</h4><ul>
+<li>将图片保存在与网站的索引页面相同的目录中，以.ico格式保存（大多数浏览器将支持更通用的格式，如.gif或.png，但使用ICO格式将确保它能在如Internet Explorer 6一样久远的浏览器显示）, 在head中引用</li>
+</ul>
+<blockquote>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+</blockquote>
+<h4 id="为文档设定主语言"><a href="#为文档设定主语言" class="headerlink" title="为文档设定主语言"></a>为文档设定主语言</h4><blockquote>
+<html lang="zh-CN">
+</blockquote>
+<blockquote>
+<p>你还可以将文档的分段设置为不同的语言。例如，我们可以把日语部分设置为日语，</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>日语实例: <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;jp&quot;</span>&gt;</span>ご飯が熱い。<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br></code></pre></td></tr></table></figure>
+</blockquote>
+<h4 id="内联元素和块级元素"><a href="#内联元素和块级元素" class="headerlink" title="内联元素和块级元素"></a>内联元素和块级元素</h4><ul>
+<li><p>以块的形式出现,对于在前面的内容它会出现新的一行,后面的内容也会被挤到下一行</p>
+</li>
+<li><blockquote>
+<p>address  article aside audio<br>blockquote  canvas dd div dl </p>
+<p>fieldset form figcaption figure  footer<br>h1~6  header hgroup hr noscript<br>ol output p pre section<br>table ul  tfoot video</p>
+</blockquote>
+</li>
+<li><p>内联元素通常出现在块级元素中并环绕文档内容的一小部分,内联元素不会导致文本换行</p>
+</li>
+<li><blockquote>
+<p>b, big, i, small, tt<br>abbr, acronym, cite, code, dfn, em, kbd, strong, samp, var<br>a, bdo, br, img, map, object, q, script, span, sub, sup<br>button, input, label, select, textarea</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><ul>
+<li><p>如何将一张图片的不同区域链接到不同页面。: <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/learn/HTML/Howto/Add_a_hit_map_on_top_of_an_image">图像映射</a></p>
+</li>
+<li><p>数据属性 data-   还可以被css访问  </p>
+<blockquote>
+<p>article::before {<br>content: attr(data-parent);<br>}<br>article[data-columns=’3’] {<br>width: 400px;<br>}</p>
+</blockquote>
+</li>
+<li><p>在 &lt; img&gt; 元素中定义的图片可以从外部来源加载并在 &lt; canvas&gt; 元素中使用，就像是从本地源加载一样。在HTML5中，一些 HTML 元素提供了对 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/HTTP/Access_control_CORS">CORS</a> 的支持， 例如 &lt; audio&gt;、&lt; img&gt;、&lt; link&gt;、&lt; script&gt; 和 &lt; video&gt;均有一个跨域属性 (crossOrigin  property)，它允许你配置元素获取数据的 CORS 请求。 : <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/CORS_enabled_image">需要配置跨域</a></p>
+</li>
+<li><p> &lt; link&gt; 元素的 rel 属性的属性值preload 可以实现在页面加载初期进行预加载</p>
+</li>
+</ul>
+<h4 id="怪异模式和标准模式"><a href="#怪异模式和标准模式" class="headerlink" title="怪异模式和标准模式  : "></a>怪异模式和标准模式  : <!doctype html></h4><ul>
+<li><p>这个声明的目的是防止浏览器在渲染文档时，切换到我们称为“**怪异模式(兼容模式)**”的渲染模式。“<!DOCTYPE html>“ 确保浏览器按照最佳的相关规范进行渲染，而不是使用一个不符合规范的渲染模式。</p>
+</li>
+<li><p>兼容模式下 会出现很多问题, 比如 css应用问题, 加上标签和不加标签可能会出现差异,不如各个浏览器排版会出现问题</p>
+</li>
+</ul>
+
+            </div>
+            <div><a href="https://github.com/thinkles/thinkles.github.io/blob/myblog/source/_posts/Md HTML5/HTML基础.md" target="_blank">编辑</a></div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/HTML/">HTML</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/HTML%E5%9F%BA%E7%A1%80/">HTML基础</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/02/21/Md%20HTML5/HTML%E8%A1%A8%E5%8D%95/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">HTML表单</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/02/21/Md%20CSS%E5%A4%95%E6%8B%BE/Sass%E5%9F%BA%E7%A1%80/">
+                        <span class="hidden-mobile">sass基础</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.waitElementVisible('comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'thinkles/Utterances-comment-blog');
+      s.setAttribute('issue-term', 'title');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.start()
+    document.addEventListener('DOMContentLoaded', function() {
+      window.NProgress && window.NProgress.inc();
+    })
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>

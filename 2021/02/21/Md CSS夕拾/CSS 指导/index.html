@@ -1,0 +1,963 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Yangsir">
+  <meta name="keywords" content="">
+  <title>CSS 指南 - Yangsir&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.6","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Yangsir-Zone</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/images/bag.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="CSS 指南">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-02-21 11:41" pubdate>
+        2021年2月21日 中午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      5.9k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      64
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">CSS 指南</h1>
+            
+            <div class="markdown-body">
+              <h3 id="CSS-指南"><a href="#CSS-指南" class="headerlink" title="CSS 指南"></a>CSS 指南</h3><ul>
+<li>响应式 和 自适应的区别 </li>
+</ul>
+<p>响应式 :  改变布局  适配多种屏幕   <strong>流动</strong>的网格、<strong>灵活</strong>的图片和媒体查询是响应式网页设计的3个技术要素，</p>
+<p>自适应 ,根据固定屏幕大小,使用多种不同的布局设计</p>
+<p>另一种分别是平滑设计和快速设计的区别。响应式设计是平滑的，因为不管在什么设备上看，布局都可以流畅地调整。</p>
+<p>适应性思维方式既不是流动的也不是灵活的，而是寻找适应的特定点,在特定点来适配</p>
+<p><a target="_blank" rel="noopener" href="https://css-tricks.com/the-difference-between-responsive-and-adaptive-design/">响应式和自适应</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.interaction-design.org/literature/article/adaptive-vs-responsive-design">响应式和自适应</a></p>
+<p>自适应设计(理论上)将确保根据用户使用的接口设备提供最佳的用户体验。不像响应式设计，屏幕从桌面设计“流动”到更小的设备，自适应设计提供了量身定做的解决方案。</p>
+<p>2011年，网页设计师Aaron Gustafson在他的书《自适应网页设计》里率先提出了自适应网页设计的概念。</p>
+<p>Adaptive design (自适应设计)：为不同类别的设备建立不同的网页，检测到设备分辨率大小后调用相应的网页。目前AWD网页主要针对这几种分辨率（320，480，760，960，1200，1600）</p>
+<p>和响应式网页不同，自适应设计是基于断点使用静态布局，一旦页面被加载就无法再进行自动适应，自适应会自动检测屏幕的大小来加载适当的工作布局。</p>
+<p>自适应设计的优势在于，它允许设计人员量身定制解决方案，从而使GUI在不同的屏幕尺寸上呈现最佳状态。 缺点是自适应设计的成本很高，</p>
+<h4 id="CSS使用"><a href="#CSS使用" class="headerlink" title="CSS使用"></a>CSS使用</h4><ul>
+<li>行内式  内嵌式   外部链接式 (rel href 必填项)</li>
+</ul>
+<h4 id="CSS工作原理-浏览器工作"><a href="#CSS工作原理-浏览器工作" class="headerlink" title="CSS工作原理(浏览器工作)"></a>CSS工作原理(浏览器工作)</h4><ul>
+<li>简单的步骤 :  载入HTML,然后转化为DOM,拉取大部分资源(图片,视频,CSS),JS稍后进行处理. 拉取到CSS 后进行解析,并应用到DOM树上,这个步骤称为  <code>渲染树</code>,  根据渲染树进行布局,显示在网页上(着色)</li>
+</ul>
+<h4 id="层叠与继承-优先级"><a href="#层叠与继承-优先级" class="headerlink" title="层叠与继承 优先级"></a>层叠与继承 优先级</h4><ul>
+<li><p><strong>优先级:</strong>   id&gt;class&gt;…  那个选择器更具体 那个优先级就高</p>
+<blockquote>
+<p>分为千位 百位  十位  个位,依次为:</p>
+<p>style 声明属性    ID选择器    类选择器/属性选择器/伪类       元素/伪元素选择器</p>
+<p>依次加1000  100  10 1, 按最后的结果获得权重值</p>
+</blockquote>
+<blockquote>
+<p>通用选择器 (<code>*</code>)，组合符 (<code>+</code>, <code>&gt;</code>, <code>~</code>, <code>&#39; &#39;</code>)，和否定伪类 (<code>:not</code>) 不会影响优先级。 <code>只根据有多少个选择器 多少元素 进行计算权重</code></p>
+</blockquote>
+</li>
+<li><p><strong>层叠:</strong>  当应用两条同级别的规则到一个元素的时候，写在后面的就是实际使用的规则。</p>
+<blockquote>
+<p>没有优先级权重时, 使用的是层叠规则</p>
+</blockquote>
+</li>
+<li><p><strong>继承:</strong>  设置在父元素上的CSS属性是可以被子元素继承的，有些不行不如width border…</p>
+<blockquote>
+<p> 控制继承: </p>
+<p>inherit 开启继承,使子元素属性和父元素相同, (<strong>默认值 inherit</strong>) </p>
+<p>initial 设置属性和浏览器默认样式一样,没有默认样式改为 inherit</p>
+<p>unset  : 如果属性是继承的就是inherit,不是就是initial,使用默认样式</p>
+<p>属性值 : 控制属性值  =&gt; background-color: unset;    来控制属性的是否继承</p>
+<p>也可以通过 all: 控制属性值, 对父元素所有的属性进行控制  , <strong>或者用来撤销对样式所做更改</strong>,    all: unset; 可以使得某个元素重置所有的样式为默认样式</p>
+</blockquote>
+</li>
+<li><p><code>!important打破优先级使用该属性 覆盖!important 唯一的办法就是另一个 !important  </code></p>
+</li>
+<li><blockquote>
+<p> !important 改变了层叠的常规工作方式，它会使调试 CSS 问题非常困难,建议不使用</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><strong>有继承性的属性:</strong> 实践中寻找,最常见的有 字体属性   文本属性</li>
+</ul>
+<h4 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h4><ul>
+<li><p><strong>基本选择器:</strong></p>
+<blockquote>
+<p>元素、类、id选择器<br>标签属性选择器 : a[title]{}<br>伪类、伪元素选择器  :类   ::元素</p>
+<p>全局选择器  *</p>
+</blockquote>
+</li>
+<li><p><strong>选择器运算符:</strong></p>
+<blockquote>
+<p>交集选择器  <code>&#39;&#39;</code>   并集选择器 <code>,</code>   </p>
+<p>后代选择器   <code>&#39; &#39;</code>   子元素选择器：<code>&gt;</code>   </p>
+<p>相邻兄弟(后面紧跟的一个)选择器 <code>+</code>     通用兄弟(选择所有兄弟)选择器:  <code>~</code></p>
+</blockquote>
+<hr>
+</li>
+</ul>
+<ul>
+<li><p><strong>标签选择器详解:</strong></p>
+<blockquote>
+<p>[attr~=value]  含有一个value (不能是子字符串,但之间可以是空格隔开)  </p>
+<p>[<em>attr</em>|=<em>value</em>] 含有value (不能是子字符串,但后面可以跟-字符)</p>
+<p>[attr~=value] [attr^=value] [attr*=value]   </p>
+<p>依次为 :  开头、结尾、字符串中匹配value的 属性</p>
+<p>attr 可以换成 class     例如: li[class=”a”]</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p><strong>伪类 伪元素选择器详解 :</strong> </p>
+</li>
+<li><blockquote>
+<p>伪类是选择器的一种，它用于选择处于特定状态的元素</p>
+<p>伪元素以类似方式表现，不过表现得是像你往标记文本中加入全新的HTML元素一样，而不是向现有的元素上应用类。</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p><strong>伪元素使用:</strong></p>
+</li>
+<li><p>例子 : <code>::first-line</code>伪元素选择器,会始终选择元素内的第一行,进行样式化,如果使用其他选择器无法实现, 因为不知道一行有多少个字段,如果使用span标签进行包裹,如果字段较多,他就会延展到第二行, 无法只给第一段应用样式.</p>
+<blockquote>
+<p> 有一组特别的伪元素<code>::before</code>和<code>::after</code>，它们和<code>content</code>属性一同使用，使用CSS将内容插入到你的文档中中。</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">.box::<span class="hljs-keyword">after</span>&#123;<br> content: &quot;This should show before the other content.&quot;<br>&#125;   <br>&lt;p <span class="hljs-keyword">class</span>=&quot;box&quot;&gt;Content <span class="hljs-keyword">in</span> the <span class="hljs-type">box</span> <span class="hljs-keyword">in</span> my HTML page.&lt;/p&gt;<br>//<span class="hljs-keyword">after</span>加载内容后面  <span class="hljs-keyword">before</span>相反<br></code></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p><strong>这些伪元素的更推荐的用法是插入一个图标</strong>, 这些伪元素经常用于插入空字符串,然后对空字符串进行样式化,可以给他一个宽高 和背景就会形成一个图形</p>
+</li>
+<li><blockquote>
+<p>其余的伪元素 : <code>::first-letter</code>第一个字母 <strong><code>::selection</code></strong> 应用被高亮的部分(鼠标选择)</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li>伪类选择器和伪元素可以组合使用 , 但不能嵌套使用(比如:not()的参数)</li>
+</ul>
+<h4 id="盒子模型"><a href="#盒子模型" class="headerlink" title="盒子模型"></a>盒子模型</h4><ul>
+<li><p>盒子分为：块级盒子（Block box)和  内联盒子（Inline box） </p>
+</li>
+<li><p><strong>块级盒子:</strong></p>
+<blockquote>
+<p>在内联的方向上扩展并占据父容器的所有可用空间:  简单说,占据父容器所有的宽度</p>
+<p>发生换行   宽高   padding  border margin 发挥作用</p>
+</blockquote>
+</li>
+<li><p><strong>内联盒子:</strong></p>
+<blockquote>
+<p>不会产生换行   width 和 height 属性将不起作用 </p>
+<p>垂直方向的padding 、margin以及border会被应用但是推不开其他的盒子</p>
+<p>水平方向的可以推开</p>
+</blockquote>
+</li>
+<li><p><strong>inline-block盒子:</strong></p>
+<blockquote>
+<p>外部表现为 inline 不会换行 , 但是可以设置宽高  设置四个方向的padding 、margin以及border 可以推开盒子</p>
+<p>相当于内联 和 块级的 中和的产物</p>
+</blockquote>
+</li>
+<li><p>CSS的盒子模型有<strong>内部</strong>和<strong>外部</strong>显示类型 ，外部显示类型，来决定盒子是块级还是内联。内部显示类型，它决定了盒子内部元素是如何布局的。默认情况下是按照正常文档流布局 (块级和内联布局), </p>
+<blockquote>
+<p>特殊的 display: flex, 外部显示类型是 block，但是内部显示类型修改为 flex。</p>
+<p>标准的  inline-block   inline-flex</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p><strong>盒子模型分为 标准盒模型   替代盒模型</strong> </p>
+<blockquote>
+<p>区别在于标准盒模型计算盒子大小是 内容加上 padding border</p>
+<p>替代盒模型: 设置box-sizing: content-box(默认值)/ border-box </p>
+<p>content-box : 设置的宽/高度只有内容</p>
+<p> border-box :宽/高度包含边框</p>
+</blockquote>
+</li>
+</ul>
+<h5 id="padding、margin、border"><a href="#padding、margin、border" class="headerlink" title="padding、margin、border"></a>padding、margin、border</h5><ul>
+<li><p><strong>margin(外边距):</strong></p>
+</li>
+<li><p><code>margin-left:atuto</code>   :  会占据这个方向的剩余空间的宽度,用来让某一项顶到边框</p>
+</li>
+<li><p><strong>外边距外边距margin 折叠问题:</strong></p>
+</li>
+<li><blockquote>
+<p>注意有设定<code>float</code>和<code>position=absolute</code>的元素不会产生外边距重叠行为。脱离文档流不存在此问题</p>
+</blockquote>
+<blockquote>
+<ol>
+<li>同一层相邻元素之间的外边距重叠:</li>
+</ol>
+<p>外边距合并：相邻元素margin-top 和margin-bottom 长度会合并成两者间较大的数值，如果有负值就是两者的和,两者都为负值就取绝对值最大的<br><strong>解决:</strong> 后一个元素 设置 inline-block</p>
+<ol start="2">
+<li>没有内容将父元素和后代元素分开:</li>
+</ol>
+<p>如果没有设置边框border-top，内边距padding-top，行内内容(文字)，也没有创建块级格式上下文或清除浮动,那么margin-top就会折叠 .对于margin-bottom 也适用上面的判断,区别在于 高度也是margin-bottom的判断标准</p>
+<p>较大的值最终会溢出到父级块元素外面。表现为父元素移动了溢出的值</p>
+<ol start="3">
+<li>空白块</li>
+</ol>
+<p>当一个块元素上边界margin-top 直接贴到元素下边界margin-bottom时也会发生边界折叠。这种情况会发生在一个块元素<strong>完全没有设定</strong>边框border、内边距paddng、高度height、最小高度min-height 、最大高度max-height 、内容设定为inline或是加上clear-fix的时候。(不太理解)</p>
+<ul>
+<li>上述情况的组合会产生更复杂的外边距折叠。</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p><strong>padding(内边距):</strong></p>
+</li>
+<li><p>应用于元素的任何背景都将显示在内边距后面，内边距通常用于将内容推离边框。</p>
+<blockquote>
+<p>padding可以撑大元素的尺寸，背景会随着撑大元素的尺寸而扩大</p>
+</blockquote>
+</li>
+</ul>
+<h5 id="BFC"><a href="#BFC" class="headerlink" title="BFC"></a>BFC</h5><ul>
+<li><p>块格式化上下文（Block Formatting Context，BFC)，<strong>是块盒子的布局过程发生的区域</strong>，也是浮动元素与其他元素交互的区域。</p>
+<blockquote>
+<p><strong>浮动定位</strong> 和 <strong>清除浮动</strong> 时只会应用于同一个BFC内的元素。浮动不会影响其它BFC中元素的布局，而清除浮动只能清除同一BFC中在它前面的元素的浮动。</p>
+<p>外边距折叠（Margin collapsing）也只会发生在属于同一BFC的块级元素之间</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p>创建BFC方法: </p>
+<blockquote>
+<p>在父级块中使用 display: flow-root 可以无副作用的创建新的 BFC。还能够使正常块级元素可以推开浮动元素,(默认情况是重叠的)</p>
+<p>overflow 值不为 visible 的块元素 绝对定位元素  行内块元素 浮动元素…</p>
+<p>更多创建BFC方法参考 MDN  </p>
+</blockquote>
+</li>
+<li><p>BFC可以解决了 <code>高度塌陷</code>  <code>外边距折叠问题</code></p>
+<blockquote>
+<p>在文档流中，父元素的高度默认是被子元素撑开的，当为子元素设置浮动以后，子元素会完全脱离文档流，此时就会导致子元素无法撑起父元素的高度，此引发父元素的高度塌陷</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="隐藏标签"><a href="#隐藏标签" class="headerlink" title="隐藏标签"></a>隐藏标签</h4><ul>
+<li><p><code>display:none</code>   不为被隐藏的对象保留其物理空间，即该对象在页面上彻底消失，通俗来说就是看不见也摸不到。</p>
+</li>
+<li><p><code>visible:hidden</code> 使对象在网页上不可见，但该对象在网页上所占的空间没有改变，通俗来说就是看不见但摸得到。这是个继承元素</p>
+<blockquote>
+<p>元素使用<code>visibility:hidde</code>时 如果在设置:hover状态,这是不会触发,因为这时已经隐藏不可能触发</p>
+</blockquote>
+</li>
+<li><p><code>opacity : 0</code> , 不可见,但保留位置</p>
+</li>
+</ul>
+<h4 id="样式化文本"><a href="#样式化文本" class="headerlink" title="样式化文本"></a>样式化文本</h4><ul>
+<li><strong>字体</strong></li>
+</ul>
+<ul>
+<li><p>浏览器的 <code>font-size</code> 标准设置的值为 16px, 建议把根元素的font-size 调成10px,这样可以更方便的使用 em rem计算font-size值</p>
+</li>
+<li><blockquote>
+<p>font-style 打开关闭斜体<br>font-weight 设置字体粗细<br>text-decoration  设置文本划线 上下中划线…<br>text-transform: 转换文本的大小写,全半角 </p>
+<p>text-shadow 文本阴影 : </p>
+</blockquote>
+</li>
+<li><h4 id="网络字体-在CSS的开始处有一个-font-face块，它指定要下载的字体文件"><a href="#网络字体-在CSS的开始处有一个-font-face块，它指定要下载的字体文件" class="headerlink" title="网络字体:  在CSS的开始处有一个@font-face块，它指定要下载的字体文件"></a>网络字体:  在CSS的开始处有一个@font-face块，它指定要下载的字体文件</h4></li>
+</ul>
+<ul>
+<li><p><strong>文本布局</strong></p>
+<ul>
+<li><p><code>text-align</code> 用来控制行内内容(文本/节点..)如何和它所在的内容盒子(有宽度的块级元素)对齐</p>
+<blockquote>
+<p>在内容盒子中对齐,会改变行内元素的内联,比如左对齐,每个行内元素都独占一行</p>
+</blockquote>
+</li>
+<li><p><strong><code>vertical-align</code></strong> 用来指定<strong>行内元素</strong>（inline）或<strong>表格单元格</strong>（table-cell）元素的垂直对齐方式。</p>
+<blockquote>
+<p>   垂直方式根据  行内元素基线相对于元素所在行的基线, 进行调整    </p>
+<p>  该属性对块级元素是不能使用的</p>
+</blockquote>
+</li>
+<li><p><code>letter-spacing </code> 字母之间间距  <code>word-spacing</code>单词与单词之间的间距</p>
+</li>
+<li><p><code>text-overflow:</code> 定义如何向用户表示存在被隐藏的溢出内容。</p>
+<blockquote>
+<p>这个属性只对那些在块级元素溢出的内容有效，<strong>但是必须要与块级元素内联(inline)方向一致</strong>（举个反例：内容在盒子的下方溢出。此时就不会生效）。</p>
+<p>对于多行文本的向下溢出无法处理</p>
+</blockquote>
+</li>
+<li><p><code>white-space:</code> 处理元素内部文本的空白和换行。</p>
+</li>
+<li><p><code>word-break:</code> 是否能在单词内部断行。</p>
+<blockquote>
+<p>对于中文来说可以在任意处断行,所以在处理一串英文时需要加上该属性值,否则他不会换行的</p>
+</blockquote>
+</li>
+<li><p><code>text-orientation</code>: 定义行内文本的方向。</p>
+</li>
+<li><p><code>word-wrap(overflow-wrap):</code> 指定是否可以在单词内换行以避免超出范围。</p>
+<blockquote>
+<p>和word-break的区别时在于, word-wrap会尽量保证单词的完整性的情况下断行,word-break会在只要可以断行的时候断行writing-mode: 定义文本行布局为水平还是垂直，以及后继文本流的方向</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>height = line-height时 文字垂直居中显示</p>
+</li>
+<li><p>内联元素的高度有其中的文本内容 的font-size line-height共同决定, 如果字体大小比行高小一定的值,那高度就是行高</p>
+</li>
+<li><p>在标准模型中，如果你给盒设置 width 和 height，实际设置的是 content box。 padding 和 border 再加上设置的宽高一起决定整个盒子的大小。</p>
+</li>
+<li><p>text-indent 属性能定义一个块元素首行文本内容之前的缩进量。设置负值用来移出文档显示,块内元素中如果有内联元素例如 img span等,会移出文档,  该属性为继承属性 ,对内联元素中的内容无效</p>
+</li>
+<li><p>vertical-align 用于以下两种情况  1.使行内元素盒模型与其行内元素容器垂直对齐</p>
+</li>
+<li><p>2.垂直对齐表格单元内容:</p>
+</li>
+<li><p>vertical-align 只对行内元素、表格单元格元素生效：不能用它垂直对齐块级元素。</p>
+</li>
+<li><p>margin取负值margin-left 和 margin-top：影响自身元素，自身元素将向指定方向偏移margin-bottom将影响后元素，使后元素向上偏移对应像素</p>
+</li>
+<li><p>多个内联文本有一个设置上外边距值 会一起移动, 内联元素布局默认是一指的</p>
+<h4 id="样式化列表"><a href="#样式化列表" class="headerlink" title="样式化列表"></a>样式化列表</h4></li>
+<li><blockquote>
+<p><code>list-style-type</code> ：设置用于列表的项目符号的类型，例如无序列表的方形或圆形项目符号，或有序列表的数字，字母或罗马数字。<br><code>list-style-position </code>：设置在每个项目开始之前，项目符号是出现在列表项内，还是出现在其外。<br><code>list-style-image</code> ：允许您为项目符号使用自定义图片，而不是简单的方形或圆形。<br>速记属性 list-style 完成以上三个的设置</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p><code>ul ol</code>属性  </p>
+<blockquote>
+<p>start 属性允许你从1 以外的数字开始计数  </p>
+<p>reversed 属性将启动列表倒计数</p>
+<p>li中 的value 属性允许设置列表项指定数值</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="样式化链接"><a href="#样式化链接" class="headerlink" title="样式化链接"></a>样式化链接</h4><ul>
+<li>链接状态 通过伪类进行设置<ul>
+<li>Link (没有访问过的): 这是链接的默认状态 </li>
+<li>Visited: 这个链接已经被访问过了</li>
+<li>Hover: 当用户的鼠标光标刚好停留在这个链接</li>
+<li>Focus: 一个链接当它被选中的时候 (比如通过键盘的 Tab  移动到这个链接的时候)</li>
+<li>Active: 一个链接当它被激活的时候 (比如被点击的时候)</li>
+</ul>
+</li>
+</ul>
+<h4 id="样式化表格"><a href="#样式化表格" class="headerlink" title="样式化表格"></a>样式化表格</h4><ul>
+<li><p>使用<code>table-layout: fixed</code>创建更可控的表布局，可以通过在标题width中设置width来轻松设置列的宽度。</p>
+<blockquote>
+<p><strong>默认情况下表格及单元格的宽度取决于其包含的内容。</strong></p>
+</blockquote>
+</li>
+<li><p>使用<code>border-collapse: collapse</code>使单元格边框塌陷,使得多个边框合并成一条</p>
+</li>
+<li><p><code>caption-side属性</code> : 会将表格的标题&lt; caption&gt; 放到规定的位置</p>
+</li>
+</ul>
+<h4 id="背景与边框"><a href="#背景与边框" class="headerlink" title="背景与边框"></a>背景与边框</h4><ul>
+<li><p>background 属性</p>
+</li>
+<li><blockquote>
+<p><code>-clip </code> 设置元素的背景（背景图片或颜色）是否延伸到边框、内边距盒子、内容盒子下面。   border-box  padding-box content-box</p>
+<p><code>-origin</code> 指定背景图片的原点位置,   从边框开始;从内边距开始  从内容开始 content-box;  (默认在左上角)  border-box  padding-box content-box</p>
+<p><code>-position </code>选择背景图像显示在其应用到的盒子中的位置, 默认是框的左上角(0,0),</p>
+<blockquote>
+<p>这个位置是相对于由 background-origin 定义的位置图层的。</p>
+<p>百分比值0%代表图片和容器左/上边界重合  100%左上边界和容器的右/下重合</p>
+<p>指定关键字 top, left, bottom, right 中的一个,另一个维度被设置成 50%，</p>
+</blockquote>
+<p><code>-repeat</code>  背景图像可以沿着水平轴/垂直轴重复，或者根本不重复,或者都重复</p>
+<p><code>-size</code>   1个值指定图片的宽  2个值指定宽和高;</p>
+<blockquote>
+<p>cover 拉伸到新的尺寸覆盖容器全部空间<br>contain 按原有比例缩放到可用空间的尺寸,不一定能够覆盖完容器  </p>
+</blockquote>
+<p><code>-attachment</code>    指定内容滚动,背景如何滚动</p>
+<blockquote>
+<p>fixed 表示背景相对于视口固定,背景不会随着内容滚动<br>local 背景相对于<strong>元素内容</strong>固定,它会随着内容滚动    </p>
+<p>scroll 背景相对于<strong>元素本身</strong>固定,而不是随着它的内容滚动</p>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p>opacity属性指定了一个元素的透明度, 当opacity属性的值应用于某个元素上时，是把这个元素（包括它的内容）当成一个整体看待, 即使这个值没有被子元素继承</p>
+</li>
+<li><blockquote>
+<p>因此，一个元素和它包含的子元素都会具有和元素背景相同的透明度，哪怕这个元素和它的子元素有不同的opacity属性值</p>
+</blockquote>
+</li>
+<li><p>使用opacity属性，当属性值不为1时，会把元素放置在一个新的层叠上下文中。</p>
+</li>
+</ul>
+<h4 id="处理不同方向的文本"><a href="#处理不同方向的文本" class="headerlink" title="处理不同方向的文本"></a>处理不同方向的文本</h4><ul>
+<li>CSS中的书写模式是指文本的排列方向是横向还是纵向的。</li>
+<li>writing-mode 属性使我们从一种模式切换到另一种模式,</li>
+<li>horizontal-tb模式,水平方式写入，写入方向从top到bottom</li>
+</ul>
+<h4 id="溢出"><a href="#溢出" class="headerlink" title="溢出"></a>溢出</h4><ul>
+<li><p>我们通过给width和height（或者 inline-size 和 block-size）来约束盒子的尺寸。但是内容过多时,内容(例如文本会超出宽度显示)就会溢出</p>
+</li>
+<li><blockquote>
+<p>溢出的内容不会当做盒子的尺寸,也就是说如果有行内元素的话,可能会忽略溢出内容,覆盖内容</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p>只要有可能，CSS就不会隐藏你的内容，隐藏引起的数据损失通常会造成困扰。通过<code>overflow</code> ``overflow-x/y`属性控制元素溢出的方式，</p>
+<blockquote>
+<p>hidden : 隐藏     scroll: 滚动来显示内容     visible(默认值):显示数据  </p>
+</blockquote>
+</li>
+<li><p>溢出建立了块级排版上下文 BFC，在容器之外的东西没法混进容器内，也没有东西可以突出盒子，进入周围的版面。</p>
+</li>
+</ul>
+<h4 id="值和单位"><a href="#值和单位" class="headerlink" title="值和单位"></a>值和单位</h4><ul>
+<li><p>在CSS中使用了各种数值数据类型 :数字 长度 百分比</p>
+</li>
+<li><p>长度分为绝对长度 相对长度</p>
+<blockquote>
+<p>常用的绝对长度: px</p>
+<p><strong>相对长度:</strong> </p>
+<p>使用相对单位的好处是,可以使文本或其他元素的大小与页面上的其他内容相对应。</p>
+<p><code>em</code> :  在 font-size 中使用是相对于父元素的字体大小，在其他属性中使用是相对于自身的字体大小,例如height</p>
+<p><code>rem</code>: 根元素的字体大小</p>
+<p><code>lh</code>:元素的line-height     <code>vw</code>: 视窗的高度的1%  <code>vh</code>:视窗高度的1%</p>
+</blockquote>
+</li>
+<li><p>如果使用百分比作为大小，那么它将是父元素大小的百分比。</p>
+<blockquote>
+<p>body,html 百分比,是针对浏览器可视窗口的宽度高度</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="调节项目大小"><a href="#调节项目大小" class="headerlink" title="调节项目大小"></a>调节项目大小</h4><ul>
+<li><p>在受CSS设置影响之前，HTML元素有其<code>原始的尺寸</code>,</p>
+<blockquote>
+<p>比如  Img的固有尺寸是图片的尺寸, div块高由内容决定</p>
+<p>元素的<strong>固有尺寸</strong> — 由其所包含的内容决定。对于块级元素来说内容只影响它的高度,宽度默认独占一行</p>
+</blockquote>
+</li>
+<li><p>当你用百分数设定内外边距的时候，值是以<strong>内联尺寸</strong>进行计算的，也即对于左右书写的语言来说的宽度(浏览器视口的宽度)。而不是元素的尺寸大小</p>
+</li>
+</ul>
+<ul>
+<li><p>min-和max-尺寸:</p>
+<blockquote>
+<p>你有一个<code>变化容量</code>的盒子,但你想让它<strong>至少</strong>有个确定的高度,你应该给它设置一个<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/min-height"><code>min-height</code></a>属性</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/max-width"><code>max-width</code></a>的常见用法为，在没有足够空间以原有宽度展示图像时，让图像缩小，同时确保它们不会比这一宽度大。</p>
+<p>设定一个img的属性为width: 100%,那么它会充满整个容器,</p>
+<p>max-width: 100%,那它最大只能是图片的原始尺寸</p>
+</blockquote>
+</li>
+<li><p>min-和max-尺寸 这在避免溢出的同时并处理变化容量的内容的时候是很有用的。</p>
+</li>
+</ul>
+<h4 id="图像、媒体和表单元素"><a href="#图像、媒体和表单元素" class="headerlink" title="图像、媒体和表单元素"></a>图像、媒体和表单元素</h4><ul>
+<li><p>object-fit属性  指定 可替换元素 的内容应该如何适应到其使用的高度和宽度确定的框</p>
+<blockquote>
+<p><strong>contain</strong>: 保持宽高比 进行缩放   <strong>cover</strong>:保持宽高比,填充  <strong>fill</strong>: 填充不保持宽高比</p>
+</blockquote>
+</li>
+<li><p>在替换元素使用各式CSS布局技巧时，你可能深切地体会到他们的展现略微与其他元素不同，</p>
+</li>
+<li><blockquote>
+<p>记住替换元素在成为网格或者弹性布局的一部分时，有不同的默认行为</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>例如，在一个flex或者grid布局中，元素默认会把拉伸到充满整块区域。图像不会拉伸，而是会被对齐到网格区域或者弹性容器的起始处。</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="CSS预处理和后处理"><a href="#CSS预处理和后处理" class="headerlink" title="CSS预处理和后处理"></a>CSS预处理和后处理</h4><ul>
+<li>Sass   预处理  </li>
+<li>cssnano 后处理  你对加入例如许多额外的注释和空格，增大你的样式表大小有所关心的话，那么后处理会通过在生产版本中略去任何不必要的东西的方式</li>
+</ul>
+<h5 id="块级元素-行内元素互相嵌套问题"><a href="#块级元素-行内元素互相嵌套问题" class="headerlink" title="块级元素 行内元素互相嵌套问题"></a>块级元素 行内元素互相嵌套问题</h5><ul>
+<li><p>以上问题都是 没有设置外部容器的宽高的情况</p>
+</li>
+<li><p><strong>内联元素嵌套块级元素</strong></p>
+</li>
+<li><p>块级元素无法撑开内联元素,但是例如 cursor: pointer /a便签 发生区域还是被撑大了, 而且不能覆盖块元素的性质, 它还是会独占一行, 因为没有尺寸背景色无法应用</p>
+</li>
+<li><blockquote>
+<p>img 元素 也可以撑开内联元素,但是情况和上面一样,尺寸不正确,是默认的尺寸</p>
+<p>个人理解,内联元素只能被文本撑开</p>
+</blockquote>
+</li>
+<li><p>解决方法: </p>
+<blockquote>
+<p>把外层的内联元素换成 inline-black元素</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p><strong>块级元素嵌套内联元素</strong></p>
+</li>
+<li><p>有内容的内联元素可以撑开块级元素,</p>
+</li>
+<li><p>没有内容的内联元素,比如img 不能正好的撑开块级元素,会有缝隙,</p>
+</li>
+<li><p>解决方法:</p>
+<blockquote>
+<p>设置内部为块级元素就可以撑开 </p>
+<p>外部设置宽度 img 100%</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li>只有块级元素之间能正好的撑开元素</li>
+</ul>
+
+            </div>
+            <div><a href="https://github.com/thinkles/thinkles.github.io/blob/myblog/source/_posts/Md CSS夕拾/CSS 指导.md" target="_blank">编辑</a></div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/CSS/">CSS</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/CSS/">CSS</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/02/21/Md%20CSS%E5%A4%95%E6%8B%BE/CSS3%20%E5%B8%83%E5%B1%80%E6%80%BB%E8%A7%88%20/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">CSS 布局</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/02/21/Git/GIT%E6%95%99%E7%A8%8B/">
+                        <span class="hidden-mobile">GIT 教程</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.waitElementVisible('comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'thinkles/Utterances-comment-blog');
+      s.setAttribute('issue-term', 'title');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.start()
+    document.addEventListener('DOMContentLoaded', function() {
+      window.NProgress && window.NProgress.inc();
+    })
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>

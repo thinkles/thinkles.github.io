@@ -1,0 +1,1059 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Yangsir">
+  <meta name="keywords" content="">
+  <title>webpack - Yangsir&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.6","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Yangsir-Zone</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/images/bag.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="webpack">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-02-21 11:41" pubdate>
+        2021年2月21日 中午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      7.6k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      85
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">webpack</h1>
+            
+            <div class="markdown-body">
+              <h2 id="webpack"><a href="#webpack" class="headerlink" title="webpack"></a>webpack</h2><ul>
+<li><p><strong>为什么使用构建工具?</strong></p>
+<blockquote>
+<p>前端模块要在客户端(浏览器)中执行，所以他们需要增量加载到浏览器中。</p>
+<p>模块的加载和传输，我们首先能想到两种极端的方式，一种是每个模块文件都单独请求，另一种是把所有模块打包成一个文件然后只请求一次</p>
+<p>但是两种方法都不是最佳的, 所以我们采用<strong>分块传输</strong>，按需进行懒加载，在实际用到某些模块的时候再增量更新，才是较为合理的模块加载方案,要实现模块的按需加载，就需要一个对整个代码库中的模块进行静态分析、编译打包的过程。</p>
+</blockquote>
+</li>
+<li><p>在前端开发过程中还涉及到样式、图片、字体、HTML 模板等等众多的资源,如果他们都可以视作模块，并且都可以通过<code>require</code>的方式来加载，将带来优雅的开发体验</p>
+</li>
+<li><p>构建工具 还可以帮助我们处理各种项目的依赖项, 优化打包后的文件…</p>
+</li>
+</ul>
+<p><strong>Webpack的重要概念:</strong></p>
+<ul>
+<li><p><a target="_blank" rel="noopener" href="https://webpack.docschina.org/glossary/">webpack 术语表</a></p>
+</li>
+<li><p>依赖图: 当 webpack 处理应用程序时，它会根据命令行参数中或配置文件中定义的模块列表开始处理。 从 <a target="_blank" rel="noopener" href="https://webpack.docschina.org/concepts/entry-points/"><em>入口</em></a> 开始，webpack 会递归的构建一个<em>依赖关系图</em>，这个依赖图包含着应用程序中所需的每个模块，然后将所有模块打包为少量的 <em>bundle</em> —— 通常只有一个 —— 可由浏览器加载。</p>
+</li>
+<li><p>loader : Webpack 本身只能处理原生的 JavaScript 模块，但是 loader 转换器可以将各种类型的资源转换成 JavaScript 模块。这样，任何资源都可以成为 Webpack 可以处理的模块。</p>
+</li>
+<li><p>plugin : 插件目的在于解决 loader 无法实现的<strong>其他事</strong>。</p>
+</li>
+<li><p>runtime  : 在浏览器运行过程中，webpack 用来连接模块化应用程序所需的所有代码。</p>
+</li>
+<li><p>manifest : 是保留所有模块要点的数据集合, runtime 会通过 manifest 来解析和加载模块, 通过使用 manifest 中的数据，runtime 将能够检索这些标识符，找出每个标识符背后对应的模块。</p>
+<blockquote>
+<p>通过使用内容散列(content hash)作为 bundle 文件的名称，这样在文件内容修改时，会计算出新的 hash，浏览器会使用新的名称加载文件，从而使缓存无效。一旦你开始这样做，你会立即注意到一些有趣的行为。即使某些内容明显没有修改，某些 hash 还是会改变。这是因为，注入的 runtime 和 manifest 在每次构建后都会发生变化。</p>
+</blockquote>
+</li>
+<li><p>模块热替换: 在应用程序运行过程中，替换、添加或删除模块，而无需重新加载整个页面</p>
+<blockquote>
+<ul>
+<li>保留在完全重新加载页面期间丢失的应用程序状态。</li>
+<li>只更新变更内容，以节省宝贵的开发时间。</li>
+<li>在源代码中 CSS/JS 产生修改时，会立刻在浏览器中进行更新，这几乎相当于在浏览器 devtools 直接更改样式。</li>
+</ul>
+</blockquote>
+</li>
+<li><p><code>style-loader</code> 实现了 HMR 接口；当它通过 HMR 接收到更新，它会使用新的样式替换旧的样式。 类似的也可以在模块中实现 HRM接口, 用来模块更新后调用该函数</p>
+</li>
+</ul>
+<h4 id="webpack简单使用"><a href="#webpack简单使用" class="headerlink" title="webpack简单使用"></a>webpack简单使用</h4><ul>
+<li><p>安装 <code>webpack-cli/init </code>工具 (可选), 也可以手动创建 webpack 的config文件</p>
+<blockquote>
+<p>也可以利用 webpage  vscode插件</p>
+</blockquote>
+</li>
+<li><p>自定义<code> packge.json</code> 文件中的 编译命令 ,  运行该命令</p>
+<blockquote>
+<p>注意:  <code>npx webpack</code>  默认寻找webpack.config.js 文件 也可以自定义</p>
+<p><code>npx webpack --config webpack.config.js</code></p>
+</blockquote>
+<blockquote>
+<p>也可以使用 webpack-cli 命令进行零配置的编译</p>
+</blockquote>
+</li>
+<li><p>加载 CSS/Scss.. 媒体资源(CSS中的图像 字体)</p>
+<blockquote>
+<p>下载相应的loader配置(style-loader+css-loader 是基础 还有sass-loader.. ), 然后就可以使用import 像模块一样加载CSS</p>
+<p>加载CSS中的媒体资源:  webpack5 使用内置的 <a target="_blank" rel="noopener" href="https://webpack.docschina.org/guides/asset-modules/">Asset Modules</a>  进行加载, 5之前使用相应的loader进行加载 例如: url-loader file-loader ..</p>
+<p>对于html中的 媒体资源 使用 html-loader 处理 否则打包后找不到资源</p>
+</blockquote>
+<blockquote>
+<p>以上方法打包后的图片路径都是针对本机的绝对路径,如果部署到线上是不行的,所以通过output 中的 publicpath 属性设置路径</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>加载数据 csv 文件 tsv xml 需要相应的loader</p>
+</blockquote>
+</li>
+<li><p>输出管理</p>
+<ul>
+<li><p>打包文件输出: </p>
+<blockquote>
+<p>单入口的情况下, 正常的进行打包就可以了</p>
+<p>多入口时,打包后出现多个bundle, 使用<code>HtmlWebpackPlugin</code> 自动的添加多个 bundle</p>
+</blockquote>
+</li>
+<li><p>输出目录的清理:</p>
+<blockquote>
+<p> 每次构建时可能会遗留一些多余的代码文件,使用插件<code>clean-webpack-plugin</code>    </p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>开发配置:</p>
+<ul>
+<li><p><strong>source map:</strong></p>
+<blockquote>
+<p>将多个源文件打包为一个文件时为了追踪错误信息, 需要配置 <a target="_blank" rel="noopener" href="http://blog.teamtreehouse.com/introduction-source-maps">source maps</a>  </p>
+</blockquote>
+</li>
+<li><p>热更新:</p>
+<blockquote>
+<p><code>watch</code>:自动重新编译更改的对象,  或者<code>webpack-dev-server</code>  :开启热更新, 配置dev server,从什么位置查找文件</p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>在开发设置中 <code>CleanWebpackPlugin</code> 插件会产生很多冲突, 原因在于, 该插件会在成功构建 build 后(包括编译),删除输出目录的文件.</p>
+<p>导致 watch 模式下, 构建成功后,更改编译后, 静态资源 :html文件 和 图片.. 都被删除 <code>解决</code>:    cleanStaleWebpackAssets: false 更改该插件选项</p>
+<p>在 dev Serve 模式下, 成功构建向内存 写文件而不是硬盘,导致该插件清空了dist目录</p>
+<p><code>解决</code>: 调整 dev Serve 插件的选项 让其构建成功后使文件写入硬盘, 还有设置 cleanStaleWebpackAssets选项, 让其在热更新编译时不会删除静态文件</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>建议在最后构建的时候再进行清除 使用CleanWebpackPlugin,否则会很多冲突</p>
+</blockquote>
+<p>​    </p>
+<ul>
+<li><code>EslintWebpackPlugin</code>  插件带来eslint 功能  <code>Prettier Webpack Plugin</code> 带来 `Prettier 功能</li>
+<li>babel</li>
+</ul>
+</li>
+</ul>
+<h4 id="预处理器loader"><a href="#预处理器loader" class="headerlink" title="预处理器loader"></a>预处理器loader</h4><ul>
+<li><p>在引入loader时,可以通过options 提供额外的配置</p>
+</li>
+<li><p>loader 相关配置</p>
+<blockquote>
+<p>exclude  : 排除被正则匹配到的该模块  </p>
+<p>必加项 : exclude: /node_modules/, 或者 include : /src/ </p>
+<p>exclude 和 include  exclude 优先级更高</p>
+<p>resource issuer : 可以更加精确的确定模块规则的作用范围</p>
+<p>resource: 被加载模块   issuer:加载者</p>
+</blockquote>
+</li>
+<li><p>URL-loader  file-loader 的区别:</p>
+<blockquote>
+<p>url-loader 允许你有条件地将文件转换为内联的 base-64 URL (当文件小于给定的阈值)，这会减少小文件的 HTTP 请求数。如果文件大于该阈值，会自动的交给 file-loader 处理。  url-loader内置了file-loader ,只需要安装一个即可</p>
+<p> limit : true  无限制</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h4><ul>
+<li><p>手动编译文件很麻烦 , webpack 提供几种可选方式，帮助你在代码发生变化后自动编译代码：</p>
+<blockquote>
+<p>webpack watch mode</p>
+<p>webpack-dev-server  </p>
+<p>webpack-dev-middleware</p>
+</blockquote>
+</li>
+<li><p>webpack-dev-middleware 是一个封装器(wrapper)，它可以把 webpack 处理过的文件发送到一个 server。 webpack-dev-server 在内部使用了它，然而它也可以作为一个单独的 package 来使用，以便根据需求进行更多自定义设置。</p>
+</li>
+<li><p><strong>webpack-dev-server:</strong></p>
+<blockquote>
+<p>服务启动时, <code>wds</code>进行模块打包, 当浏览器请求时,首先它先效验URL地址,</p>
+<p>如果该地址是资源服务地址(指定的资源文件地址),就会从内存中寻找资源返回给服务器.  如果不是,就读取硬盘内的源文件返回给浏览器</p>
+</blockquote>
+</li>
+<li><p>**webpack-dev-server 在编译打包之后不会写入到任何输出文件 ,**打包结果被放在了内存中而不是实际磁盘内。</p>
+<blockquote>
+<p>换句话说他不会生成新的文件,每次接到浏览器的请求,都只是将内存中的打包结果返回给浏览器</p>
+</blockquote>
+</li>
+<li><p>‘WDS’参数说明:</p>
+</li>
+<li><blockquote>
+<p><code>ContentBase</code>:    指定服务器资源的根目录,静态资源从该目录中找寻,默认使用和webpack-config.js 相同目录</p>
+<p>PublicPath:    <em>如果你的页面希望在其他不同路径中找到 bundle 文件，则可以通过 dev server 配置中的</em> <a target="_blank" rel="noopener" href="https://webpack.docschina.org/configuration/dev-server/#devserverpublicpath-"><code>publicPath</code></a> 选项进行修改。 默认为’/‘</p>
+<p>不管 PublicPath 怎么设置, 通过路由查找文件时使用的路径都是<code>ContentBase</code> ,而且都是通过在硬盘文件中查找,而不是在内存中查找</p>
+</blockquote>
+</li>
+<li><p><code>publicPath</code> 和 output <code>publicPath</code> 保持一致, 这样静态资源文件才可以请求到, 因为设置完  publicPath, 这个路径就代表了内存中的根目录</p>
+</li>
+</ul>
+<ul>
+<li><p>webpack-dev-server 的运行会进行构建,然后就调用了 <code>clean-webpack-plugin </code>来清空 dist目录下的文件, 通过设置webpack-dev-server 的 writetodisk 选项写入文件到硬盘解决</p>
+</li>
+<li><blockquote>
+<p>clean-webpack-plugin  默认情况下，此插件将在每次成功构建时(包括编译时),删除输出目录所有的文件(包括asset), </p>
+<p>如果想要在<strong>编译</strong>时不删除静态资源,使用  <code>cleanStaleWebpackAssets</code>  选项 设置为false, </p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p><strong>资源加载:</strong></p>
+</li>
+<li><p>在 webpack 5 提供 资源模块类型 asset , 默认情况下，<code>asset/resource</code> 模块以 <code>[hash][ext][query]</code> 文件名发送到输出目录。</p>
+<blockquote>
+<p>可以通过在 webpack 配置中设置 <a target="_blank" rel="noopener" href="https://webpack.docschina.org/configuration/output/#outputassetmodulefilename"><code>output.assetModuleFilename</code></a> 来修改此模板字符串.</p>
+</blockquote>
+</li>
+<li><p><strong>自动管理输出</strong> : </p>
+</li>
+<li><blockquote>
+<p><code>HtmlWebpackPlugin</code>  , html-webpack-插件将自动将所有必要的CSS、JS、清单和 favicon 文件注入到标记中</p>
+</blockquote>
+</li>
+<li><p><strong>清理/dist 输出路径的文件夹</strong>,: <a target="_blank" rel="noopener" href="https://www.npmjs.com/package/clean-webpack-plugin"><code>clean-webpack-plugin</code></a></p>
+</li>
+<li><p>源代码映射: 追踪到 error(错误) 和 warning(警告) 在源代码中的原始位置 ,使用<code>source maps</code>功能</p>
+</li>
+</ul>
+<ul>
+<li><p><strong>webpack-dashboard 插件</strong>  :可以使控制台中打印的打包有关的信息以列表的形式提供,作为插件添加到webpack配置中,使用webpack-dashboard 模块命令替换原来的webpack启动方式即可</p>
+</li>
+<li><blockquote>
+<p>speed-measure-webpack-plugin 可以分析出构建过程的时间, 可以找出构建过程中那个步骤最慢</p>
+<p>size-plugin 每次打包后的体积和上次的体积变化值</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p><strong>热加载HMR</strong> :</p>
+</li>
+<li><p>模块热替换(<code>Hot Module Replacement</code>)的技术可在不刷新整个网页的情况下做到超灵敏的实时预览。</p>
+</li>
+<li><blockquote>
+<p>不在进行刷新网页重新发送请求, HMR保留完全加载页面状态的前提下,只更新改动,不在进行刷新</p>
+<p>原理是当一个源码发生变化时，只重新编译发生变化的模块，再用新输出的模块替换掉浏览器中对应的老模块。</p>
+</blockquote>
+</li>
+<li><p><strong>手动引入HMR:</strong></p>
+<blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript"> &gt;<span class="hljs-keyword">if</span> (<span class="hljs-built_in">module</span>.hot) &#123;<br><span class="hljs-built_in">module</span>.hot.accept(<span class="hljs-string">&#x27;./print.js&#x27;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;&#125;)<br> &gt;&#125;<br></code></pre></td></tr></table></figure>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p><strong>模块热替换问题</strong> :    </p>
+</li>
+<li><p>借助于 <code>style-loader</code>，使用模块热替换来加载 CSS 实际上极其简单。此 loader 在幕后使用了 <code>module.hot.accept</code>，在 CSS 依赖模块更新之后，会将其 patch(修补) 到 <code>&lt;style&gt;</code> 标签中。</p>
+</li>
+<li><p>社区还提供许多其他 loader 和示例，可以使 HMR 与各种框架和库平滑地进行交互…… ,比如 vue-loader</p>
+</li>
+</ul>
+<h4 id="样式处理"><a href="#样式处理" class="headerlink" title="样式处理"></a>样式处理</h4><ul>
+<li><p>在生产环境下,我们希望样式存在于单独的css文件中, 而不是style标签内, 因为文件更有利于客户端缓存,  这时我们使用 mini-css-extract-plugin</p>
+</li>
+<li><blockquote>
+<p> 样式的提取是以资源入口开始的整个chunk单位的封装, 如果index.js引入很多的模块,每个模块引入各自的样式, 但是最终只会生成一个css文件,因为只有一个入口</p>
+<p>当有多个入口时,生成多个css文件,但是名字会重复,所以要使用[name].css 进行动态命名</p>
+</blockquote>
+</li>
+<li><p>插件中可以指定同步加载的Css文件的文件名 filename  也可以指定异步加载的Css资源 chunkfileName 文件名</p>
+<blockquote>
+<p><code>filename</code> : 是主入口的文件名，<code>chunkFilename</code> 是非主入口的文件名</p>
+<p>主入口 : 指的是<code>entry</code>里面生成出来的文件名</p>
+<p>非主入口  :指的是按需加载（异步）模块,在entry没有名字</p>
+<p>在打包时,同步加载的会被打包成一个 称为 initial chunk    默认main</p>
+<p>异步 按需加载的会被打包为另一个包 称为 :non-initial chunk,默认使用唯一 ID 来替代名称</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p>想要在浏览器中查看CSS源码 需要给CSS-loader  SCSS-loader 单独配置source map选项</p>
+</li>
+<li><p> <code>module</code>，<code>chunk</code> 和 <code>bundle</code> 其实就是同一份逻辑代码在不同转换场景下的取了三个名字：  我们直接写出来的是 module，webpack 处理时是 chunk，最后生成浏览器可以直接运行的 bundle。</p>
+</li>
+</ul>
+<h4 id="代码分离-分片"><a href="#代码分离-分片" class="headerlink" title="代码分离(分片):"></a>代码分离(分片):</h4><ul>
+<li><p> 能够把代码分离到不同的 bundle 中，然后可以按需加载或并行加载这些文件。代码分离可以用于获取更小的 bundle，以及控制资源加载优先级，如果使用合理，会极大影响加载时间。</p>
+</li>
+<li><p><strong>代码分离方法:</strong></p>
+</li>
+<li><ol>
+<li>手动配置入口起点, 构建多个bundle 进行加载</li>
+</ol>
+<blockquote>
+<p>这种方法不够灵活,必须手动的配置,</p>
+<p>如果有重复的模块还是会加载检测不出来,导致冗余代码 </p>
+</blockquote>
+<ul>
+<li><p>解决方法:</p>
+<blockquote>
+<p>方式一:  配置 <code>dependOn</code>选项,   把公共模块打包出来</p>
+<p><code>optimization.runtimeChunk: </code> 选项 : 是否把runtime 代码打包出来, 配合缓存使用</p>
+<p>方式二:  使用插件 <a target="_blank" rel="noopener" href="https://webpack.docschina.org/plugins/split-chunks-plugin"><code>SplitChunksPlugin</code></a> 可以将公共的依赖模块提取到已有的入口 chunk 中,或者提取到一个单独的chunk, 也需要 optimization.runtimeChunk 选项把runtime 代码分离出来</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><ol start="2">
+<li>动态导入模块</li>
+</ol>
+<blockquote>
+<p>使用 es6 的 <code>import()</code> 动态导入代码  , 多个import导入只会引入一个,所以可以不使用代码分离插件了</p>
+<p>使用webpack功能  <a target="_blank" rel="noopener" href="https://webpack.docschina.org/api/module-methods/#requireensure"><code>require.ensure</code></a></p>
+</blockquote>
+<ul>
+<li><p> import 动态引入:   </p>
+</li>
+<li><pre><code>import(&#39;lodash&#39;)
+ .then((&#123; default: _ &#125;)=&gt;&#123;&#125;)
+ // 需要 default参数值来获取模块对象，因为 webpack 4 在导入 CommonJS 模块时，将不再解析为 module.exports 的值
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><br><span class="hljs-bullet">  -</span> 由于 <span class="hljs-code">`import()`</span> 会返回一个 promise，因此它可以和 [<span class="hljs-code">`async`</span> 函数]一起使用<br><br><span class="hljs-bullet">  -</span> import() 实现原理就是动态生成script插入文档<br><br><span class="hljs-bullet">  -</span> 异步资源的chunk ,资源生成名字默认为数字 id, 我们可以通过特有注释来获取异步资源 chunk的name<br><br><span class="hljs-bullet">  -</span> &gt; import(/<span class="hljs-emphasis">*webpackChunkName :&quot;bar&quot;*</span>/  &#x27;./bar.js&#x27;) <br><span class="hljs-code">    &gt;</span><br><span class="hljs-code">    &gt; output&quot;&#123; chunkFilename: [name].js &#125;</span><br><span class="hljs-code"></span><br><span class="hljs-code">- **懒加载:**</span><br><span class="hljs-code"></span><br><span class="hljs-code">  &gt; 手动的代码分离,从技术概念上确实实现了&#x27;懒加载&#x27;, 但是这个懒加载,会在每次加载页面自动加载, 而不是通过用户的交互进行加载(真正需要时加载)</span><br><span class="hljs-code">  &gt;</span><br><span class="hljs-code">  &gt; 我们添加用户交互函数,  使用 import() 进行**懒加载**  </span><br><span class="hljs-code">  &gt;</span><br><span class="hljs-code">  &gt; 当调用 ES6 模块的 import() 方法（引入模块）时 必须指向模块的 `.default` 值, 因为他实际返回的是promise 处理后返回的module 对象</span><br><span class="hljs-code"></span><br><span class="hljs-code">  </span><br><span class="hljs-code"></span><br><span class="hljs-code">- 3. 预获取/预加载模块</span><br><span class="hljs-code"></span><br><span class="hljs-code">     &gt; 在声明 import 时，使用下面这些内置指令，可以让 webpack 输出 &quot;resource hint(资源提示)&quot;，来告知浏览器：</span><br><span class="hljs-code">     &gt;</span><br><span class="hljs-code">     &gt; - **prefetch**(预获取)：将来某些导航下可能需要的资源</span><br><span class="hljs-code">     &gt; - **preload**(预加载)：当前导航下可能需要资源</span><br><span class="hljs-code">     &gt;</span><br><span class="hljs-code">     &gt; ```js</span><br><span class="hljs-code">     &gt; import(/* webpackPrefetch: true*/&#x27;./path/to/LoginModal.js&#x27;);</span><br><span class="hljs-code">     &gt; </span><br><span class="hljs-code">     &gt; // 这会生成 &lt;link rel=&quot;prefetch&quot; href=&quot;login-modal-chunk.js&quot;&gt; 并追加到页面头部,指示着浏览器在闲置时间预取 login-modal-chunk.js 文件。</span><br></code></pre></td></tr></table></figure>
+
+
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p><strong>代码分离插件:</strong></p>
+</li>
+<li><p><code>CommonsChunkPlugin</code> 插件 , (webpack4 之前的插件)</p>
+<blockquote>
+<p>一个CommonsChunkPlugin 只能提取一个vendor, </p>
+<p>异步加载会出现错误, 提取runtime 的代码导致浏览器多加载资源, </p>
+<p>wepback4之后被删除</p>
+</blockquote>
+</li>
+<li><p><code>SplitChunks</code>  插件</p>
+<blockquote>
+<p><code>optimization.splitChunks</code>  开箱即用, 它的默认值可以参考<a target="_blank" rel="noopener" href="https://webpack.docschina.org/plugins/split-chunks-plugin/">官网</a></p>
+</blockquote>
+</li>
+<li><p>optimization.splitChunks 参数解释:</p>
+<blockquote>
+<p><code>chunks</code> :   async(默认值) 针对异步资源生效,  initial: 只对入口chunk生效, all:对所有的资源生效, 这意味着即使在异步和非异步块之间也可以共享块</p>
+<p><code>minChunks </code>: 拆分之前, 公共模块被共享的最低次数</p>
+<p><code>cacahGroups</code> :  分离chunks时的规则,一般有vendors 和default两种  :vendors 代表在 node_module的区块, default : 代表多次被引用的区块</p>
+</blockquote>
+</li>
+<li><p><strong>代码分离插件存在的问题:</strong>  </p>
+<blockquote>
+<p>在使用代码分离插件时, 绕不开的问题是 hash 和长效缓存:</p>
+<p>提取后的公共模块代码中, 有些chunk包含 runtime 初始化环境的代码, 导致每次打包影响chunk中 hash的变化,  而hash 的变化影响 runtime 的代码,导致某些chunk没有更新,缓存也会失效</p>
+<p>因为我们使用 chunk hash 作为资源的版本号优化客户端的缓存,这导致用户频繁的更新资源</p>
+</blockquote>
+<ul>
+<li>解决方法:</li>
+</ul>
+<blockquote>
+<p>把runtime 的代码提取出来 , 通过在提取完公共模块后, 再调用该插件提取一次</p>
+<p>或者 <strong>提取引导模板</strong></p>
+<p>使用 <a target="_blank" rel="noopener" href="https://webpack.docschina.org/configuration/optimization/#optimizationruntimechunk"><code>optimization.runtimeChunk</code></a> 选项将 runtime 代码拆分为一个单独的 chunk。将其设置为 <code>single</code> 来为所有 chunk 创建一个 runtime bundle</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p><code>runtimeChunk</code> 作用就是为了线上更新版本时，充分利用浏览器缓存，使用户感知的影响到最低。</p>
+</li>
+<li><p>代码分离插件 都需要配合<code>optimization.runtimeChunk</code> 选项,把runtime 代码提取出来</p>
+<blockquote>
+<p>提取出runtime 代码后, 还可以利用插件<a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https://github.com/numical/script-ext-html-webpack-plugin">script-ext-html-webpack-plugin</a> 进行优化,原因每次构建上线后,runtime都要重新请求, 浪费网络资源, 把它直接内联到html中</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p>代码分离其他的插件 , 分离CSS: <a target="_blank" rel="noopener" href="https://webpack.docschina.org/guides/code-splitting/plugins/mini-css-extract-plugin"><code>mini-css-extract-plugin</code></a> 把所有的CSS文件 抽离出来,变成一个CSS文件, 然后通过link 引入</p>
+</li>
+<li><p>代码切片的意义 : </p>
+</li>
+<li><blockquote>
+<p>公共模块提取的收益 :  开发过程少了重复模块的打包, 提升开发速度, 减少整体体积  合理分片之后更有效利用客户端缓存</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li>bundle 分析:  <a target="_blank" rel="noopener" href="https://github.com/webpack/analyse">官方分析工具</a>   分析输出结果来检查模块</li>
+</ul>
+<h4 id="生产环境"><a href="#生产环境" class="headerlink" title="生产环境"></a>生产环境</h4><ul>
+<li><p><em>development(开发环境)</em> 和 <em>production(生产环境)</em> 这两个环境下的构建目标存在着巨大差异。</p>
+<blockquote>
+<p><strong><em>开发环境</em></strong>:   我们需要强大的 source map 和一个有着 live reloading(实时重新加载) 或 hot module replacement(热模块替换) 能力的 localhost server</p>
+<p><strong><em>生产环境</em></strong> : 目标则转移至其他方面，关注点在于压缩 bundle、更轻量的 source map、资源优化(让用户更快加载资源,最大限度利用缓存, 资源的压缩)，</p>
+</blockquote>
+</li>
+<li><p>由于要遵循逻辑分离，我们通常建议为每个环境编写<strong>彼此独立的 webpack 配置</strong>。也可以使用同一个配置文件,不过要在webpack.config.js文件内添加判断条件来使用那个配置</p>
+<blockquote>
+<p>使用一个名为 <a target="_blank" rel="noopener" href="https://github.com/survivejs/webpack-merge"><code>webpack-merge</code></a> 的工具,此工具会引用 “common” 配置，因此我们不必再在环境特定(environment-specific)的配置中编写重复代码。需要创建文件:</p>
+<p><code>webpack.common.js  webpack.dev.js   webpack.prod.js</code>  </p>
+<p>通过在文件中引入  webpack-merge, 编写独立的webpack配置:  </p>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs diff">const &#123; merge &#125; = require(&#x27;webpack-merge&#x27;);<br>const common = require(&#x27;./webpack.common.js&#x27;);<br><br> module.exports = merge(common, &#123;<br>   mode: &#x27;development&#x27;,<br>   devtool: &#x27;inline-source-map&#x27;,<br>   devServer: &#123;<br>   contentBase: &#x27;./dist&#x27;,<br>  &#125;,<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<p>更改script 命令行, 使用不同的config进行构建</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p><strong>指定mode(构建模式)</strong></p>
+<blockquote>
+<p>许多 library 通过与 <code>process.env.NODE_ENV</code> 环境变量关联，以决定 library 中应该引用哪些内容。</p>
+<p>一些 library 可能针对具体用户的环境，删除或添加一些重要代码，以进行代码执行方面的优化,从 webpack v4 开始, 指定 <a target="_blank" rel="noopener" href="https://webpack.docschina.org/configuration/mode/"><code>mode</code></a> 会自动地配置 <a target="_blank" rel="noopener" href="https://webpack.docschina.org/plugins/define-plugin"><code>DefinePlugin</code></a></p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p><strong>source map 配置</strong></p>
+</li>
+<li><p>对于 JS文件添加<code>devtool</code>配置即可,对于<code>css less scss</code>来说,在loader, options选项中添加</p>
+<blockquote>
+<p>开发环境: cheap-moudle-eval-source-map 通常是一个不错的选择</p>
+<p>生产环境:  只有三种可供选择, 三种在安全性上各不相同 </p>
+<p>nosources-source-map 推荐</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p><strong>资源压缩 (uglify)</strong> ,意思是移除多余空格, 换行,和不执行的代码, 缩短变量名.. 使代码形式变得更短, 压缩之后的代码基本上不可读</p>
+<blockquote>
+<p><strong>压缩JavaScript</strong> : webpack4之后默认 使用了terser 的插件 terser-webpack-plugin, 可以在optimization 中的 <code>minisize:true</code>, 开启功能,   如果mode : production  则会自动设置,不用再人为设置</p>
+<p>也可以尝试别的压缩功能插件<a target="_blank" rel="noopener" href="https://github.com/webpack-contrib/closure-webpack-plugin">closure-webpack-plugin</a></p>
+</blockquote>
+<blockquote>
+<p><strong>压缩 css:</strong> 通过<code>mini-css-extract-plugin</code>  将样式提取出来到单独文件, 再使用<code>CssMinimizerWebpackPlugin</code> 进行压缩</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p><code>optimization.minimizer</code> 配置项中提供一个/多个压缩工具,</p>
+</li>
+<li><p><code>optimization.minimize:true</code>  开启压缩功能, 生产模式自动开启</p>
+</li>
+</ul>
+<h5 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h5><ul>
+<li><p>客户端获取资源是比较耗费时间的 , 浏览器使用一种名为 <a target="_blank" rel="noopener" href="https://searchstorage.techtarget.com/definition/cache">缓存</a>的技术, 重复利用浏览器已经获取过的资源, 通过命中缓存，以降低网络流量 </p>
+<blockquote>
+<p>当开发者更新了bug,希望立即更新到用户的浏览器上,而不是使用客户端旧的缓存,最好的办法是改变资源的URL,一个常用的办法时改变文件的名字 : 来迫使客户端重新下载</p>
+</blockquote>
+</li>
+<li><p>技术点:</p>
+<blockquote>
+<ol>
+<li><p>改变输出文件的文件名, ,使客户端只重新下载更新过的代码, </p>
+<blockquote>
+<p>我们可以通过替换 <code>output.filename</code> 中的 <a target="_blank" rel="noopener" href="https://webpack.docschina.org/configuration/output/#outputfilename">substitutions</a> 设置, 还要设置 runtimeChunk 选项,把runtime代码拆分成单独的 chunk, 否则会影响文件名  </p>
+<p>(但是在实际操作中 构建时不进行拆分runtime 代码, 也不会影响包含runtime的chunk的文件名  可能和文件名设置有关系  这里使用[contenthash] 并没有影响  如果使用[chunkhash]可能会发生变化 )</p>
+<p>例子:    <code>filename: &#39;[name].[contenthash].js&#39;,  </code></p>
+</blockquote>
+</li>
+<li><p>将第三方库(library)提取到单独的 vendor chunk 文件中, 因为他不会频繁改变, 可以利用 <a target="_blank" rel="noopener" href="https://webpack.docschina.org/plugins/split-chunks-plugin/"><code>SplitChunksPlugin</code></a> 插件的 <a target="_blank" rel="noopener" href="https://webpack.docschina.org/plugins/split-chunks-plugin/#splitchunkscachegroups"><code>cacheGroups</code></a> 选项来实现, 把<code>node_modules</code> 目录的代码提取出单独的一个chunk(所有的第三方库整合成一个chunk)</p>
+<p>默认情况下 使用SplitChunksPlugin插件, 会把<strong>每个</strong>第三方库都声称一个单独的chunk, </p>
+<blockquote>
+<p>当分离出来第三方库时, 有可能(使用别的文件名时)每次构建时vendor 都会改变, 可以使optimization.moduleIds设置为 deterministic’</p>
+<p>这里文件名使用了[contenthash] 构建时并没有影响vendor 的变化</p>
+</blockquote>
+</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+<h4 id="打包优化-构建性能"><a href="#打包优化-构建性能" class="headerlink" title="打包优化(构建性能)"></a>打包优化(构建性能)</h4><ul>
+<li><p>让打包速度更快,资源输出体积更小 —–对应官网的构建性能</p>
+</li>
+<li><p>环境通用: </p>
+</li>
+<li><p>缩小打包作用域 : </p>
+<ul>
+<li><p>将 loader 应用于最少数量的必要模块</p>
+<blockquote>
+<p>通过使用 <code>include</code> 字段 规定loader应用的目录,缩小范围</p>
+<p><code>exclude </code> 字段 , 排除不需要loader 的目录</p>
+<p>有些库不希望webpack 进行解析,即不应用任何的loader,但仍然会被打包进资源文件,可以使用 <code>moudle</code>中的<code>noParse: /loadsh/ </code>指明模块名字</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>每个额外的 loader/plugin 都有其启动时间。尽量少地使用工具,尽量保持 chunk 体积小,减少编译结果的整体大小，</p>
+</li>
+<li><p>将 <code>ProgressPlugin</code> 从 webpack 中删除，可以缩短构建时间。</p>
+</li>
+<li><p>cache 选项: 缓存生成的 webpack 模块和 chunk，来改善构建速度。<code>cache</code> 会在<a target="_blank" rel="noopener" href="https://webpack.docschina.org/configuration/mode/#mode-development"><code>开发</code> 模式</a>被设置成 <code>type: &#39;memory&#39;</code> 而且在 <a target="_blank" rel="noopener" href="https://webpack.docschina.org/configuration/mode/#mode-production"><code>生产</code> 模式</a> 中被禁用</p>
+</li>
+<li><p>使用ignorePlugin ,他可以完全排除一些模块, 即使被引用也不会被打包, 对于排除一些库的相关文件非常有用, 一些库产生的额外资源我们用不到,但是引用语句在库文件内,我们也无法去掉,这时使用该插件不打包</p>
+</li>
+</ul>
+<ul>
+<li><p>使用 DIIplugin插件,对一些不经常改变的公共(第三方)模块,进行预先打包,到工程部署时使用DiiReferencePlugin来索引打包好的文件, DIIplugin和 代码分离类似,但是前者会把整个模块拆出来,代码分离会根据规则拆分, 相应的前者需要单独一个配置文件</p>
+</li>
+<li><p>开发环境使用:</p>
+<ul>
+<li><p>在内存中编译, 使用工具<code>webpack-dev-server</code> ….</p>
+</li>
+<li><p>需要注意的是不同的 <code>devtool</code> 设置，会导致性能差异。选择适当的<code>devtool</code></p>
+</li>
+<li><p>webpack 只会在文件系统中输出已经更新的 chunk。最小化入口chunk,把runtime 分离出来</p>
+</li>
+<li><p>webpack 会在输出的 bundle 中生成路径信息。然而，在打包数千个模块的项目中，这会导致造成垃圾回收性能压力。在 <code>options.output.pathinfo</code> 设置中关闭：</p>
+</li>
+<li><p>使用 <strong>happyPack</strong> 多线程进行打包(webpack本身是单线程的,只能一个一个的通过依赖关系查找进行转译),适用于转译任务比较重的项目效果明显,对于小项目来说并不明显</p>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="Tree-Shaking-缩小chunk体积"><a href="#Tree-Shaking-缩小chunk体积" class="headerlink" title="Tree Shaking:  (缩小chunk体积)"></a>Tree Shaking:  (缩小chunk体积)</h5><ul>
+<li><p>通常用于描述移除 JavaScript 上下文中的未引用代码(dead-code)。它依赖于 ES2015 模块语法的 <a target="_blank" rel="noopener" href="http://exploringjs.com/es6/ch_modules.html#static-module-structure">静态结构</a> 特性, 例如我们仅仅导入了文件中的部分 导出内容, 而webpack将把所有内容导入进来,这时需要 tree shaking 去除冗余</p>
+<blockquote>
+<p>es6会在代码编译时确定依赖关系,可以检测出,没有引用过的模块(代码块),webpack进行标记,在开发环境下仍然可见, 在生产环境下<strong>资源压缩时</strong>将他们从最终的bundle去掉</p>
+</blockquote>
+</li>
+<li><p>tree Shaking 只对<code>es6 module</code> 有用, 对于通过<code>commonJs</code> 引用进来的没有用处</p>
+</li>
+<li><blockquote>
+<p>在工程中使用 <code>babel-loader</code> ,那么一定要通过配置来禁用它的模块依赖解析,因为解析过之后,webpack接受的都是commonjs形式的模块, </p>
+<p>在loader 中<code>options:&#123;presets:[@babel/preset-env,&#123;moudle:false&#125;]&#125;</code></p>
+</blockquote>
+</li>
+<li><p>使用 Tree Shaking:</p>
+<blockquote>
+<p>配置 <code>optimization: &#123; usedExports: true,&#125; </code> , 在mode: “production”时被默认添加 </p>
+<p>该配置让webpack 标记标记未使用的成员,然后在压缩过程中删除代码</p>
+</blockquote>
+<blockquote>
+<p><strong>该配置的副作用 :</strong> </p>
+<p>在一个纯粹的 ESM 模块世界中,很容易分辨出哪些代码删除之后没有副作用,但是现实情况我们达不到这种纯度, 例如有些内容虽然没有使用,但是去除之后可能会有副作用( <code>polyfill </code> 不需要导出,他影响全局作用域)</p>
+</blockquote>
+<ul>
+<li><p>``sideEffects<code> </code> 的原理:</p>
+<blockquote>
+<p><code>usedExports</code> 依赖于 <a target="_blank" rel="noopener" href="https://github.com/terser-js/terser">terser</a> 去检测语句中的副作用,我们可以通过 <code>/*#__PURE__*/</code> 注释来帮忙 terser。</p>
+<p>它将一个语句标记为没有副作用,这样进行有利于后期删除, 但是这种层面只能指定单个语句</p>
+</blockquote>
+</li>
+<li><p>使用<code>sideEffects</code> 更加有效 ,他也是标记代码但是它作用于模块的层面, 而不是代码语句的层面</p>
+<blockquote>
+<p>通过 package.json 的 <code>&quot;sideEffects&quot;</code> 属性，来实现这种方式,默认为true</p>
+<blockquote>
+<p>optimization.sideEffects 中的选项将辨识<code>package.json</code> 中的sideEffects 规则    在生产环境下默认添加</p>
+</blockquote>
+<p>如果所有代码都没有副作用 ，我们就可以简单地将该属性标记为 false</p>
+<p>或者可以给该选项提供一个数组</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p> 所有导入文件都会受到 tree shaking 的影响。这意味着，如果在项目中使用类似 <code>css-loader</code> 并 import 一个 CSS 文件，则需要将其添加到 side effect 列表中，以免在生产模式中无意中将它删除：</p>
+</blockquote>
+</li>
+<li><p>还可以在 <code>module.rules</code> 配置选项中设置 <code>&quot;sideEffects&quot;</code>。</p>
+</li>
+</ul>
+</li>
+<li><p><code>sideEffects</code>    和 <code>usedExports</code>两者的联系</p>
+<blockquote>
+<p><code>sideEffects</code>    打包时直接删除了没有副作用 被引用但没有使用的模块</p>
+<p><code>usedExports</code>   打包时 标记没有使用的语句, 在生产环境下删除多余的语句,</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p>在使用 tree shaking 时必须有 <a target="_blank" rel="noopener" href="https://webpack.docschina.org/plugins/module-concatenation-plugin">ModuleConcatenationPlugin</a> 的支持，您可以通过设置配置项 <code>mode: &quot;production&quot;</code> 以启用它。如果您没有如此做，请记得手动引入 <a target="_blank" rel="noopener" href="https://webpack.docschina.org/plugins/module-concatenation-plugin">ModuleConcatenationPlugin</a>。</p>
+</li>
+<li><p>tree shaking 本质上只对死代码进行标记, 真正去除死代码的是在生产环境下资源压缩那一步</p>
+</li>
+</ul>
+<h4 id="Web-workers"><a href="#Web-workers" class="headerlink" title="Web workers"></a>Web workers</h4><ul>
+<li>Web Worker为Web内容在后台线程中运行脚本提供了一种简单的方法。线程可以执行任务而不干扰用户界面。</li>
+</ul>
+<h4 id="进式网络应用程序PWA"><a href="#进式网络应用程序PWA" class="headerlink" title="进式网络应用程序PWA"></a>进式网络应用程序PWA</h4><ul>
+<li>是一种可以提供类似于native app(原生应用程序) 体验的 web app(网络应用程序)。简单说是一种 web 应用  。PWA 可以用来做很多事。其中最重要的是，在__离线(offline)__时应用程序能够继续运行功能。这是通过使用名为 <a target="_blank" rel="noopener" href="https://developers.google.com/web/fundamentals/primers/service-workers/">Service Workers</a> 的 web 技术来实现的。</li>
+</ul>
+<h4 id="Shimming-预置依赖"><a href="#Shimming-预置依赖" class="headerlink" title="Shimming 预置依赖"></a>Shimming 预置依赖</h4><ul>
+<li><p><code>webpack</code> compiler 能够识别遵循 ES2015 模块语法、CommonJS 或 AMD 规范编写的模块。然而，一些 third party(第三方库) 可能会引用一些全局依赖（例如 <code>jQuery</code> 中的 <code>$</code>）。因此这些 library 也可能会创建一些需要导出的全局变量。这些 “broken modules(不符合规范的模块)” 就是 <em>shimming(预置依赖)</em> 发挥作用的地方。</p>
+</li>
+<li><p><em>shim</em> 另外一个极其有用的使用场景就是：当你希望 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Polyfill_(programming)">polyfill</a> 扩展浏览器能力，来支持到更多用户时。在这种情况下，你可能只是想要将这些 polyfills 提供给需要修补(patch)的浏览器（也就是实现按需加载）</p>
+</li>
+<li><p><strong>Shimming 预置全局变量:</strong> </p>
+</li>
+<li><p>使用 <a target="_blank" rel="noopener" href="https://webpack.docschina.org/plugins/provide-plugin"><code>ProvidePlugin</code></a> 后，能够在 webpack 编译的每个模块中，通过访问一个变量来获取一个 package</p>
+<blockquote>
+<p>还可以使用 <code>ProvidePlugin</code> 暴露出某个模块中单个导出，通过配置一个“数组路径”</p>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs diff">new webpack.ProvidePlugin(&#123;<br>    _: &#x27;lodash&#x27;,<br>     join: [&#x27;lodash&#x27;, &#x27;join&#x27;],<br>     &#125;),<br></code></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>在依赖全局变量的 第三方模块中  <a target="_blank" rel="noopener" href="https://webpack.docschina.org/loaders/imports-loader/"><code>imports-loader</code></a>  很有用,  <a target="_blank" rel="noopener" href="https://webpack.docschina.org/loaders/exports-loader/"><code>exports-loader</code></a>，将一个全局变量作为一个普通的模块来导出</p>
+<blockquote>
+<p> imports-loader最直接的应用场景，就是你想直接import一个开放的js文件，而不是通过npm去加载这个类库（会有一些类库不支持npm的方式）</p>
+</blockquote>
+</li>
+<li><p><strong>加载polyfills:</strong> </p>
+<blockquote>
+<p>最普通的方法 : 引入 <a target="_blank" rel="noopener" href="https://babel.docschina.org/docs/en/babel-polyfill/"><code>babel-polyfill</code></a> 直接  import ‘babel-polyfill’;使用 <code>import</code> 将其引入到我们的主 bundle 文件：</p>
+<p>最佳实践仍然是，不加选择地和同步地加载所有 polyfill/shim，尽管这会导致额外的 bundle 体积成本。</p>
+<p>但是你仍然可以选择性的加载polyfill, 使用<code>whatwg-fetch</code> 条件性的加载</p>
+</blockquote>
+</li>
+<li><p>优化方案:</p>
+</li>
+<li><p><code>babel-preset-env</code> package 通过 <a target="_blank" rel="noopener" href="https://github.com/browserslist/browserslist">browserslist</a> 来转译那些你浏览器中不支持的特性。这个 preset 使用 <a target="_blank" rel="noopener" href="https://babel.docschina.org/docs/en/babel-preset-env#usebuiltins"><code>useBuiltIns</code></a> 选项，默认值是 <code>false</code>，这种方式可以将全局 <code>babel-polyfill</code> 导入，改进为更细粒度的 <code>import</code> 格式：<a target="_blank" rel="noopener" href="https://babeljs.io/docs/en/babel-preset-env">babel-preset-env</a></p>
+</li>
+<li></li>
+</ul>
+
+            </div>
+            <div><a href="https://github.com/thinkles/thinkles.github.io/blob/myblog/source/_posts/工具篇/webpack.md" target="_blank">编辑</a></div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%B7%A5%E5%85%B7/webpack/">webpack</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/webpack/">webpack</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/02/21/%E5%B7%A5%E5%85%B7%E7%AF%87/Web%E5%BC%80%E5%8F%91overview/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">前端开发overview</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/02/21/%E5%B7%A5%E5%85%B7%E7%AF%87/preitter%20%20eslint/">
+                        <span class="hidden-mobile">linear</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.waitElementVisible('comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'thinkles/Utterances-comment-blog');
+      s.setAttribute('issue-term', 'title');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.start()
+    document.addEventListener('DOMContentLoaded', function() {
+      window.NProgress && window.NProgress.inc();
+    })
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>

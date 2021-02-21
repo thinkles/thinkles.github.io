@@ -1,0 +1,707 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Yangsir">
+  <meta name="keywords" content="">
+  <title>CSS3 指南 - Yangsir&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.6","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Yangsir-Zone</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/images/bag.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="CSS3 指南">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-02-21 11:41" pubdate>
+        2021年2月21日 中午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.6k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      18
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">CSS3 指南</h1>
+            
+            <div class="markdown-body">
+              <h3 id="CSS3"><a href="#CSS3" class="headerlink" title="CSS3"></a>CSS3</h3><ul>
+<li><p>边框</p>
+<ul>
+<li><p>border-radius    圆角</p>
+<blockquote>
+<p>默认一个值应用在四个方向,如果想单独设置,可以各四个值分别代表 从左上顺时针到左下的角</p>
+</blockquote>
+</li>
+<li><p>box-shadow   边框阴影 </p>
+<blockquote>
+<p>四个值分别   x偏移量 | y偏移量 | 阴影模糊半径 | 阴影颜色 </p>
+</blockquote>
+</li>
+<li><p>border-image    用图片创建边框</p>
+<blockquote>
+<p>三个值 /* border-image: image-source image-height image-width image-repeat */</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>文本</p>
+<ul>
+<li><p>text-shadow 文本应用阴影 (和box-shadow 格式一样)</p>
+<blockquote>
+<p>四个值分别 :水平阴影(px)、垂直阴影 (px)、模糊距离(px)，以及阴影的颜色</p>
+</blockquote>
+</li>
+<li><p>@font-face 规则   应用时设置font-family: name 使用自己设置的名字</p>
+</li>
+</ul>
+</li>
+<li><p>渐变</p>
+<ul>
+<li> linear-gradient()函数创建  </li>
+<li><blockquote>
+<p> background: linear-gradient(to bottom right, blue, pink);  第一个参数可选 也可以替换成角度  颜色参数也可以是多种颜色  可以控制结束为止,渐变中心… 在使用角度的时候, 0deg 代表渐变方向为从下到上, 90deg 代表渐变方向为从左到右</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>filter 属性 完成图像模糊 (滤镜效果) 颜色转变的想过 </p>
+<h3 id="CSS-变形-transforms"><a href="#CSS-变形-transforms" class="headerlink" title="CSS 变形 (transforms)"></a>CSS 变形 (transforms)</h3></li>
+<li><p>行级元素不产生变形效果，将其转为 <code>inline-block</code> 或 <code>block</code> 以及弹性元素时都可以产生变化效果</p>
+</li>
+</ul>
+<ul>
+<li><p><strong>transform属性,变形函数</strong>:</p>
+</li>
+<li><p>偏移</p>
+<ul>
+<li><p><code>translate()</code>  控制X、Y轴偏移   <code>translate3d() </code> 空间内偏移  , 给 x y z轴的坐标</p>
+</li>
+<li><blockquote>
+<p>从其当前位置移动，根据给定的坐标值</p>
+<p>还有,  <code>translateX() </code> <code>translateY()</code>   <code>translateZ()</code>  </p>
+<p><strong>坐标值的类型:</strong></p>
+<p>百分比 :  100%代表元素本身的尺寸(z轴不能给百分比值,因为z轴可以无限纵深,没有参考值)</p>
+<p>负值: 反方向偏移</p>
+<p>标准值</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>缩放: </p>
+<ul>
+<li><p><code>scale()</code> 设置 X/Y 轴的缩放     <code> scale3d()</code>  沿X/Y/Z三个轴绽放元素。</p>
+<blockquote>
+<p><code>scaleX()  scaleY()  scaleZ()</code>   </p>
+</blockquote>
+<blockquote>
+<p>z轴的缩放放大,视觉上是距离远近</p>
+<p>放大和缩放  , 1 代表本身的大小, 负值进行反方向变换</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>旋转:</li>
+</ul>
+<pre><code>- `rotate()`  在平面内旋转,效果与使用 `rotateZ` 相同。  `rotate3d(tx,ty,tz,angle)` 同时设置X/Y/Z轴的旋转向量值来控制元素的旋转
+
+  &gt; 允许负值，元素将逆时针旋转
+
+  &gt;`rotateX()   rotateY()    rotateZ()`  元素按照不同坐标轴进行旋转
+  &gt;
+  &gt;可以同时设置多个旋转规则，顺序不同结果也会不同。</code></pre>
+<ul>
+<li><p>倾斜:</p>
+<ul>
+<li><p>skew()同时设置X/Y轴倾斜操作，不指定第二个参数时Y轴倾斜为零</p>
+<blockquote>
+<p><code>skewX( )  skewY()</code>   </p>
+<p>通过倾斜还可以做出立体的图像</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>变形基点:</p>
+</li>
+<li><p>使用 <code>transform-origin</code> 设置元素的X/YZ操作的基点，用于控制旋转、倾斜等操作</p>
+<blockquote>
+<ul>
+<li><p><strong>旋转默认以元素中心</strong>进行旋转，改变基点后可控制旋转点位置</p>
+</li>
+<li><p><strong>元素移动不受变形基点所影响</strong></p>
+</li>
+<li><p>基点是元素原始空间位，而不是translate移动后的空间位,基点存在于元素本身,而不是移动的空间位上</p>
+</li>
+</ul>
+</blockquote>
+</li>
+<li><p>透视:</p>
+<blockquote>
+<p>使用 <code>perspective</code> 来控制元素的透视景深   (简单理解 数值越小观察位置越近)</p>
+<p>给单个元素设置 tansform:perspective() ,使视角向后靠,让3d感更强,(近距离看不到3d的)</p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p><code>perspective</code> <strong>规则</strong>用于将父级整个做为透视元素，会造成里面的每个子元素的透视是不一样的。对父元素没有影响, 一般容器内是一个立方体时使用,用同一个位置观察不同的元素</p>
+<p><code>perspective()</code> 函数用于为元素设置单独透视，每个元素的透视效果是一样的。相当于把每个元素拿到同一个位置去看</p>
+</blockquote>
+<ul>
+<li><p>使用 <code>transform-style</code> 用于控制3d透视。参数:flat   preserve-3d</p>
+<blockquote>
+<p>应用于舞台即变形元素的父级元素<br>设置 overflow:visible 时 preserve-3d 才无效</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p>透视视角:</p>
+<blockquote>
+<p>通过 <code>perspective-origin</code> 属性来设置。默认透视视角为 观察者视角不变 物体变换位置</p>
+<p>可以理解眼镜看物体的位置,看物体的左边或者右边</p>
+<p>需要设置 <code>perspective</code> 透视后才可以看到效果。</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p>使用 <code>backface-visibility</code> 用于控制是否可以看到元素的背面。</p>
+</li>
+<li><blockquote>
+<p>一般设置在元素上而不是舞台元素上</p>
+<p>需要舞台元素（父级元素）设置 <code>transform-style: preserve-3d</code></p>
+</blockquote>
+</li>
+<li><p><code>transform-style: preserve-3d</code> 当z轴参与 需要3d感时需要给父元素加上</p>
+</li>
+</ul>
+<h3 id="CSS过渡-transitions"><a href="#CSS过渡-transitions" class="headerlink" title="CSS过渡 (transitions)"></a>CSS过渡 (transitions)</h3><ul>
+<li><p>transition 提供了一种在更改CSS属性时控制动画速度的方法</p>
+<blockquote>
+<p>transition-property` 规定哪些属性进行改变</p>
+<p><code>transition-duration</code> 变换时间</p>
+<p><code>transition-delay</code>  指定延迟 </p>
+<p>简写属性  <code>transition</code></p>
+<p>transition: width 2s 1s(delay) linear, height 2s, transform 2s </p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p><code>transition-timing-function </code>指定一个函数，定义属性值变化快慢函数</p>
+<blockquote>
+<p>关键字 或者自定义 cubic-bezier()</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><blockquote>
+<p>当过渡完成时触发一个事件，<code>transitionend</code></p>
+<p>想让一个元素的属性 transition起来 , 必须要先有预设值,  </p>
+<p>部分属性是没有过渡属性的</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h3><ul>
+<li><p>使用keyframes定义动画序列</p>
+<blockquote>
+<p>@keyframes name {</p>
+<p>from{….} </p>
+<p>to{….},</p>
+<p>或者 关键帧</p>
+<p>25%{}  75%{}…</p>
+<p>} </p>
+<p>帧动画也可以和form to混合使用</p>
+<p>多个帧动画有共同的属性可以组合书写</p>
+<p>25%,75%{</p>
+<p>}</p>
+</blockquote>
+</li>
+<li><p>animation 属性:</p>
+<blockquote>
+<p><code>animation-duration</code>  设置动画中的属性的运行时长</p>
+<p> <code>animation-timing-function</code>  动画变化速率 贝塞尔曲线 和transition一样<br> <code>animation-direction</code>  设置动画方向  (方向指 动画的0% 100%)</p>
+<p> <code>animation-delay</code> 延迟<br> <code>animation-iteration-count</code> 设置动画重复次数， 可以指定infinite无限次重复动画<br>   <code> animation-name</code>   指定应用的动画</p>
+<p><code>animation-play-state</code>  指定动画暂停开始 </p>
+<p>``animation-fill-mode` :用于定义动画播放结束后的处理模式，是回到原来状态还是停止在动画结束状态</p>
+</blockquote>
+</li>
+<li><p>简写属性 : animation</p>
+<blockquote>
+<p>animation: 3s ease-in 1s 2 reverse both paused 动画名字</p>
+<p>动画名字由@keyframes 定义</p>
+</blockquote>
+</li>
+<li><p>没有中间值的属性,没办法进行动画变化, 例如:solid  dashed 边框样式是没有中间值的,他会一瞬间变化没有动画</p>
+</li>
+</ul>
+<h3 id="媒体查询和响应式"><a href="#媒体查询和响应式" class="headerlink" title="媒体查询和响应式"></a>媒体查询和响应式</h3><ul>
+<li><p>style link 标签的 media属性,针对各设备的样式化 ,默认为 all</p>
+</li>
+<li><p>您可以在<code>media</code>属性中提供媒体类型或查询; 然后，只有在媒体条件为true时，才会加载此资源。</p>
+</li>
+<li><p>@import url() media名字  查询条件   给各设备导入样式化文件</p>
+<blockquote>
+<p>利用import 把每个不同设备的css文件 进行导入同一个css文件</p>
+</blockquote>
+</li>
+<li><p>only 关键字 : 支持媒体查询的浏览器应用样式</p>
+</li>
+</ul>
+
+            </div>
+            <div><a href="https://github.com/thinkles/thinkles.github.io/blob/myblog/source/_posts/Md CSS夕拾/CSS3 扩展.md" target="_blank">编辑</a></div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/CSS/">CSS</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/CSS3/">CSS3</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/02/21/Md%20CSS%E5%A4%95%E6%8B%BE/Sass%E5%9F%BA%E7%A1%80/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">sass基础</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/02/21/Md%20CSS%E5%A4%95%E6%8B%BE/CSS3%20%E5%B8%83%E5%B1%80%E6%80%BB%E8%A7%88%20/">
+                        <span class="hidden-mobile">CSS 布局</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.waitElementVisible('comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'thinkles/Utterances-comment-blog');
+      s.setAttribute('issue-term', 'title');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.start()
+    document.addEventListener('DOMContentLoaded', function() {
+      window.NProgress && window.NProgress.inc();
+    })
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>

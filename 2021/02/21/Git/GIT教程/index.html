@@ -1,0 +1,1043 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Yangsir">
+  <meta name="keywords" content="">
+  <title>GIT 教程 - Yangsir&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.6","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Yangsir-Zone</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/images/bag.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="GIT 教程">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-02-21 11:41" pubdate>
+        2021年2月21日 中午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      5.4k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      61
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">GIT 教程</h1>
+            
+            <div class="markdown-body">
+              <p>重要概念:</p>
+<ul>
+<li>三方合并原则</li>
+<li>git 提交的本质</li>
+<li>git 操作和指针之间的关系…</li>
+<li>冲突合并</li>
+<li>什么时候冲突</li>
+</ul>
+<h3 id="git-分区"><a href="#git-分区" class="headerlink" title="git 分区"></a>git 分区</h3><ul>
+<li><p>工作区 (working directory)  暂存区(stage)   版本库</p>
+<blockquote>
+<p>关系:  工作区  add  暂存区  commit  版本库</p>
+</blockquote>
+</li>
+<li><p><code>git status </code>:可以追踪工作区的文件 ,红色文件代表工作区 绿色文件代表暂存区</p>
+</li>
+</ul>
+<ul>
+<li><p><code>git add ...</code>   使文件加入暂存区，被纳入版本控制，修改时可以被追踪</p>
+</li>
+<li><p>显示 new file,对其更改，删除，更改会显示modified状态，可以再次add把已修改的文件加入暂存区，然后进行提交，通过 checkout可以恢复，也可以通过reset不暂存，不暂存的话就变成了未追踪状态，可以重复以前的操作。 删除和更改操作一样，当删除过后，如果利用reset就会撤销暂存，并且文件无法恢复</p>
+</li>
+<li><p><code>git commit  -m&#39;注释&#39; </code>    加入版本库   更改删除发生状况，首先把文件全部提交完后当本地仓库和工作区同步时，则status什么都不显示,当更改后必须重新通过add加入暂存然后再次commit ，或者通过checkout（从暂存区？）恢复文件，删除情况与更改一样</p>
+<blockquote>
+<p><code>git commit -am &#39;注释&#39;</code>    即相当于是**<code>git add .</code>** 与 <strong><code>git commit</code></strong> 两步操作的合成</p>
+</blockquote>
+<blockquote>
+<p><strong>该方式只适用于已被<code>git</code>追踪的文件（即文件至少提交过一次）</strong></p>
+<p><strong>当文件第一次提交到暂存区时（此时该文件并未被<code>git</code>追踪）不可以使用该命令，而是要分开写，否则会报错</strong></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="Git-日志"><a href="#Git-日志" class="headerlink" title="Git 日志"></a>Git 日志</h4><ul>
+<li><p>主要分为三大类：分支的<strong>提交日志</strong>、文件的<strong>修改日志</strong>、<code>git</code>的<strong>操作日志</strong></p>
+</li>
+<li><p><code>git log</code>  查看版本库提交日志 ,提交历史是倒叙的，最新的提交排在最前面</p>
+<blockquote>
+<p><code>git log -3</code>最近几条  <code>git log --graph</code>  图形化显示提交历史</p>
+<p><code>git log --pretty=oneline</code>   以一行的形式显示提交历史</p>
+<p><code>git log --all --decorate --oneline --graph</code>  </p>
+</blockquote>
+</li>
+<li><p><code>git blame file_name</code>   查看修改日志</p>
+</li>
+<li><p><code>git reflog</code>  查看操作日志</p>
+<blockquote>
+<p>区别: <strong><code>git log</code>**：只能显示</strong>当前分支**的提交历史，如果进行版本回退，会丢失较后版本的提交信息 这时通过操作日志进行查看..</p>
+<p>总体上来说，操作日志包含了修改日志和提交日志，是最全的<code>git</code>日志</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="git-删除、修改、撤销"><a href="#git-删除、修改、撤销" class="headerlink" title="git 删除、修改、撤销"></a>git 删除、修改、撤销</h3><ul>
+<li><p><code>git rm &lt;file&gt;</code>   <strong>该命令用于删除版本库中的文件</strong>；如果用来删除工作区和暂存区中的文件都会报错</p>
+<blockquote>
+<p>本质上是两步操作 :  删除版本库中的文件, 把删除更改状态加入暂存区</p>
+<p><code>git rm --cached &lt;file&gt;</code>    只删除暂存区的file文件 ,不在追踪该文件</p>
+</blockquote>
+</li>
+<li><p><code>rm &lt;file&gt;</code>  命令只能用于删除工作区和版本库中的文件, 不能删除暂存区文件</p>
+<blockquote>
+<p>与<code>git rm</code><strong>不同的是</strong>，该指令不会将删除操作纳入<strong>暂存区</strong>。</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="重命名文件"><a href="#重命名文件" class="headerlink" title="重命名文件"></a>重命名文件</h4><ul>
+<li><code>git mv &lt;file1&gt; &lt;file2&gt;</code>  该命令会把重命名操作状态纳入暂存区</li>
+<li><code>mv &lt;file1&gt; &lt;file2&gt;</code> 系统命令  和git命令区别在于不会将操作提交到暂存区</li>
+</ul>
+<h4 id="比较文件"><a href="#比较文件" class="headerlink" title="比较文件"></a>比较文件</h4><ul>
+<li><p>系统命令 <code>diff  file1 file2</code> 比较本地文件</p>
+</li>
+<li><p>比较<strong>暂存区</strong>和<strong>工作区</strong>中的同一文件</p>
+<blockquote>
+<p><code>git diff</code>  该命令自动比较 工作区的修改后的文件 和暂存区的目标文件 </p>
+</blockquote>
+</li>
+<li><p>比较<strong>版本库</strong>和<strong>工作区</strong>中的同一文件</p>
+<blockquote>
+<p><code>git diff commit_id</code>  用于比较指定commit id提交上的<code>A</code>文件和工作区中的<code>A</code>文件</p>
+<p><code>git diff HEAD</code>  用于比较最新提交上的<code>A</code>文件和工作区中的<code>A</code>文件</p>
+</blockquote>
+</li>
+<li><p>比较<strong>版本库</strong>和<strong>暂存区</strong>中的同一文件</p>
+<blockquote>
+<p><code>git diff --cached commit_id</code>  </p>
+<p><code>git diff --cached</code>     作用和上一部分一样</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="撤销修改"><a href="#撤销修改" class="headerlink" title="撤销修改"></a>撤销修改</h4><ul>
+<li><p><strong>将暂存区恢复到工作区</strong>:</p>
+<blockquote>
+<p>将已经纳入<strong>暂存区</strong>的修改撤销，恢复到<strong>工作区</strong>修改但没有提交的状态，再恢复到修改前</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p><code>git restore --stage &lt;file&gt;</code>  将文件从<strong>缓存区</strong>中移动到<strong>工作区</strong>参数<code>--stage</code>写成<code>--staged</code>效果是一样的</p>
+<p><code>git reset HEAD &lt;file&gt;</code>  </p>
+</blockquote>
+</li>
+<li><p><strong>撤销工作区的操作</strong></p>
+<blockquote>
+<p>撤销工作区中对文件的操作，包括新增、修改、删除等</p>
+<p>原理: 使用暂存区的文件进行比对, 对工作区进行回滚, 所有提交到暂存区后就无法改变修改</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p><code>git checkout -- &lt;file&gt;</code>  可以撤销工作区中对<code>flie</code>文件的改动操作, <code>--</code>后面加上空格, 修改如果通过git add 提交到暂存区,该指令无效</p>
+<p><code>git restore &lt;file&gt;</code>  可以撤销<strong>工作区</strong>中对<code>file</code>文件的操作,效果和上式相同</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="修改提交注释和作者"><a href="#修改提交注释和作者" class="headerlink" title="修改提交注释和作者"></a>修改提交注释和作者</h4><ul>
+<li><p><code>git commit --amend -m</code> ‘修正信息’</p>
+<blockquote>
+<p>当需要为最近一次提交添加大量注释时: <code>git commit --amend</code></p>
+</blockquote>
+</li>
+<li><p><code>git commit --amend --author &#39;Name&lt;email&gt;&#39;</code></p>
+</li>
+<li><blockquote>
+<p>修改提交注释的同时，会创建了一个新提交替换了原来需要修正的提交, 也就是说日志中只有一次提交而不是两次</p>
+</blockquote>
+</li>
+<li><p>修改特定提交信息</p>
+<blockquote>
+<p><code>git rebase -i commit_id</code> </p>
+<p><code>git rebase -i HEAD~n</code>   其中<code>n</code>表示需要显示的最近<code>n</code>次提交记录</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="获取帮助"><a href="#获取帮助" class="headerlink" title="获取帮助"></a>获取帮助</h4><ul>
+<li><code>git config help </code> 跳转网页 获取config命令的说明</li>
+</ul>
+<h3 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h3><ul>
+<li><p>在开发当中，往往需要分工合作,<code>git</code>为我们提供的分支功能就能实现这一需求</p>
+</li>
+<li><blockquote>
+<p><code>git branch</code>  查看当前版本库中的所有分支</p>
+<p><code>git branch -a</code>  查看所有本地分支，包括本地分支和本地远程分支</p>
+<p><code>git branch -v</code>   查看所有本地分支上最近一次的提交记录</p>
+<p><code>git branch -av</code>    查看所有分支的最近一次提交记录</p>
+<p><code>git branch -r</code>   参数用于单独查看本地远程分支</p>
+<p><code>git branch -vv</code>   表示查看所有本地分支与远程分支的关联情况</p>
+</blockquote>
+</li>
+<li><p><strong>本地分支</strong></p>
+</li>
+<li><blockquote>
+<p><code>git branch &lt;branch_name&gt;</code>    创建分支</p>
+<p><code>git checkout -b &lt;branch_name&gt;</code>  创建并切换到新的分支</p>
+<p><code>git checkout &lt;branch_name&gt;</code>  切换分支</p>
+<p><code>git checkout -</code>  切换回上次操作的分支：</p>
+</blockquote>
+</li>
+<li><p><strong>重命名分支</strong>: <code>git branch -m &lt;oldName&gt; &lt;newName&gt;</code></p>
+</li>
+<li><p><strong>删除本地分支:</strong>  <code>git branch -d new_branch</code>  </p>
+<blockquote>
+<p>不能删除本地分支 ,</p>
+<p>当需要删除的分支上有<code>master</code>分支没有的内容，并且删除前没有进行合并（<code>merge</code>）时，会报错  提示参数改为 D</p>
+</blockquote>
+</li>
+<li><p>分支合并</p>
+<blockquote>
+<p><code>git merge &lt;branch_name&gt;</code> 这里所讲的分支指的是有公共提交节点的分支</p>
+<p>当两分支没有公共提交节点 采用<code>rebase</code>进行合并</p>
+</blockquote>
+</li>
+<li><p><code>git merge</code>原理</p>
+<blockquote>
+<p> 这种合并方式叫做：<code>Fast-forward</code>，<strong>没有冲突</strong>，改变的只是<code>master</code>指针指向</p>
+<p><code>git merge --no-ff dev</code>  禁用Fast-forward模式, 会触发一次提交,而不是改变指针</p>
+<p>注意两者的区别</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p>分支合并原则</p>
+</li>
+<li><p>分支的本质</p>
+<blockquote>
+<p><strong>分支：指向一条<code>commit</code>对象链或一条工作记录线的指针</strong>   </p>
+<p><code>HEAD</code>始终指向当前分支</p>
+<p>对于<code>HEAD</code>修改的任何操作，都会被<code>git reflog</code> 记录下来</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>我们可以通过<code>git</code>的底层命令<code>symbolic-ref</code>来实现对<code>HEAD</code>文件内容的修改</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p>合并冲突</p>
+<blockquote>
+<p>分别对两分支上的<code>test.txt</code>文件进行修改，并分别将修改<strong>提交</strong>到各自的分支,会发生合并冲突, 因为 <code>git</code>合并时并不知道以哪个分支的修改为标准,不能采用<code>Fast-forward</code>方式自动合并</p>
+</blockquote>
+</li>
+<li><p>解决冲突</p>
+<blockquote>
+<p><strong>选择需要保留的内容，手动解决合并冲突</strong> ,只需要在文件中保留想要的内容即可,</p>
+<p>然后使用add把修改提交到暂存区, 通过commit提交完成合并(merge)</p>
+<p>一般情况下 我们使用工具解决冲突</p>
+</blockquote>
+</li>
+<li><p>合并分支的实质就是不同提交的合并，以及<code>HEAD</code>和分支指针的移动；</p>
+</li>
+</ul>
+<h3 id="远程仓库github、git图形"><a href="#远程仓库github、git图形" class="headerlink" title="远程仓库github、git图形"></a>远程仓库github、git图形</h3><ul>
+<li><p><code>git</code>裸库 : 没有工作区的<code>git</code>仓库 , 只起到代码托管的作用而不需要也不应该修改服务器上的代码。</p>
+<blockquote>
+<p><code>git init --bare</code>   创建裸库</p>
+</blockquote>
+</li>
+<li><p>本地仓库与远程版本库</p>
+<blockquote>
+<p>远程仓库的实质就是本地仓库中的<strong>版本库</strong>对应的<strong>远程版本库</strong>，通常直接叫做<strong>远程仓库</strong>。</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p><code>git push</code>：将<strong>本地仓库某分支</strong>上的代码推送到<strong>远程仓库的某分支</strong>上, 推送操作是分支对分支的,而不是将本地仓库的所有分支都推送到远程仓库</p>
+<p><code>git pull</code>:  将远程仓库文件拉取到本地版本库</p>
+</blockquote>
+</li>
+<li><p><code>push、pull</code>完整的写法</p>
+<blockquote>
+<p>git push origin srcBranch:destBranch   <code>srcBranch</code>表示的是<strong>本地分支</strong>，<code>destBranch</code>表示的是<strong>远程分支</strong></p>
+<p>git pull origin srcBranch:destBranch   <code>srcBranch</code>表示的是<strong>远程分支</strong>，<code>destBrach</code>表示的是<strong>本地分支</strong>；</p>
+<p>可以这样理解：<code>srcBranch</code>表示<strong>从哪里来</strong>，<code>destBranch</code>表示<strong>到哪里去</strong>； </p>
+</blockquote>
+</li>
+<li><p><code>git push</code></p>
+<blockquote>
+<p>特殊的情况 : 只有一个用户操作远程仓库, 手动的改变远程仓库文件, 而不通过本地推送来改变远程仓库文件,再次推送时会出现错误, 必须先进行pull操作,这时本地才会追踪修改的操作</p>
+<p>多人共用同一远程仓库, 用户需要在pull操作之后 再次进行push, 如果直接推送发生错误,原因在于：不能覆盖别的用户做出的文件修改, 需要pull 之后进行merge操作 </p>
+</blockquote>
+</li>
+<li><p><code>git pull</code> </p>
+<blockquote>
+<p>在进行拉取操作的过程中,会执行合并操作（<code>merge</code>）合并操作可能成功也可能失败</p>
+<p><code>pull</code>操作其实是<code>fetch</code>操作和<code>merge</code>操作的合成</p>
+</blockquote>
+</li>
+<li><h4 id="推送代码"><a href="#推送代码" class="headerlink" title="推送代码"></a>推送代码</h4><blockquote>
+<p><code>git push -u origin master</code>    加上<code>-u</code>表示将本地的<code>master</code>分支与远程的<code>master</code>分支<strong>建立关联</strong>；再次推送时就可以直接通过<code>git push</code>进行推送了。</p>
+</blockquote>
+</li>
+<li><p><strong>查看远程仓库地址</strong></p>
+<blockquote>
+<p><code>git remote</code> //只显示远程仓库地址名</p>
+<p><code>git remote -v</code> //显示远程仓库地址名和对应URL </p>
+<p><code>git remote show origin</code> //显示详细信息</p>
+</blockquote>
+</li>
+<li><p>修改远程仓库</p>
+<blockquote>
+<p>方法一:</p>
+<p><code>git remote rm origin </code></p>
+<p><code>git remote add origin https://gitee.com/ahuntsun/gitTest.git</code></p>
+<p>方法二 :</p>
+<p><code>git remote set-url origin https://163.com</code></p>
+<p>方法三: 修改.git中的config仓库</p>
+</blockquote>
+</li>
+<li><p>SSH协议建立本地和远程仓库的联系</p>
+</li>
+</ul>
+<h3 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h3><ul>
+<li><p>在<code>git</code>中永远有后悔药可吃，总是可以回到<strong>版本库</strong>的某一个时刻，这就叫做<strong>版本回退</strong></p>
+</li>
+<li><p><code>git reset</code>   常用的有<code>--mixed</code>、<code>--soft</code>和<code>--hard</code>三种参数</p>
+<blockquote>
+<p><code>--mixed</code> 将文件回退到<strong>工作区</strong>，此时会保留<strong>工作区</strong>中的文件，但会丢弃<strong>暂存区</strong>中的文件  为默认值，等同于<code>git reset</code></p>
+<p><code>--soft</code>：作用为：将文件回退到<strong>暂存区</strong>，此时会保留<strong>工作区</strong>和<strong>暂存区</strong>中的文件；</p>
+<p><code>--hard</code>：作用为：将文件回退到<strong>修改前</strong>，此时会丢弃<strong>工作区</strong>和<strong>暂存区</strong>中的文件；</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>使用 <code>git reset --soft head^ </code>    <strong>回退一次</strong></p>
+<p><code>git reset --hard HEAD^^ </code>  回退二次</p>
+<p><code>git reset --hard HEAD~n</code>  回退n次</p>
+<p> <code>HEAD</code>可以更换为分支名</p>
+<p><code>git reset --hard commit_id</code>     **该指令的作用为回退到指定的<code>commit id</code>  (一般前6位)的提交版本 **</p>
+<p>通过<code>commit id</code>的回退方式<strong>既可以向前回退，也可以向后回退。</strong></p>
+</blockquote>
+</li>
+<li><p><code>git revert</code>    不同于<code>reset</code>直接通过改变分支指向来进行版本回退，并且不产生新的提交；<code>revert</code>是通过额外创建一次提交，来取消分支上指定的某次提交的方式，来实现版本回退的</p>
+<blockquote>
+<p><code>-e</code>参数是<code>--edit</code>的缩写，为<code>revert</code>指令的默认参数，即<code>git revert -e</code>等同于<code>git revert </code>    在重做过程中，新建一次提交的同时编辑提交信息\</p>
+<p><code>--no-edit</code>   参数 不编辑新增提交的注释信息</p>
+<p><code>-n</code>参数是<code>--no-commit</code>的简写形式  不进行提交 仅仅把改变放入暂存区,通过手动提交完成回滚操作</p>
+</blockquote>
+</li>
+<li><p><code>revert</code>指令也有多种写法，下面介绍主要的几种。</p>
+<blockquote>
+<p><code>git revert commit_id</code>    通过<code>commit_id</code>精准地选择想要重做的提交。</p>
+<p>重做非最新一次提交，会发生冲突。</p>
+</blockquote>
+<blockquote>
+<p><code>git revert HEAD</code>   … 和 reset 语法相同</p>
+</blockquote>
+</li>
+<li><p>撤销<code>revert</code>操作  , 再次通过<code>revert</code>操作取消上一次的<code>revert</code>操作, 即所谓”负负得正”）</p>
+</li>
+</ul>
+<ul>
+<li><p><code>git checkout</code>  </p>
+<blockquote>
+<p><code>git checkout commit_id</code>    使用<code>checkout</code>可以进行版本回退</p>
+<p>通过checkout 回退 使组成的<code>commit</code>对象链条处于游离状态；</p>
+<ul>
+<li>通过<code>checkout</code>进行版本回退会造成游离的提交对象链，需要额外创建一个分支进行保存</li>
+<li>因此，使用<code>checkout</code>进行版本回退的思路为，先切换到想要回退的提交版本，再删除进行版本回退的分支<code>dev</code>。最后，创建一个新的<code>dev</code>分支指向游离的提交对象链，完成分支<code>dev</code>的版本回退，简称”偷天换日”；</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p>由于<code>checkout</code>会造成游离的提交对象链，所以，一般不使用<code>checkout</code>而是使用<code>reset</code>和<code>revert</code>进行版本回退</p>
+</li>
+<li><blockquote>
+<p>在个人开发上，建议使用<code>reset</code>；但是在团队开发中建议使用<code>revert</code>，特别是公共的分支（比如<code>master</code>)，这样能够完整保留提交历史，方便回溯。</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p><code>git stash</code>的作用</p>
+</li>
+<li><blockquote>
+<p>对没有提交到版本库的，位于工作区或暂存区中游离的修改进行保存，在需要时可进行恢复        这些游离的修改在切换分支时都将会丢弃</p>
+</blockquote>
+</li>
+<li><p>位于工作区和暂存区中的修改都会被<code>checkout</code>操作覆盖  </p>
+</li>
+<li><blockquote>
+<p>这种情况在日常开发中很常见，当在<code>develop</code>分支上开发新功能的时候，<code>master</code>分支出现紧急情况需要切换回去进行修复。但是，当前分支的新功能还没开发完全，贸然切换分支，原来开发的内容就会因被覆盖而丢失，怎么办呢？</p>
+<p>使用git stash 暂存修改</p>
+</blockquote>
+</li>
+<li><p>可见<code>git stash</code>可以将当前分支上，位于在工作区或暂存区中的修改，在未提交的情况下进行了保存；并且将分支回退到修改前的状态</p>
+<blockquote>
+<p>在切换回该分支时, 需要从stash区域中恢复保存的修改</p>
+</blockquote>
+<blockquote>
+<p><code>git stash save &#39;注释&#39;</code>   保存修改时给与注释</p>
+<p><code>git stash list</code>   查看保存的修改</p>
+</blockquote>
+</li>
+<li><p>主要有三种方法恢复 stash存储的修改</p>
+<blockquote>
+<p><code>git stash pop</code>   恢复最新的修改 把修改从stash中删除</p>
+<p><code>git stash apply</code>    恢复但不删除<code>stash</code>中存储的最新修改；</p>
+<blockquote>
+<p>使用该指令时发生了合并冲突。这是因为，<code>stash</code>中保存的每一次修改代表的都是一个版本。</p>
+</blockquote>
+<p><code>git stash apply stash@&#123;n&#125; </code>   ，作用为从<code>stash</code>中恢复特定的修改，并且不删除<code>stash</code>中的该修改。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="git配置"><a href="#git配置" class="headerlink" title="git配置"></a>git配置</h3><ul>
+<li><p><code>git config--</code>   三个作用域: system global local  优先级一次递增</p>
+<blockquote>
+<p>system: 一台计算机（操作系统）上的所有用户</p>
+<p>global : 计算机中的某用户创建的所有项目</p>
+<p>local : 某一特定的版本库</p>
+</blockquote>
+</li>
+<li><p>通过**<code>git config --list</code>：**可以批量查看配置信息(所有的配置信息 包括local global配置)</p>
+<blockquote>
+<p>通过 <code>cat  .git/config</code> 查看Local配置   <code>cat ~/.gitconfig </code>查看全局配置</p>
+</blockquote>
+</li>
+<li><p><code>git config --作用域  --unset &lt;参数名&gt;</code>    删除配置 </p>
+<blockquote>
+<p>可以用来修改用户名..  </p>
+</blockquote>
+</li>
+<li><p><code>.gitignore</code> 文件中配置不被git追踪的文件</p>
+<blockquote>
+<p>注意在<code>.gitignore</code>文件中<strong>一行写一个</strong>文件名；<code>.gitignore</code>文件也支持<strong>正则表达式</strong></p>
+</blockquote>
+</li>
+<li><p>如果某些文件已经被纳入了版本管理中，那么修改<code>.gitignore</code>是无效的,仍然会发生追踪</p>
+<blockquote>
+<p>清除<code>git</code>本地缓存，将文件转变为<code>untrack</code>状态，然后再提交:</p>
+<p>git rm -r –cached .</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="Git-协作流程和Git-pull-常见问题"><a href="#Git-协作流程和Git-pull-常见问题" class="headerlink" title="Git 协作流程和Git pull 常见问题"></a>Git 协作流程和Git pull 常见问题</h3><ul>
+<li><p><code>Gitflow</code> 基于git分支的开发模型</p>
+<blockquote>
+<p>一般有<code>develop</code>分支   <code>test</code>分支  <code>master</code>分支   <code>bugfix(hotfix)</code>分支</p>
+</blockquote>
+</li>
+<li><p><code>SVN</code>方式（典型模型）</p>
+<blockquote>
+<p>多个用户对同一个仓库进行推送,主要原因在于每个用户都需要 pull之后再次push,</p>
+</blockquote>
+</li>
+<li><p>git pull 冲突问题</p>
+</li>
+<li><p><code>git pull</code>同源合并冲突</p>
+<blockquote>
+<p>所谓同源，指的是本地仓库与远程仓库中的分支从根提交节点开始，有共同的提交历史</p>
+</blockquote>
+</li>
+<li><h4 id="git-pull不同源合并冲突"><a href="#git-pull不同源合并冲突" class="headerlink" title="git pull不同源合并冲突"></a><code>git pull</code>不同源合并冲突</h4><blockquote>
+<p>所谓不同源，指的是两个仓库中的分支，根提交节点不同，</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="Git-refspec"><a href="#Git-refspec" class="headerlink" title="Git refspec"></a>Git refspec</h3><ul>
+<li><p>本地仓库与远程仓库的分支映射关系：<code>git refspec</code>, 没有映射的情况下,无法进行git push</p>
+<blockquote>
+<p>通过<code>git branch -vv</code>查看本地与远程分支的关联情况</p>
+</blockquote>
+</li>
+<li><p><code>git</code>中其实有三种分支：本地分支、本地远程分支、远程分支</p>
+<blockquote>
+<p>本地远程分支是远程分支的一个镜像，并且在本地仓库与远程仓库之间起到一个桥梁的作用, 当本地仓库中的每一个分支都有与之关联的远程分支之后，本地仓库都会创建对应的<strong>本地远程分支</strong></p>
+<p>比如本地远程分支<code>origin/develop</code>就对应着远程分支<code>develop</code>。</p>
+</blockquote>
+</li>
+<li><p>本地远程分支是为了追踪远程分支而存在的，只有在执行<code>pull</code>或<code>push</code>操作时它的指向才会更新。</p>
+</li>
+<li><p><strong>设置同名远程分支:</strong></p>
+<blockquote>
+<p><code>upstream branch</code>表示上游分支，即远程仓库的分支</p>
+</blockquote>
+</li>
+<li><p>建立本地与远程分支追踪关系的。类型一</p>
+<blockquote>
+<p>方法一: <code>git push --set-upstream origin &lt;branch&gt; </code>  : 在远程仓库创键一个与本地分支develop<strong>关联</strong>的同名分支，并将本地分支develop的文件推送到该远程分支上。</p>
+<p>方法二 :  <code>git push -u origin &lt;branch&gt;</code>  :为本地仓库创建对应的远程分支</p>
+<p>使用上述方法，只需设置一次，之后就可以使用简写形式<code>git push</code>进行推送</p>
+<p>方法三: <code>git push origin HEAD</code>  / <code>git push origin &lt;branch&gt;</code>设置对应的远程分支, 因为没有跟踪分支信息, 所以之后无法直接使用git push</p>
+</blockquote>
+<blockquote>
+<p><strong>设置不同名远程分支:</strong></p>
+<p> <code>git push --set-upstream origin &lt;branch1&gt;:&lt;branch2&gt;</code>   其他方法也可以使用类似完整的命令</p>
+<p>注意: 不同名的远程分支进行推送都不可以使用 git push, 因为名字不一样, 必须使用完整的命令的进行推送</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p>不建立本地与远程分支追踪关系的。类型二</p>
+<blockquote>
+<p><code>git push origin HEAD</code></p>
+<p><code> git push origin &lt;branch_name&gt;</code>  </p>
+<p>使用该方法,每次都需要使用完整写法</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p><code>git push origin master</code>与<code>git push -u origin master</code>的区别</p>
+<blockquote>
+<p>第一次将本地仓库的<code>master</code>分支推送到远程仓库的<code>master</code>分支上时，使用前者和后者都可以顺利推送</p>
+<p>推荐使用 -u 参数,因为之后可以直接进行 git push推送</p>
+</blockquote>
+</li>
+<li><p><code>git push -f origin master</code>  : <strong>强制推送</strong>,直接跳过与远程仓库的<code>master</code>分支合并的环节,即以本地的<code>master</code>分支内容为准。 慎用该命令, </p>
+<blockquote>
+<p>如果设置了分支追踪关系, 使用 <code>git push -f</code></p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p><strong>设置远程分支对应的本地分支</strong> </p>
+<blockquote>
+<p><code>git checkout -b &lt;branch&gt; origin/&lt;branch&gt;</code>    </p>
+<p><code>git checkout --track origin/&lt;branch&gt;</code>  </p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p><strong>删除远程分支</strong></p>
+<blockquote>
+<p><code>git push origin :destBranch</code>    将空的分支推送到远程分支，这样就能将该远程分支删除</p>
+<p><code>git push origin --delete destBranch</code></p>
+</blockquote>
+</li>
+<li><p><code>git remote prune origin</code>   删除无效的远程分支对应的本地远程分支</p>
+<blockquote>
+<p>当远程分支被删除时, 那么对应的本地远程分支就是无效的</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p><strong>重命名分支</strong></p>
+<blockquote>
+<p>本地分支:</p>
+<p><code>git branch -m dev develop</code>     将本地分支<code>dev</code>重命名为<code>develop</code></p>
+<p>远程分支: </p>
+<p>无法直接重命名远程分支，只能通过先删除原来的远程分支，再创建一个新名称的分支</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="git-标签"><a href="#git-标签" class="headerlink" title="git 标签"></a>git 标签</h3><ul>
+<li><p><code>Git</code>标签有两种：<code>轻量级标签</code>  <code>带有附注的标签</code>  , 标签标识的是某一次提交，这次提交可以是任何分支上的任何一次提交。</p>
+</li>
+<li><p>什么时候打标签?  版本发布时,会打上类似v1.0 的标签</p>
+</li>
+<li><p><strong>创建标签:</strong></p>
+<blockquote>
+<p><code>git tag &lt;tag_name&gt;</code>   </p>
+<p> <code>git tag -a &lt;tag_name&gt; -m &#39;注释&#39;</code></p>
+</blockquote>
+</li>
+<li><p>查看标签</p>
+<blockquote>
+<p><code>git tag</code>   </p>
+<p><code>git show &lt;tag_name&gt;</code>   </p>
+</blockquote>
+</li>
+<li><p>查找标签</p>
+<blockquote>
+<p><code>git tag -l &lt;tag_name&gt;</code>    该方式支持正则表达式查找；</p>
+</blockquote>
+</li>
+<li><p>标签推送到远程</p>
+<blockquote>
+<p><code>git push origin &lt;tag_name&gt;</code>  将本地分支上的标签推送到远程仓库</p>
+<p>也可以利用此推送多个本地标签</p>
+<p><code>git push origin --tag</code>   推送本地所有的标签到远程仓库</p>
+</blockquote>
+</li>
+<li><p>删除标签</p>
+<blockquote>
+<p>远程:</p>
+<p><code>git push origin :&lt;tag_name&gt;</code>    </p>
+<p><code>git push origin --delete &lt;tag_name&gt;</code></p>
+<p>本地:</p>
+<p><code>git tag -d &lt;tag_name&gt;</code>   </p>
+</blockquote>
+</li>
+<li><p>切换标签</p>
+<blockquote>
+<p><code>git checkout &lt;tag_name&gt;</code>   切换标签与使用<code>reset</code>进行版本回退十分相似。只不过切换标签只改变了<code>HEAD</code>指针的指向，会造成游离的提交。若有需要可以创建一个新分支进行保存。</p>
+</blockquote>
+</li>
+<li><p>Git别名</p>
+<blockquote>
+<p><code>git config &lt;作用域&gt; alias.&lt;别名&gt; &#39;&lt;命令&gt;&#39;</code>   设置<code>git</code>命令别名</p>
+<p>设置完成后，该配置会被写入系统用户的配置文件<code>gitconfig</code>中</p>
+</blockquote>
+</li>
+<li><p>垃圾回收 : git gc </p>
+</li>
+</ul>
+<h3 id="Git-cherry-pick-rebase"><a href="#Git-cherry-pick-rebase" class="headerlink" title="Git cherry-pick rebase"></a>Git cherry-pick rebase</h3><ul>
+<li><p><code>Git cherry-pick</code>的作用为移植提交。采用先删除再添加的方法将会很繁琐，而使用<code>cherry-pick</code>就能轻松实现这一需求。</p>
+<blockquote>
+<p>将多余的提交通过 cherry-pick 移植提交, 然后删除该分支上多余的提交</p>
+</blockquote>
+</li>
+<li><p><code>rebase</code>有两个意思：<strong>变基</strong>、<strong>衍合</strong>，即变换分支的参考基点</p>
+</li>
+</ul>
+<h3 id="git子库"><a href="#git子库" class="headerlink" title="git子库"></a>git子库</h3><ul>
+<li><code>git</code>提供了子库的概念。可以将这些子模块存放在不同的仓库中，通过<code>submodule</code>或<code>subtree</code>实现仓库的嵌套。</li>
+</ul>
+
+            </div>
+            <div><a href="https://github.com/thinkles/thinkles.github.io/blob/myblog/source/_posts/Git/GIT教程.md" target="_blank">编辑</a></div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Git/">Git</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Git/">Git</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/02/21/Md%20CSS%E5%A4%95%E6%8B%BE/CSS%20%E6%8C%87%E5%AF%BC/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">CSS 指南</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/12/13/hello-world/">
+                        <span class="hidden-mobile">Hello World lalla</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.waitElementVisible('comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'thinkles/Utterances-comment-blog');
+      s.setAttribute('issue-term', 'title');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.start()
+    document.addEventListener('DOMContentLoaded', function() {
+      window.NProgress && window.NProgress.inc();
+    })
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>

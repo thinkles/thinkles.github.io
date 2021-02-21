@@ -1,0 +1,675 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Yangsir">
+  <meta name="keywords" content="">
+  <title>前端开发overview - Yangsir&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.6","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Yangsir-Zone</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/images/bag.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="前端开发overview">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-02-21 11:41" pubdate>
+        2021年2月21日 中午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.4k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      25
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">前端开发overview</h1>
+            
+            <div class="markdown-body">
+              <h3 id="web开发工具系统"><a href="#web开发工具系统" class="headerlink" title="web开发工具系统"></a>web开发工具系统</h3><ul>
+<li><p>从高层次来看，客户端工具分为三大类</p>
+<blockquote>
+<p>前期开发工具—-开发期间的工具</p>
+<p>后期开发工具 —- 开发后的工具, 如测试和部署工具</p>
+<p>转换工具 —  转换语言,以便更好的开发</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p><strong>前期开发工具</strong></p>
+</li>
+<li><p>帮助你更容易生成稳定可靠的代码的任何内容。</p>
+</li>
+<li><p>Linters 是检查您的代码并告诉您存在任何错误的工具  例如 eslint csslint…通常linters 包括指定编程样式的功能</p>
+</li>
+<li><p>对于代码检测工具来说,有几种方法使用他们 :</p>
+<blockquote>
+<p>在npm安装后 调用内置的命令行</p>
+<p>在编辑代码阶段 在VScode安装插件 </p>
+<p>在git hook 运行小脚本使用 代码检测工具</p>
+</blockquote>
+</li>
+<li><p>代码格式化工具: prettier </p>
+</li>
+<li><p>源代码控制</p>
+<blockquote>
+<p>也称为版本控制系统(VCS)，源代码控制对于备份工作和在团队中工作至关重要。Git 是现在大多数人使用的源代码控制系统</p>
+</blockquote>
+</li>
+<li><p>打包工具</p>
+<blockquote>
+<p>这些工具让你的代码准备生产,例如，通过tree-shaking来确保只有实际使用的代码库的部分被放到最终的生产代码中,或“缩减”删除所有空格在生产代码中,使其尽可能小之前上传到服务器。</p>
+<p>例如: Parcel   Webpack  rollup</p>
+</blockquote>
+</li>
+<li><p><strong>转换工具:</strong></p>
+</li>
+<li><blockquote>
+<p>使用语言的新特性,但是这些特性可能还没有得到浏览器的本地支持，或者完全使用另一种语言编写代码，(例如 TypeScript. 转换工具将为您生成与浏览器兼容的代码)</p>
+</blockquote>
+</li>
+</ul>
+<ol>
+<li><p>能够使用最新的语言特性编写代码，并将其转换为可在日常设备上使用的代码。</p>
+<blockquote>
+<p>Babel:一个JavaScript编译器，允许开发人员使用最前沿的JavaScript编写代码，然后Babel将其转换为老式的JavaScript，</p>
+<p>PostCSS:和Babel做同样的事情，但是有先进的CSS特性</p>
+</blockquote>
+</li>
+<li><p>选择用一种完全不同的语言编写代码，并将其转换为与web兼容的语言</p>
+<blockquote>
+<p>Sass 这个CSS扩展允许您使用变量、嵌套规则、混合、函数和许多其他特性</p>
+<p>TypeScript:是JavaScript的一个超集，它提供了一堆额外的特性。</p>
+<p>VUE React 通过自定义语法开发</p>
+</blockquote>
+</li>
+</ol>
+<ul>
+<li><p><strong>后期开发工具:</strong></p>
+</li>
+<li><blockquote>
+<p>开发后阶段工具可以确保您的软件能够访问web并继续运行。这包括部署流程、测试框架、审计工具等等。</p>
+</blockquote>
+</li>
+<li><p>测试工具:</p>
+<blockquote>
+<p>框架包括编写测试Jest, Mocha, 和 .</p>
+<p>自动测试运行和通知系统包括Travis CI, Jenkins, Circle CI, 和 others.</p>
+</blockquote>
+</li>
+<li><p>配置工具:</p>
+<blockquote>
+<p>配置系统允许您发布网站，可用于静态和动态站点，通常与测试系统一起工作。</p>
+<p>Netlify 是目前最流行的部署工具之一，但其他包括Vercel 和 Github Pages.</p>
+</blockquote>
+</li>
+<li><p>其他:</p>
+<blockquote>
+<p>包括 Code Climate 对于收集代码质量度量， webhint browser extension 用于执行跨浏览器兼容性的运行时分析和其他检查, Github bots 提供更强大的GitHub功能, Updown 提供应用程序运行时间监控等等。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="基本命令行"><a href="#基本命令行" class="headerlink" title="基本命令行"></a>基本命令行</h3><ul>
+<li><p>基本的内置终端命令</p>
+</li>
+<li><p>导航计算机的文件系统以及基本级别的任务，如创建、复制、重命名和删除</p>
+<blockquote>
+<p>移动您的目录结构 : <code>cd</code></p>
+<p>建立目录: <code>mkdir</code></p>
+<p>创建文件（修改他们的原数据）: <code>touch</code></p>
+<p>复制文件: <code>cp</code></p>
+<p>移动文件: <code>mv</code></p>
+<p>删除文件或目录: <code>rm</code></p>
+<p>下载在特定的 url 找到的文件: <code>curl</code></p>
+<p>在较大的文件体中寻找特定的片段: <code>grep</code></p>
+<p>主页查看文件的内容: <code>less</code>, <code>cat</code></p>
+<p>操作和转换文本流（例如，讲 HTML 文件中 <div> 的所有实例改为 &lt; article&gt;）: <code>awk</code>, <code>tr</code>, <code>sed</code></p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p>所有的操作系统(假设是默认设置) 都将在您的 “home” 目录中启动它们的终端程序，从那里您可能想要移动到另一个地方。</p>
+<blockquote>
+<p>一个非常有用的终端快捷方式是使用 tab 键自动完成你知道的名字，而不是必须键入整个东西。</p>
+</blockquote>
+</li>
+<li><p>请注意，在路径上包含一个前斜线将使路径成为绝对路径 <code>/Users/your-user-name/Desktop</code>. 像我们上面做的那样，省略前导斜杠可以使路径相对于当前的工作目录。</p>
+<blockquote>
+<p>这与您在 web 浏览器中看到的 url 完全相同。前面的斜杠意味着 “在网站的根”，而省略斜杠意味着 “这个 URL 是相对于我当前页面的”。</p>
+</blockquote>
+</li>
+<li><p>在 windows 中，你使用反斜杠而不是正斜杠。<code>cd Desktop\project\src</code></p>
+</li>
+</ul>
+<ul>
+<li><p>另一个内置的 Unix 命令是 ls (list 的缩写)，它列出当前所在目录的内容。注意，这不会工作，如果你使用默认的 Windows 命令提示符 (cmd)，相当于 dir。</p>
+</li>
+<li><p>大多数终端命令都有选项，这些选项是您添加到命令末尾的修饰符，它们使命令的行为略有不同。它们通常由命令名后的空格、后接破折号、后接一个或多个字母组成。</p>
+<blockquote>
+<p>确切地了解每个命令有哪些可用选项，您可以查看它 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Man_page">man page</a>. 通过键入 <code>man</code> 命令，后跟要查找的命令的名称，例如<code>man ls</code></p>
+</blockquote>
+<blockquote>
+<p><code>mkdir</code> —这将在您所在的当前目录中创建一个新目录，名称是您在命令名之后提供的。</p>
+<p>例如<code>mkdir my-awesome-website将创建一个新目录叫``my-awesome-website</code>.</p>
+</blockquote>
+<blockquote>
+<p><code>rmdir</code> —删除指定目录，但仅当它为空时。例如<code>rmdir my-awesome-website</code></p>
+<p>将删除我们在上面创建的目录。如果您希望删除一个非空的目录 (并删除其中包含的所有内容)，则可以使用<code>-r</code> 选项（递归），但这很危险。 确保以后在目录中不需要任何内容，因为它将永远消失。</p>
+</blockquote>
+<blockquote>
+<p><code>touch</code> —在当前目录中创建一个新的空文件 &gt;</p>
+</blockquote>
+<blockquote>
+<p>许多终端命令允许您使用星号作为 “通配符” 字符，意思是“任何字符序列”。这允许您一次对可能大量的文件运行操作，所有这些文件都匹配指定的模式。作为一个例子, <code>rm mdn-*</code> 将删除所有文件开头<code>mdn-</code>. <code>rm mdn-*.bak</code> 会删除所有文件的开头<code>mdn-</code> 结束 <code>.bak</code>.</p>
+<p><code>cp</code> — 类似于 <code>mv</code>, <code>cp</code>在指定的第一个位置和第二个位置创建文件的副本。</p>
+<p><code>rm</code> —删除指定的文件</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="包管理工具"><a href="#包管理工具" class="headerlink" title="包管理工具"></a>包管理工具</h3><ul>
+<li><p><strong>项目中的依赖项</strong></p>
+<blockquote>
+<p>是软件的第三方位，可能是由其他人编写的，理想情况下可以为您解决单个问题。</p>
+<p>项目依赖项可以是一个完整的 JavaScript 库或框架 (如 React 或 Vue) ，也可以是一个非常小的实用程序 (如人类可读的日期库) ，或者是一个命令行工具 (如 Prettier 或 eslint) ，</p>
+</blockquote>
+</li>
+<li><p><strong>为什么需要现代构建工具:</strong></p>
+</li>
+<li><p>如果没有现代的构建工具，像这样的依赖关系可能会使用一个简单的 <script> 元素包含在项目中，但是这可能不会立即生效，当代码和依赖关系在 web 上发布时，你可能需要一些现代的工具来将它们捆绑在一起。</p>
+<blockquote>
+<p>捆绑包通常用于指  Web 服务器上的一个<code>单个文件</code> 这个文件包含网页所需所有的JS代码 ,通常尽可能压缩，以帮助减少下载软件并在访问者浏览器中显示的时间</p>
+</blockquote>
+</li>
+<li><p><strong>为什么需要包管理器:</strong> </p>
+</li>
+<li><p>如果您找到了一个更好的工具来代替当前的工具，或者您想要更新的依赖关系的新版本被释放了，对于一些依赖关系来说，这并不是太痛苦，但是对于有很多依赖关系的大型项目来说，跟踪这类事情确实很有挑战性。</p>
+</li>
+<li><p>包管理工具,将保证代码被完整地添加和删除，同时还有许多其他优点。</p>
+</li>
+</ul>
+<ul>
+<li><p>包管理器(npm yarn), 是一个管理项目依赖关系的系统。</p>
+<blockquote>
+<p>包管理器将提供一种方法来安装新的依赖项 (也称为 “包”) ，管理包在文件系统中的存储位置，并为您提供发布自己的包的功能</p>
+</blockquote>
+</li>
+<li><p>理论上，您可能不需要包管理器，您可以手动下载和存储项目依赖项，但是包管理器将无缝地处理安装和卸载包。如果你没有使用，你必须手动处理</p>
+<blockquote>
+<p>手动处理的话有几点: </p>
+<ol>
+<li>需要手动的去找到所有的依赖项,把他们加到项目中,检查依赖项有没有错误, </li>
+<li>如果依赖项还有子依赖项,那么手动的寻找子依赖项 </li>
+<li>可能还需要去编写 模块代码去引入 依赖项</li>
+<li> 删除依赖项的情况 和 重复引入的情况都会使开发更加的困难</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p>对于 npm (以及基于 JavaScript 和基于 node 的包管理器) ，安装依赖项的位置有两个选项。正如我们在前一篇文章中提到的，依赖项可以全局安装，也可以本地安装。</p>
+<blockquote>
+<p>在本地安装的优点更为重要，比如代码可移植性和版本锁定。</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p>Package registries 包注册表</p>
+<blockquote>
+<p>对于一个软件包管理器，它需要知道从哪里安装软件包，这是一个软件包注册表的形式。</p>
+<p>注册表是发布包的中心位置，因此可以从中安装。Npm 不仅是一个包管理器，还是 JavaScript 包最常用的包注册表的名称。</p>
+</blockquote>
+</li>
+</ul>
+
+            </div>
+            <div><a href="https://github.com/thinkles/thinkles.github.io/blob/myblog/source/_posts/工具篇/Web开发overview.md" target="_blank">编辑</a></div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91-overview/">前端开发 overview</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/02/21/%E5%B7%A5%E5%85%B7%E7%AF%87/%E8%B7%AF%E7%94%B1/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">路由</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/02/21/%E5%B7%A5%E5%85%B7%E7%AF%87/webpack/">
+                        <span class="hidden-mobile">webpack</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.waitElementVisible('comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'thinkles/Utterances-comment-blog');
+      s.setAttribute('issue-term', 'title');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.start()
+    document.addEventListener('DOMContentLoaded', function() {
+      window.NProgress && window.NProgress.inc();
+    })
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>
